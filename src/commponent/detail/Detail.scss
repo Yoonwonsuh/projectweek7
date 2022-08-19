@@ -1,0 +1,183 @@
+.DetailModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.DetailContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 90%;
+  max-width: 1100px;
+  border: none;
+  top: 50%;
+  left: 50%;
+  background: white;
+  justify-content: space-between;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.DetailLeft {
+  display: flex;
+  background: black;
+  width: 60%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.DetailImg {
+  width: 100%;
+  max-height: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.DetailRight {
+  background: white;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.DetailMemberImg {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+.DetailRightTitleContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.DetailLine {
+  width: 100%;
+  border-bottom: 1px solid;
+  opacity: 0.5;
+  transform: scaleY(0.2);
+}
+.DetailRightTitleNickName {
+  margin: auto 0;
+  cursor: default;
+}
+
+.DetailRightContentContainer {
+  width: 100%;
+  max-height: 70%;
+  display: flex;
+  overflow: scroll;
+  scrollbar-width: none;
+  min-height: 180px;
+  padding-left: 15px;
+  word-wrap: break-word;
+}
+
+.DetailRightContentContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.DetailContainersmall {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: 335px;
+  min-height: 600px;
+  border: none;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  background: white;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.DetailTopTitle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.DetailsmallImgBox {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.DetailsmallImg {
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.DetailControlBox {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  gap: 20px;
+}
+
+.DetailIcon {
+  font-size: 20px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.4;
+  }
+}
+.DetailSmallLike {
+  text-align: left;
+  padding-left: 15px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.DetailSmallTime {
+  text-align: left;
+  padding-left: 15px;
+  font-size: 09px;
+  margin-bottom: 10px;
+  cursor: default;
+}
+
+.DetaillShowInputbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.DetailsmallShowInput {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  input:focus {
+    outline: none;
+  }
+}
+
+.DetailInputIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.DetailsmallInput {
+  margin-left: 10px;
+  border: none;
+  width: 100%;
+}
+
+.Detailsmallclick {
+  font-size: 14px;
+  min-width: 30px;
+  margin-right: 15px;
+  cursor: default;
+  color: #add5f7;
+}
