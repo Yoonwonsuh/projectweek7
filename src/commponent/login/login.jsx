@@ -16,7 +16,7 @@ const Login = () => {
     // console.log(id_ref.current.value, pw_ref.current.value);
     const memberId = id_ref.current.value;
     const password = pw_ref.current.value;
-    if (id_ref.current.valule == "" || pw_ref.current.valule == "") {
+    if (id_ref.current.value == "" || pw_ref.current.value == "") {
       alert("아이디와 비밀번호를 입력해주세요");
     } else {
       dispatch(loginDB({ memberId, password }));

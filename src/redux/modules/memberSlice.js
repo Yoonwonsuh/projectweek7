@@ -14,6 +14,7 @@ export const loginDB = (payload) => {
         console.log(response);
       })
       .catch((response) => {
+        console.log(payload)
         console.log(response);
       });
   };
