@@ -1,11 +1,22 @@
 import React from "react";
+// import Header from "../commponent/header/Header";
+// import List from "../commponent/list/List";
+import Login from "../commponent/login/Login";
 
 const Main = () => {
-  return <div>메인페이지입니다.<br />
-    가나다라마바사<br />
-    abcdefg<br />
-    ABCDEFG<br />
-  </div>;
+  // const nickname = localStorage.getItem("nickename");
+  return (
+    <>
+      {/* {nickname ? (
+        <>
+          <Header />
+          <List />
+        </>
+      ) : ( */}
+      <Login />
+      {/* )} */}
+    </>
+  );
 };
 
 export default Main;
