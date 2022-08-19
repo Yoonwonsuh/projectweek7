@@ -9,7 +9,10 @@ const initialState = {
 export const loginDB = (payload) => {
   return async function (dispatch) {
     await instance
-      .post("members/login", payload)
+      .post("members/login", {
+        memberId: payload.memberId,
+        password: payload.password,
+      })
       .then((response) => {
         console.log(response);
       })
