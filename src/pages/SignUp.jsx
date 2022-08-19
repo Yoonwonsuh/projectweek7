@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const SignUp = () => {
-    return (
-        <div>
-            회원가입페이지 입니다.
-        </div>
-    );
+  return <div>인스타클론</div>;
 };
 
 export default SignUp;
