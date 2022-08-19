@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import "./Login.scss";
+import { loginDB } from "../../redux/modules/memberSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Login = () => {
     if (id_ref.current.valule == "" || pw_ref.current.valule == "") {
       alert("아이디와 비밀번호를 입력해주세요");
     } else {
-      dispatch({ memberId, password });
+      dispatch(loginDB({ memberId, password }));
     }
   };
 
