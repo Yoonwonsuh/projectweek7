@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const login = () => {
+const Login = () => {
   return <div>로그인창입니다.</div>;
 };
 
-export default login;
+export default Login;
