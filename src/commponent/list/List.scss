@@ -9,10 +9,15 @@
   border: 2px solid black;
   display: flex;
   justify-content: space-between;
+  height: 50px;
   margin: 0 500px 0 500px;
 }
 .ListNav_right {
   display: flex;
+}
+.ListNav_img {
+  border: 2px solid black;
+  border-radius: 100px;
 }
 // 포스팅 이미지
 .ListImg {
