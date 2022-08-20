@@ -5,6 +5,7 @@ import Login from '../commponent/login/Login';
 import { postsList } from '../redux/modules/postsSlice';
 import { useSelector } from 'react-redux';
 import './Main.scss';
+
 const Main = () => {
 
 
