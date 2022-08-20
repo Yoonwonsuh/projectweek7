@@ -1,33 +1,28 @@
-import React from 'react';
-import List from '../commponent/list/List';
-import Header from '../commponent/header/Header';
-import Login from '../commponent/login/LoginForm';
-import { postsList } from '../redux/modules/postsSlice';
-import { useSelector } from 'react-redux';
-import './Main.scss';
+import React from "react";
+import List from "../commponent/list/List";
+import Header from "../commponent/header/Header";
+import Login from "../commponent/login/LoginForm";
+import { postsList } from "../redux/modules/postsSlice";
+import { useSelector } from "react-redux";
+import "./Main.scss";
 
 const Main = () => {
-
-
   const nickname = localStorage.getItem("nickname");
 
   return (
     <>
-      <div className="MainWrap">
-        {!nickname ? (
-          <>
-            <Header />
-
-
-
+      {nickname ? (
+        <>
+          <Header />
+          <div className="MainWrap">
             {/* {postsList.map((item) => {
             return <List />;
           })} */}
-          </>
-        ) : (
-          <Login />
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <Login />
+      )}
     </>
   );
 };
