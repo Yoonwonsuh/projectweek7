@@ -7,19 +7,16 @@ import { useSelector } from 'react-redux';
 import './Main.scss';
 
 const Main = () => {
-
-
-  const nickname = localStorage.getItem("nickname");
+  const nickname = localStorage.getItem('nickname');
 
   return (
     <>
-      <div className="MainWrap">
+      <div>
         {!nickname ? (
           <>
             <Header />
 
-
-
+            <List className="MainWrap" />
             {/* {postsList.map((item) => {
             return <List />;
           })} */}
