@@ -1,0 +1,38 @@
+.wrap {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px;
+  height: 60px;
+  width: 100%;
+  border-bottom: 1px solid rgb(202, 199, 199);
+}
+
+// 왼쪽
+.container_left {
+  flex: 0 0 auto;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+  height: 36px;
+  background-color: yellow;
+}
+.container_left_logo_img {
+  width: 103px;
+  height: 100%;
+  cursor: pointer;
+}
+.container_left_btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+// 중앙
+.container_middle {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  cursor: text;
+  background-color: tan;
+}
