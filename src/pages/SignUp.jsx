@@ -1,7 +1,12 @@
 import React from "react";
+import SignupForm from "../commponent/signupform/SignupForm";
 
 const SignUp = () => {
-  return <div>인스타클론</div>;
+  return (
+    <div>
+      <SignupForm />
+    </div>
+  );
 };
 
 export default SignUp;

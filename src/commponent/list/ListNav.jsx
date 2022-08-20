@@ -1,14 +1,21 @@
 import React from 'react';
 import './List.scss';
+import { AiOutlineEllipsis } from 'react-icons/ai';
 
 const ListNav = () => {
   return (
     <div className="ListNav_Wrap">
       <div className="ListNav_right">
-        <div className="ListNav_img">프로필 이미지</div>
-        <div>닉네임</div>
+        <img
+          className="ListNav_right_img"
+          src="https://www.fnnews.com/resource/media/image/2022/08/12/202208121331140929_l.jpg"
+          alt=""
+        />
+        <div className="ListNav_right_txt">배돌이</div>
       </div>
-      <button>설정버튼</button>
+      <button className="ListNav_right_btn">
+        <AiOutlineEllipsis className="ListNav_right_btn_toggle" />
+      </button>
     </div>
   );
 };

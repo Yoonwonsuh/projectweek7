@@ -6,9 +6,11 @@ import appimg from "../../img/appimg.png";
 import { loginDB } from "../../redux/modules/memberSlice";
 import "./LoginForm.scss";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //input 입력값 받아오기위해 useRef 사용 (state사용해도되긴함)
   //useRef 값이 뱐해도 리렌더링 되지않음
@@ -30,12 +32,12 @@ const Login = () => {
   return (
     <div className="loginBackground">
       <div className="loginContainer">
-        <div className="leftContainer">
+        <div className="loginleftContainer">
           <img src={loginimg} />
         </div>
-        <div className="rightContainer">
+        <div className="loginrightContainer">
           <div className="loginDiv">
-            <div>
+            <div className="loginsmallDiv">
               <img src={logo} />
               <input placeholder="아이디" ref={id_ref} />
               <br />
@@ -48,7 +50,8 @@ const Login = () => {
             <div className="checkpw">비밀번호를 잊으셨나요?</div>
           </div>
           <div className="siginupPage">
-            <span>계정이 잆으신가요?</span> <span> 가입하기</span>
+            <div>계정이 잆으신가요?</div>
+            <div onClick={() => navigate("/signup")}> 가입하기</div>
           </div>
           <div className="appBox">
             <p>앱을 다운로드하세요.</p>
