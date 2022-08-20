@@ -1,4 +1,3 @@
-
 import React from 'react';
 import List from '../commponent/list/List';
 import Header from '../commponent/header/Header';
@@ -7,13 +6,12 @@ import { postsList } from '../redux/modules/postsSlice';
 import { useSelector } from 'react-redux';
 import './Main.scss';
 const Main = () => {
-  const nickName = localStorage.getItem('nickName');
 
-  // const postsList = useSelector((state) => state.postsList.postsList);
+
+  const nickname = localStorage.getItem("nickname");
 
   return (
     <>
-
       <div className="MainWrap">
         {!nickName ? (
           <>
@@ -29,7 +27,6 @@ const Main = () => {
           <Login />
         )}
       </div>
-
     </>
   );
 };
