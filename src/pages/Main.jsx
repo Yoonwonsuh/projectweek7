@@ -1,7 +1,7 @@
 import React from 'react';
 import List from '../commponent/list/List';
 import Header from '../commponent/header/Header';
-import Login from '../commponent/login/Login';
+import Login from '../commponent/login/LoginForm';
 import { postsList } from '../redux/modules/postsSlice';
 import { useSelector } from 'react-redux';
 import './Main.scss';
@@ -14,7 +14,7 @@ const Main = () => {
   return (
     <>
       <div className="MainWrap">
-        {!nickName ? (
+        {!nickname ? (
           <>
             <Header />
 

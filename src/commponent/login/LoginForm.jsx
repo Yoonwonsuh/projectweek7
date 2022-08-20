@@ -4,7 +4,7 @@ import loginimg from "../../img/loginimg.png";
 import logo from "../../img/logo.png";
 import appimg from "../../img/appimg.png";
 import { loginDB } from "../../redux/modules/memberSlice";
-import "./login.scss";
+import "./LoginForm.scss";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 
 const Login = () => {
