@@ -1,0 +1,14 @@
+.ProfilePostListContainer {
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 935px;
+  grid-gap: 28px;
+}
+
+.ProfilePostListImg {
+  width: 293px;
+  height: 293px;
+  object-fit: cover;
+  cursor: pointer;
+}

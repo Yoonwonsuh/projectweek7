@@ -12,11 +12,11 @@ const Main = () => {
 
   return (
     <>
+
       {nickname ? (
         <>
           <Header />
           <div className="MainWrap">
-
             {/* {postsList.map((item) => {
             return <List />;
           })} */}
