@@ -6,52 +6,96 @@
   border-radius: 8px;
 }
 
-// 네브바
+// 메인 헤더
 .ListNav_Wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 56px;
   width: 100%;
-  // background-color: blue;
 }
 .ListNav_right {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.ListNav_img {
-  border-radius: 100px;
+.ListNav_right_img {
+  border-radius: 50%;
+  margin: 10px;
+  height: 30px;
+  width: 30px;
 }
+.ListNav_right_txt {
+  font-size: 14px;
+  max-width: 366px;
+  overflow: hidden;
+}
+.ListNav_right_btn {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  margin: 0 4px 0 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.ListNav_right_btn_toggle {
+  width: 24px;
+  height: 24px;
+}
+
 // 포스팅 이미지
 .ListImg {
   height: 470px;
   width: 100%;
   background-color: yellow;
 }
+
 // 컨텐츠
 .ListContentWrap {
   height: 100%;
-  padding: 0px 12px;
 }
 
 .ListContentHead {
   width: 100%;
   height: 48px;
-  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+}
+.ListContentHead_left {
+  margin-left: 0px;
+}
+
+.ListContentHead_button {
+  width: 40px;
+  height: 40px;
+  padding: 8px 0 8px 0;
+  margin: 0 4px 0 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.ListContentHead_button_outline {
+  width: 24px;
+  height: 24px;
 }
 
 .ListContentBody {
   width: 100%;
   min-height: 150px;
-  // background-color: blueviolet;
+  padding: 0px 12px;
 }
 
 .ListContentBodyLike {
   display: flex;
+  flex-direction: row;
   width: 100%;
   height: 18px;
   align-items: center;
   justify-content: start;
-  background-color: blueviolet;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
 }
 
 .ListContentBodyComment {
@@ -62,22 +106,87 @@
   width: 100%;
   height: 18px;
   margin: 6px 0px;
-  background-color: red;
 }
 
 .ListContentBodyCommentNickname {
   max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 14px;
+  margin-right: 5px;
 }
 
 .ListContentBodyCommentWrap {
   flex: 1;
   align-items: center;
+  display: flex;
   justify-content: start;
-  background-color: aqua;
 }
 
 .ListContentBodyCommentWrapText {
-  font-size: 12px;
+  font-size: 14px;
+}
+.ListContentBodyComment_reply {
+  font-size: 14px;
+  color: rgb(147, 145, 145);
+}
+// 컨텐츠 댓글
+.ListContentBody_reply_wrap {
+  width: 100%;
+  height: 49px;
+  margin: 14px 0 0;
+  padding: 4px 10px 4px 5px;
+  display: block;
+}
+.ListContentBody_reply_cotainer {
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 100%;
+  border: 0;
+  flex-grow: 1;
+  position: relative;
+  vertical-align: baseline;
+}
+.ListContentBody_reply_btn {
+  width: 36px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px 8px 0px;
+}
+.ListContentBody_reply_btn_smile {
+  width: 24px;
+  height: 24px;
+}
+.ListContentBody_reply_input {
+  background: none;
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  font-size: inherit;
+  max-height: 80px;
+  height: 18px;
+  outline: none;
+  padding: 0;
+  resize: none;
+  width: 0;
+  align-items: center;
+}
+.ListContentBody_reply_postBtn {
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  width: auto;
+  color: rgb(202, 202, 239);
 }
