@@ -16,7 +16,9 @@ const Main = () => {
           <>
             <Header />
 
-            <List className="MainWrap" />
+            <div className="MainWrap">
+              <List />
+            </div>
             {/* {postsList.map((item) => {
             return <List />;
           })} */}
