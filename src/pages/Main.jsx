@@ -1,29 +1,22 @@
 import React from "react";
-import List from "../commponent/list/List";
-import Header from "../commponent/header/Header";
+// import List from "../commponent/list/List";
+// import Header from "../commponent/header/Header";
 import Login from "../commponent/login/login";
-import { postsList } from "../redux/modules/postsSlice";
+// import { postsList } from "../redux/modules/postsSlice";
 import { useSelector } from "react-redux";
 
 const Main = () => {
-  const nickName = localStorage.getItem("nickName");
+  const nickname = localStorage.getItem("nickname");
   // const postsList = useSelector((state) => state.postsList.postsList);
 
   return (
     <>
-      {/* {!nickName ? (
-        <>
-          <Header />
-
-          <List />
-
-          {postsList.map((item) => {
-            return <List />;
-          })}
-        </>
-      ) : ( */}
-      <Login />
-      {/* )} */}
+      {nickname ? (
+        // <>
+        <div>확인</div>
+      ) : (
+        <Login />
+      )}
     </>
   );
 };
