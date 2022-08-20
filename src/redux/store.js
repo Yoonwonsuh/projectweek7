@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import postsList from './modules/postsSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import member from "./modules/memberSlice";
 
 export default configureStore({
-  reducer: { postsList },
+  reducer: { member },
 });

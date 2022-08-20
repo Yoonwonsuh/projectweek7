@@ -1,0 +1,39 @@
+.loginContainer {
+  border: 1px solid #dbdbdb;
+
+  width: 50%;
+  margin: 20px auto;
+  display: flex;
+}
+.leftContainer {
+  border: 1px solid #dbdbdb;
+
+  width: 50%;
+  // img {
+  //     width: 98%;
+}
+.rightContainer {
+  border: 1px solid #dbdbdb;
+
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginDiv {
+  width: 70%;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 15px;
+  background-color: white;
+  div {
+    border: 1px solid #dbdbdb;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

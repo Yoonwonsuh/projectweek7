@@ -1,32 +1,32 @@
-import React from "react";
+import { createSlice } from "@reduxjs/toolkit";
+import instance from "./instance";
+
+const initialState = {
+  member: [],
+};
 
 // 로그인요청 post api/members/login
-export const addDetailThunk = createAsyncThunk(
-  "postDetail",
-  async (payload, api) => {
-    const token = window.localStorage.getItem("SavedToken");
-    try {
-      const data = await instance.post("/api/auth/cards", payload);
-
-      return api.fulfillWithValue(data.data);
-    } catch (error) {
-      return api.rejectWithValue(error);
-    }
-  }
-);
+export const loginDB = (payload) => {
+  return async function (dispatch) {
+    await instance
+      .post("members/login", {
+        memberId: payload.memberId,
+        password: payload.password,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((response) => {
+        console.log(payload)
+        console.log(response);
+      });
+  };
+};
 
 export const memberSlice = createSlice({
-  name: "posts",
+  name: "member",
   initialState,
   reducers: {},
-  extraReducers: {
-    [addDetailThunk.fulfilled]: (state, action) => {
-      state.posts = action.payload;
-    },
-    [addDetailThunk.rejected]: (state, action) => {
-      state.posts = action.payload;
-    },
-  },
 });
 
 export const {} = memberSlice.actions;

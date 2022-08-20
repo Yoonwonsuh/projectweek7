@@ -1,3 +1,4 @@
+
 import React from 'react';
 import List from '../commponent/list/List';
 import Header from '../commponent/header/Header';
@@ -7,16 +8,18 @@ import { useSelector } from 'react-redux';
 import './Main.scss';
 const Main = () => {
   const nickName = localStorage.getItem('nickName');
+
   // const postsList = useSelector((state) => state.postsList.postsList);
 
   return (
     <>
+
       <div className="MainWrap">
         {!nickName ? (
           <>
             <Header />
 
-            <List />
+
 
             {/* {postsList.map((item) => {
             return <List />;
@@ -26,6 +29,7 @@ const Main = () => {
           <Login />
         )}
       </div>
+
     </>
   );
 };
