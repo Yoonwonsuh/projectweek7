@@ -13,9 +13,10 @@ const Main = () => {
 
   return (
     <>
-      <div className="MainWrap">
-        {!nickname ? (
+     
+        {nickname ? (
           <>
+           <div className="MainWrap">
             <Header />
 
 
@@ -23,11 +24,12 @@ const Main = () => {
             {/* {postsList.map((item) => {
             return <List />;
           })} */}
+          </div>
           </>
         ) : (
           <Login />
         )}
-      </div>
+      
     </>
   );
 };
