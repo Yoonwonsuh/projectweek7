@@ -5,6 +5,7 @@ import { FaHeart, FaRegComment } from "react-icons/fa";
 const ProfileLikeList = () => {
   return (
     <div className="ProfileLikeListContainer">
+      {/* 여기서부터 Map함수 돌아가는거라서... */}
       <div className="ProfilePostListBox">
         <div className="ProfileDarkness">
           <div className="ProfileListCount">
@@ -19,6 +20,7 @@ const ProfileLikeList = () => {
           src="https://i.pinimg.com/236x/4a/38/47/4a384760af76f4488c77013bb1ea7607.jpg"
         />
       </div>
+      {/* 여기까지 돌아감 요거 한줄임 */}
       <div className="ProfilePostListBox">
         <div className="ProfileDarkness">
           <div className="ProfileListCount">
