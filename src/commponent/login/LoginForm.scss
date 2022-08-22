@@ -5,8 +5,9 @@
 .loginContainer {
   // border: 1px solid #dbdbdb
   width: 50%;
-  margin: 20px auto;
+  margin: 0px auto;
   display: flex;
+  padding-top: 20px;
 }
 .loginleftContainer {
   // border: 1px solid #dbdbdb;
@@ -50,7 +51,7 @@
     border: 1px solid #dbdbdb;
     // margin-bottom: px;
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 12px;
     align-items: center;
     padding-left: 10px;
   }
@@ -91,6 +92,7 @@
   border-radius: 1px;
   margin: 0 0 10px;
   padding: 20px 0;
+  justify-content: center;
   align-items: center;
   display: flex;
   width: 100%;
@@ -99,9 +101,8 @@
 
   div {
     font-size: 14px;
-    margin: auto;
-    display: flex;
-    text-align: center;
+    margin-right: 20px;
+    // margin: auto;
     &:last-child {
       color: #2e97f6;
       font-weight: 600;
