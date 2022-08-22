@@ -18,7 +18,6 @@ const Signupform = () => {
     memberId: "",
     nickname: "",
     password: "",
-    imgUrl: null,
   };
 
   const [newMember, setNewMember] = useState(initialState);
@@ -112,7 +111,7 @@ const Signupform = () => {
         "data",
         new Blob([JSON.stringify(newMember)], { type: "application/json" })
       );
-      frm.append("image", meberImg.files[0]);
+      frm.append("img", meberImg.files[0]);
       try {
         const response = await dispatch(signupDB(frm));
         if (response) {
