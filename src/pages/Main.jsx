@@ -6,7 +6,6 @@ import "./Main.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { _postsList } from "../redux/modules/postsSlice";
-import { useState } from "react";
 
 const Main = () => {
   const nickname = localStorage.getItem("nickname");

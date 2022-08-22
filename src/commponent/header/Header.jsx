@@ -1,10 +1,12 @@
-import React from 'react';
-import './Header.scss';
-import logo from '../../img/logo.png';
-import { MdOutlineKeyboardArrowDown, MdHomeFilled } from 'react-icons/md';
-import { BiSearch } from 'react-icons/bi';
-import { BsPlusSquare, BsHeart } from 'react-icons/bs';
+import React from "react";
+import "./Header.scss";
+import logo from "../../img/logo.png";
+import { MdOutlineKeyboardArrowDown, MdHomeFilled } from "react-icons/md";
+import { BsPlusSquare, BsHeart } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="header_wrap">
       <div className="header_container">
@@ -30,7 +32,10 @@ const Header = () => {
               <MdHomeFilled className="container_right_home _home" />
             </div>
             <div className="container_right_wrap _plus">
-              <BsPlusSquare className="container_right_plus _plus" />
+              <BsPlusSquare
+                className="container_right_plus _plus"
+                onClick={() => navigate("/Posting")}
+              />
             </div>
             <div className="container_right_wrap _heart">
               <BsHeart className="container_right_home _heart" />

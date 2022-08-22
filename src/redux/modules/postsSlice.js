@@ -1,16 +1,16 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import instance from './instance';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import instance from "./instance";
 
 const initialState = {
   postsList: [],
 };
 
 export const _postsList = createAsyncThunk(
-  'getPostsList',
+  "getPostsList",
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.get('posts');
+      const response = await instance.get("posts");
       // return console.log(response.data.data);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (e) {
@@ -20,18 +20,19 @@ export const _postsList = createAsyncThunk(
 );
 
 export const addPostsList = createAsyncThunk(
-  'addPostsList',
+  "addPostsList",
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.post('posts', payload);
-      return thunkAPI.fulfillWithValue(response.data);
+      const response = await instance.post("posts", payload);
+      console.log("1231231232131", response.data);
+      // return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
 export const editPostsList = createAsyncThunk(
-  'editPostsList',
+  "editPostsList",
   async (payload, thunkAPI) => {
     // payload = data
     // postId = author ????
@@ -49,7 +50,7 @@ export const editPostsList = createAsyncThunk(
 );
 
 export const deletePostsList = createAsyncThunk(
-  'deletePostsList',
+  "deletePostsList",
   async (payload, thunkAPI) => {
     // payload = postId
     // header: token;?
@@ -64,7 +65,7 @@ export const deletePostsList = createAsyncThunk(
 );
 
 export const postsListSlice = createSlice({
-  name: 'postsList',
+  name: "postsList",
   initialState,
   reducers: {},
   extraReducers: {
