@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import instance from './instance';
+import { createSlice } from "@reduxjs/toolkit";
+import instance from "./instance";
 
 const initialState = {
   member: [],
@@ -9,17 +9,15 @@ const initialState = {
 export const loginDB = (payload) => {
   return async function (dispatch) {
     await instance
-      .post('members/login', {
+      .post("members/login", {
         memberId: payload.memberId,
         password: payload.password,
       })
       .then((response) => {
-
         if (response.data.success === false) {
           return window.alert(response.data.error.message);
         } else {
           return (
-
             localStorage.setItem("token", response.headers.authorization),
             localStorage.setItem("nickname", response.data.data.nickname),
             alert(`${localStorage.nickname}님 환영합니다.`),
@@ -33,29 +31,53 @@ export const loginDB = (payload) => {
   };
 };
 // 회원가입 post /members/signup
+// export const signupDB = (payload) => {
+//   console.log(signupDB);
+//   return async function (dispatch) {
+//     const { data } = await instance
+//       .post("members/signup", payload, {
+//         "Content-Type": "multipart/form-data",
+//       })
+//       .then((response) => {
+//         if (response.data.success === false) {
+//           return window.alert(response.data.error.message);
+//         } else {
+//           return (
+//             window.alert(`${response.data.data.nickname}님 환영합니다.`),
+//             window.location.replace("/")
+//           );
+//         }
+//       })
+//       .catch((response) => {
+//         console.log(response);
+//       });
+//   };
+// };
 export const signupDB = (payload) => {
   return async function (dispatch) {
-    await instance
-      .post("members/signup", payload)
+    const { data } = await instance
+      .post("members/signup", payload.frm, {
+        "Content-Type": "multipart/form-data",
+      })
+
       .then((response) => {
-        if (response.data.success === false) {
-          return window.alert(response.data.error.message);
+        if (data.response.success === false) {
+          return window.alert(data.response.error.message);
         } else {
           return (
-            window.alert(`${response.data.data.nickname}님 환영합니다.`),
+            window.alert(`${data.response.data.nickname}님 환영합니다.`),
             window.location.replace("/")
           );
         }
       })
       .catch((response) => {
-
         console.log(response);
       });
   };
 };
 
 export const memberSlice = createSlice({
-  name: 'member',
+  name: "member",
   initialState,
   reducers: {},
 });

@@ -220,10 +220,6 @@ const Signupform = () => {
             </button>
           </div>
         </form>
-        {/* <div className="siginupPage">
-          <div>계정이 잆으신가요?</div>
-          <div onClick={() => navigate("/signup")}> 가입하기</div>
-        </div> */}
       </div>
     </div>
   );

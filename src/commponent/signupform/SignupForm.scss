@@ -110,6 +110,9 @@
     font-size: 14px;
     padding-top: 7px;
     cursor: pointer;
+    &:hover {
+      background-color: #2e95f6;
+    }
   }
   .signupFile {
     position: absolute;
@@ -134,5 +137,8 @@
     border-radius: 4px;
     margin-bottom: 10px;
     cursor: pointer;
+    &:hover {
+      background-color: #2e95f6;
+    }
   }
 }

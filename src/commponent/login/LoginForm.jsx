@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import loginimg from "../../img/loginimg.png";
 import logo from "../../img/logo.png";
 import appimg from "../../img/appimg.png";
+import kakao_login from "../../img/kakao_login.png";
 import { loginDB } from "../../redux/modules/memberSlice";
 import "./LoginForm.scss";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
@@ -46,7 +47,7 @@ const Login = () => {
               <button onClick={loginform}>로그인</button>
             </div>
             <HorizontalLine text={"또는"} />
-            <div className="kakao"> 카카오톡으로 로그인 </div>
+            <img src={kakao_login} className="kakao" />
             <div className="checkpw">비밀번호를 잊으셨나요?</div>
           </div>
           <div className="siginupPage">
