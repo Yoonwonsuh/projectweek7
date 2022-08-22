@@ -5,7 +5,7 @@ export const getMyProfileThunk = createAsyncThunk(
   "GET_MYPROFILE",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.get(`members/mypage/${payload}`); //payload에 memberId 입력
+      const { data } = await instance.get(`members/mypage/${payload}`);
       if (data.success === true) {
         return thunkAPI.fulfillWithValue(data.data);
       } else {
@@ -66,8 +66,6 @@ export const profileSlice = createSlice({
       state.error = action.payload;
     },
     [getMyProfileThunk.pending]: () => {},
-
-
     [getMyPostThunk.fulfilled]: (state, action) => {
       state.myPost = action.payload;
     },
@@ -75,7 +73,6 @@ export const profileSlice = createSlice({
       state.error = action.payload;
     },
     [getMyPostThunk.pending]: () => {},
-
 
     [getMyLikePostThunk.fulfilled]: (state, action) => {
       state.myLikePost = action.payload;

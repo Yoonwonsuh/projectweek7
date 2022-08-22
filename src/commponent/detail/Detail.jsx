@@ -17,7 +17,7 @@ import {
 import "./Detail.scss";
 import { onAddCommentHandler } from "../../redux/modules/postsSlice";
 
-const Detail = ({ ListData, onHide }) => {
+const Detail = ({ onHide, postid }) => {
   const dispatch = useDispatch();
   const initialState = {
     postId: "",
@@ -52,13 +52,13 @@ const Detail = ({ ListData, onHide }) => {
   };
 
   useEffect(() => {
-    dispatch(getPostThunk(ListData.postId));
-    dispatch(getCommentsThunk(ListData.postId));
+    dispatch(getPostThunk(postid));
+    dispatch(getCommentsThunk(postid));
   }, []);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    setNewComment({ ...newComment, [name]: value, postId: ListData.postId });
+    setNewComment({ ...newComment, [name]: value, postId: postid });
   };
 
   const onEditSubmitHandler = async (e) => {

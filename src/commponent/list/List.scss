@@ -20,11 +20,40 @@
   justify-content: center;
   align-items: center;
 }
+.ListNav_left_img_box {
+  display: flex;
+  flex-direction: row;
+  width: 38px;
+  height: 38px;
+}
+
+.ListNav_left_img_round {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+
+  animation-name: imground;
+  animation-duration: 2s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+@keyframes imground {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .ListNav_left_img {
+  position: relative;
   border-radius: 50%;
-  margin: 10px;
   height: 30px;
   width: 30px;
+  margin-top: 3px;
+  margin-left: 3px;
   cursor: pointer;
 }
 .ListNav_left_txt {
@@ -59,7 +88,6 @@
 
 .ListImgurl {
   max-width: 100%;
-
 }
 
 // 컨텐츠

@@ -68,7 +68,7 @@ const ListContent = ({ ListData }) => {
               onClick={handleShow}
             />
             <Modal show={show} onHide={handleClose}>
-              <Detail ListData={ListData} onHide={handleClose} />
+              <Detail postid={ListData.postId} onHide={handleClose} />
             </Modal>
           </button>
         </div>

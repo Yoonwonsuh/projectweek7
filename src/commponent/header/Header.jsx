@@ -27,7 +27,7 @@ const Header = () => {
     <div className="header_wrap">
       <div className="header_container">
         <div className="container_left">
-          <img className="container_left_logo_img" src={logo} alt="" />
+          <img className="container_left_logo_img" src={logo} alt="" onClick={()=>navigate('/')}/>
           <button className="container_left_btn">
             <MdOutlineKeyboardArrowDown />
           </button>
