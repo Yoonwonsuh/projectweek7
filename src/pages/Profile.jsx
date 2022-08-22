@@ -12,7 +12,7 @@ const Profile = () => {
   return (
     <div>
       <MemberProfile memberId={id} />
-      <ProfileList memberId={id} />
+      <ProfileList/>
     </div>
   );
 };

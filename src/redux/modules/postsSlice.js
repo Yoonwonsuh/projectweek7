@@ -11,10 +11,22 @@ export const _postsList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.get("posts");
-      // return console.log(response.data.data);
-      return thunkAPI.fulfillWithValue(response.data.data);
+      if (response.data.success === false) {
+        return (
+          window.alert("로그인이 만료되었습니다"),
+          localStorage.clear(),
+          window.location.replace("/")
+        );
+      } else {
+        return thunkAPI.fulfillWithValue(response.data.data);
+      }
+
     } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+      return (
+        window.alert("로그인이 만료되었습니다"),
+        localStorage.clear(),
+        window.location.replace("/")
+      );
     }
   }
 );
@@ -24,8 +36,7 @@ export const addPostsList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.post("posts", payload);
-      console.log("1231231232131", response.data);
-      // return thunkAPI.fulfillWithValue(response.data);
+      return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -67,7 +78,17 @@ export const deletePostsList = createAsyncThunk(
 export const postsListSlice = createSlice({
   name: "postsList",
   initialState,
-  reducers: {},
+  reducers: {
+    onModalHandler: (state, action) => {
+      state.postsList.map((post) => {
+        if (post.postId === action.payload) {
+          return (post.isModalMode = !post.isModalMode);
+        } else {
+          return state.postsList;
+        }
+      });
+    },
+  },
   extraReducers: {
     [_postsList.fulfilled]: (state, action) => {
       state.postsList = action.payload;
@@ -107,6 +128,5 @@ export const postsListSlice = createSlice({
   },
 });
 
-export const {} = postsListSlice.actions;
-
+export const { onModalHandler } = postsListSlice.actions;
 export default postsListSlice.reducer;

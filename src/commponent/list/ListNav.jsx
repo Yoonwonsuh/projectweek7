@@ -1,22 +1,28 @@
-import React from 'react';
-import './List.scss';
-import { AiOutlineEllipsis } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./List.scss";
+import { AiOutlineEllipsis } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { onModalHandler } from "../../redux/modules/postsSlice";
+import Detail from "../detail/Detail";
+import { useDispatch } from "react-redux";
 
-const ListNav = ({ listData }) => {
+const ListNav = ({ ListData }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
   return (
     <div className="ListNav_Wrap">
-      <div className="ListNav_left">
+      <div
+        className="ListNav_left"
+       onClick={()=>navigate(`/profile/${ListData.author}`)}
+      >
         <img
           className="ListNav_left_img"
-          src="{listData.authorImgUrl}"
+          src={ListData.authorImgUrl}
           alt=""
-          onClick={() => {
-            navigate('/detail');
-          }}
         />
-        <div className="ListNav_left_txt">{listData.author}</div>
+        <div className="ListNav_left_txt">{ListData.author}</div>
       </div>
       <button className="ListNav_right_btn">
         <AiOutlineEllipsis className="ListNav_right_btn_toggle" />
