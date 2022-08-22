@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import loginimg from "../../img/loginimg.png";
+import login_screen1 from "../../img/login_screen1.png";
 import logo from "../../img/logo.png";
 import appimg from "../../img/appimg.png";
 import kakao_login from "../../img/kakao_login.png";
@@ -33,9 +34,7 @@ const Login = () => {
   return (
     <div className="loginBackground">
       <div className="loginContainer">
-        <div className="loginleftContainer">
-          <img src={loginimg} />
-        </div>
+        <div className="loginleftContainer"></div>
         <div className="loginrightContainer">
           <div className="loginDiv">
             <div className="loginsmallDiv">
