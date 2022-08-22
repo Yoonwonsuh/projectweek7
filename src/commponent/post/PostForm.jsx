@@ -1,31 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPostsList, _postsList } from "../../redux/modules/postsSlice";
-import { useParams } from "react-router-dom";
+import instance from "../../redux/modules/instance";
 
 const PostForm = () => {
+  const nickname = localStorage.getItem("nickname");
+
   useEffect(() => {
     dispatch(_postsList());
   }, []);
 
   const dispatch = useDispatch();
   const comment = useSelector((state) => state.posts.postsList);
-  console.log("12312321312", comment);
   const [inputForm, setInputForm] = useState("");
-  const [inputImage, setInputImage] = useState("");
+  const [uploadImg, setUploadImg] = useState("");
 
-  const handleTextSubmit = (e) => {
+  console.log("dsfdsfdsfds", comment.data);
+
+  const savaImage = (e) => {
+    e.preventDefault();
+    const fileReader = new FileReader();
+
+    if (e.target.files[0]) {
+      fileReader.readAsDataURL(e.target.files[0]);
+    }
+    fileReader.onload = () => {
+      setUploadImg(e.target.files[0]);
+    };
+  };
+
+  const onHandleSubmit = (e) => {
     e.preventDefault();
     if (inputForm) {
-      const newContens = { data: { content: inputForm } };
-      console.log("111111111", newContens);
-      dispatch(addPostsList(newContens));
+      const newContent = {
+        data: { content: inputForm },
+        img: { setUploadImg },
+      };
+      dispatch(addPostsList(newContent));
       setInputForm("");
     } else {
       alert("내용을 입력해주세요!");
     }
   };
-  console.log(inputForm);
+
   return (
     <div>
       <input
@@ -34,9 +51,16 @@ const PostForm = () => {
         value={inputForm}
         onChange={(e) => setInputForm(e.target.value)}
       />
-      <button action="" type="submit" onClick={handleTextSubmit}>
+      <button action="" type="submit" onClick={onHandleSubmit}>
         추가하기
       </button>
+      <h1>이미지 업로드</h1>
+      <input
+        type="file"
+        accept="image/jpg,image/png,image/jpeg,image/gif"
+        name="postImg"
+        onChange={savaImage}
+      />
     </div>
   );
 };
