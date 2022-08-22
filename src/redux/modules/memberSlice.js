@@ -40,7 +40,8 @@ export const signupDB = (payload) => {
 
       .then((response) => {
         if (response.data.success === false) {
-          return window.alert("가입에 실패하였습니다");
+          // return window.alert("가입에 실패하였습니다");
+          return window.alert(response.data.error.message);
           // console.log(response);
         } else {
           return (
