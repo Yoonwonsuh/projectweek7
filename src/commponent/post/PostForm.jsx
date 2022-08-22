@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPostsList, _postsList } from "../../redux/modules/postsSlice";
-import instance from "../../redux/modules/instance";
+import { axios } from "axios";
 
 const PostForm = () => {
-  const nickname = localStorage.getItem("nickname");
-
   useEffect(() => {
     dispatch(_postsList());
   }, []);
@@ -13,29 +11,35 @@ const PostForm = () => {
   const dispatch = useDispatch();
   const comment = useSelector((state) => state.posts.postsList);
   const [inputForm, setInputForm] = useState("");
-  const [uploadImg, setUploadImg] = useState("");
 
-  console.log("dsfdsfdsfds", comment.data);
+  const [imageUrl, setImageUrl] = useState("");
 
-  const savaImage = (e) => {
-    e.preventDefault();
-    const fileReader = new FileReader();
-
+  const setFile = (e) => {
     if (e.target.files[0]) {
-      fileReader.readAsDataURL(e.target.files[0]);
+      const img = new FormData();
+      img.append("file", e.target.files[0]);
+      axios
+        .post("http://3.35.49.115:8080/posts", img)
+        .then((res) => {
+          console.log("213213213213123", res);
+          setImageUrl(res);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
-    fileReader.onload = () => {
-      setUploadImg(e.target.files[0]);
-    };
   };
+
+  console.log("dsfdsfdsfds", imageUrl);
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
     if (inputForm) {
       const newContent = {
         data: { content: inputForm },
-        img: { setUploadImg },
+        img: "",
       };
+      console.log("11111111", newContent);
       dispatch(addPostsList(newContent));
       setInputForm("");
     } else {
@@ -55,12 +59,8 @@ const PostForm = () => {
         추가하기
       </button>
       <h1>이미지 업로드</h1>
-      <input
-        type="file"
-        accept="image/jpg,image/png,image/jpeg,image/gif"
-        name="postImg"
-        onChange={savaImage}
-      />
+      <img src={imageUrl} alt="" />
+      <input type="file" accept="image/*" onChange={(e) => setFile(e)} />
     </div>
   );
 };

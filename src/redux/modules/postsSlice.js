@@ -20,7 +20,6 @@ export const _postsList = createAsyncThunk(
       } else {
         return thunkAPI.fulfillWithValue(response.data.data);
       }
-
     } catch (e) {
       return (
         window.alert("로그인이 만료되었습니다"),
@@ -36,7 +35,7 @@ export const addPostsList = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await instance.post("posts", payload);
-      return thunkAPI.fulfillWithValue(response.data);
+      return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -81,15 +80,13 @@ export const postsListSlice = createSlice({
   reducers: {
     onAddCommentHandler : (state, action) => {
       state.postsList.map((post) => {
-          if (post.postId == action.payload.postId) {
-              return post.commentCnt = post.commentCnt+1
-          }
-          else {
-              return post
-          }
-      }
-      )
-  },
+        if (post.postId == action.payload.postId) {
+          return (post.commentCnt = post.commentCnt + 1);
+        } else {
+          return post;
+        }
+      });
+    },
   },
   extraReducers: {
     [_postsList.fulfilled]: (state, action) => {
