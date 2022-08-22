@@ -80,7 +80,6 @@ export const postsListSlice = createSlice({
   initialState,
   reducers: {
     onAddCommentHandler : (state, action) => {
-      console.log(action.payload)
       state.postsList.map((post) => {
           if (post.postId == action.payload.postId) {
               return post.commentCnt = post.commentCnt+1
