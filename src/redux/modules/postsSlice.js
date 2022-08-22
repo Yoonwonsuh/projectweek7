@@ -1,19 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import instance from './instance';
 
-const url_lists = '/posts';
-
-const initialSlate = {
+const initialState = {
   postsList: [],
 };
 
-export const postsList = createAsyncThunk(
+export const _postsList = createAsyncThunk(
   'getPostsList',
   async (payload, thunkAPI) => {
     try {
-      const response = await axios.get(url_lists);
-
-      return thunkAPI.fulfillWithValue(response.data);
+      const response = await instance.get('posts');
+      // return console.log(response.data.data);
+      return thunkAPI.fulfillWithValue(response.data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -24,7 +23,7 @@ export const addPostsList = createAsyncThunk(
   'addPostsList',
   async (payload, thunkAPI) => {
     try {
-      const response = await axios.post(url_lists, payload);
+      const response = await instance.post('posts', payload);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -38,7 +37,7 @@ export const editPostsList = createAsyncThunk(
     // postId = author ????
 
     try {
-      const response = await axios.put(`${url_lists}/${payload.data.author}`, {
+      const response = await instance.put(`posts/${payload.data.author}`, {
         data: { content: payload.content },
         img: payload.img,
       });
@@ -56,7 +55,7 @@ export const deletePostsList = createAsyncThunk(
     // header: token;?
 
     try {
-      const response = await axios.delete(`${url_lists}/${payload}`);
+      const response = await instance.delete(`posts/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -64,15 +63,15 @@ export const deletePostsList = createAsyncThunk(
   }
 );
 
-const postsListSlice = createSlice({
-  name: 'post_list',
-  initialSlate,
+export const postsListSlice = createSlice({
+  name: 'postsList',
+  initialState,
   reducers: {},
   extraReducers: {
-    [postsList.fulfilled]: (state, action) => {
+    [_postsList.fulfilled]: (state, action) => {
       state.postsList = action.payload;
     },
-    [postsList.rejected]: (state, action) => {
+    [_postsList.rejected]: (state, action) => {
       console.log(action);
     },
     [addPostsList.fulfilled]: (state, action) => {
@@ -107,4 +106,6 @@ const postsListSlice = createSlice({
   },
 });
 
-export default postsListSlice.reducers;
+export const {} = postsListSlice.actions;
+
+export default postsListSlice.reducer;

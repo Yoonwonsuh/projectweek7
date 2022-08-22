@@ -1,25 +1,30 @@
-import React from "react";
-import List from "../commponent/list/List";
-import Header from "../commponent/header/Header";
-import Login from "../commponent/login/LoginForm";
-import { postsList } from "../redux/modules/postsSlice";
-import { useSelector } from "react-redux";
-import "./Main.scss";
+import React from 'react';
+import List from '../commponent/list/List';
+import Header from '../commponent/header/Header';
+import Login from '../commponent/login/LoginForm';
+import './Main.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { _postsList } from '../redux/modules/postsSlice';
 
 const Main = () => {
+  const nickname = localStorage.getItem('nickname');
+  const dispatch = useDispatch();
 
-  const nickname = localStorage.getItem("nickname");
+  useEffect(() => {
+    dispatch(_postsList());
+  }, []);
 
+  const listData = useSelector((state) => state.posts.postsList);
   return (
     <>
-
       {nickname ? (
         <>
           <Header />
           <div className="MainWrap">
-            {/* {postsList.map((item) => {
-            return <List />;
-          })} */}
+            {listData.map((item) => {
+              return <List key={item.id} listData={item} />;
+            })}
           </div>
         </>
       ) : (

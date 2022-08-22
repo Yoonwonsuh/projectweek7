@@ -1,22 +1,18 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { postsList } from '../../redux/modules/postsSlice';
 import './List.scss';
 import ListImg from './ListImg';
 import ListNav from './ListNav';
 import ListContent from './ListContent';
 
-const List = () => {
-  const dispatch = useDispatch();
-
+const List = ({ listData }) => {
   return (
     <div className="ListWarp">
       {/* 상단바 */}
-      <ListNav />
+      <ListNav listData={listData} />
       {/* 이미지 */}
-      <ListImg />
+      <ListImg listData={listData} />
       {/* 아래 컨텐츠 박스 */}
-      <ListContent />
+      <ListContent listData={listData} />
     </div>
   );
 };
