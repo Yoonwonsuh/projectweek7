@@ -1,19 +1,44 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./List.scss";
 import Detail from "../detail/Detail";
 import {
   BsChat,
-  BsFillBookmarkFill,
   BsBookmark,
-  BsHeartFill,
   BsHeart,
   BsEmojiSmile,
 } from "react-icons/bs";
+import { addCommentsThunk } from "../../redux/modules/commentsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { onAddCommentHandler, _postsList } from "../../redux/modules/postsSlice";
 const ListContent = ({ ListData }) => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const initialState = {
+    postId: "",
+    content: "",
+  };
+
+  const [newComment, setNewComment] = useState(initialState);
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setNewComment({ ...newComment, [name]: value, postId: ListData.postId });
+  };
+
+  const onEditSubmitHandler = async (e) => {
+    if (newComment.content === "") {
+      e.preventDefault();
+      alert("내용을 입력해주세요");
+    } else {
+      await dispatch(addCommentsThunk(newComment));
+      dispatch(onAddCommentHandler(newComment))
+      setNewComment(initialState);
+    }
+  };
 
   return (
     <div className="ListContentWrap">
@@ -56,7 +81,21 @@ const ListContent = ({ ListData }) => {
           </div>
         </div>
         <div className="ListContentBodyComment_reply">
-          댓글&nbsp;<span>{ListData.commentCnt}</span>개 모두 보기
+          {ListData.commentCnt === 0 ? (
+            ""
+          ) : (
+            <>
+              <div
+                className="ListContentBodyComment_reply_onclick"
+                onClick={handleShow}
+              >
+                댓글&nbsp;<span>{ListData.commentCnt}</span>개 모두 보기
+              </div>
+              <Modal show={show} onHide={handleClose}>
+                <Detail ListData={ListData} onHide={handleClose} />
+              </Modal>
+            </>
+          )}
         </div>
 
         <div className="ListContentBody_reply_wrap">
@@ -67,8 +106,17 @@ const ListContent = ({ ListData }) => {
             <input
               placeholder="댓글 달기...."
               className="ListContentBody_reply_input"
+              type="text"
+              name="content"
+              value={newComment.content}
+              onChange={onChangeHandler}
             ></input>
-            <button className="ListContentBody_reply_postBtn">게시</button>
+            <button
+              className="ListContentBody_reply_postBtn"
+              onClick={onEditSubmitHandler}
+            >
+              게시
+            </button>
           </div>
         </div>
       </div>

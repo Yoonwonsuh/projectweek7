@@ -4,8 +4,21 @@ import logo from "../../img/logo.png";
 import { MdOutlineKeyboardArrowDown, MdHomeFilled } from "react-icons/md";
 import { BsPlusSquare, BsHeart } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userNickName = localStorage.getItem("nickname");
+
+  console.log(userNickName);
+
+  useEffect(() => {
+    dispatch(getMMyProfileThunk(userNickName));
+  }, [dispatch]);
+
+  const myProfile = useSelector((state) => state.myprofile.myrealProfile);
 
   return (
     <div className="header_wrap">
@@ -43,7 +56,7 @@ const Header = () => {
             <div className="container_right_wrap _img">
               <img
                 className="container_right_img _img"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/IU_posing_for_Marie_Claire_Korea_March_2022_issue_03.jpg/500px-IU_posing_for_Marie_Claire_Korea_March_2022_issue_03.jpg"
+                src={myProfile.memberImgUrl}
                 alt=""
               />
             </div>

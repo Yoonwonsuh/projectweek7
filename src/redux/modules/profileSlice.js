@@ -54,8 +54,8 @@ const initialState = {
   error: null,
 };
 
-export const commentsSlice = createSlice({
-  name: "comments",
+export const profileSlice = createSlice({
+  name: "profile",
   initialState,
   reducers: {},
   extraReducers: {
@@ -87,4 +87,4 @@ export const commentsSlice = createSlice({
   },
 });
 
-export default commentsSlice.reducer;
+export default profileSlice.reducer;

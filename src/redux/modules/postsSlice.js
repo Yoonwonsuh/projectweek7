@@ -79,15 +79,18 @@ export const postsListSlice = createSlice({
   name: "postsList",
   initialState,
   reducers: {
-    onModalHandler: (state, action) => {
+    onAddCommentHandler : (state, action) => {
+      console.log(action.payload)
       state.postsList.map((post) => {
-        if (post.postId === action.payload) {
-          return (post.isModalMode = !post.isModalMode);
-        } else {
-          return state.postsList;
-        }
-      });
-    },
+          if (post.postId == action.payload.postId) {
+              return post.commentCnt = post.commentCnt+1
+          }
+          else {
+              return post
+          }
+      }
+      )
+  },
   },
   extraReducers: {
     [_postsList.fulfilled]: (state, action) => {
@@ -128,5 +131,5 @@ export const postsListSlice = createSlice({
   },
 });
 
-export const { onModalHandler } = postsListSlice.actions;
+export const { onAddCommentHandler } = postsListSlice.actions;
 export default postsListSlice.reducer;

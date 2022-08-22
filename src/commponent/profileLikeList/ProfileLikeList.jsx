@@ -18,9 +18,8 @@ const ProfileLikeList = () => {
 
   return (
     <div className="ProfileLikeListContainer">
-      {/* 여기서부터 Map함수 돌아가는거라서... */}
       {ProfileLikeList.map((profileLike) => {
-        <div className="ProfilePostListBox">
+        <div className="ProfilePostListBox" key={profileLike.postId}>
           <div className="ProfileDarkness">
             <div className="ProfileListCount">
               <FaHeart style={{ fontSize: "15px" }} />

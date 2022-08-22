@@ -17,6 +17,24 @@ export const getCommentsThunk = createAsyncThunk(
   }
 );
 
+export const addCommentsThunk = createAsyncThunk(
+  "ADD_COMMENTS",
+  async (payload, thunkAPI) => {
+    try {
+      console.log(payload.content)
+      // /posts/{postId}/comments
+      const { data } = await instance.post(
+        `posts/${payload.postId}/comments`,{
+          "content": payload.content
+        }
+      );
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.code);
+    }
+  }
+);
+
 export const deleteCommentThunk = createAsyncThunk(
   "DELE_COMMENT",
   async (payload, thunkAPI) => {
@@ -52,6 +70,13 @@ export const commentsSlice = createSlice({
       state.error = action.payload;
     },
     [getCommentsThunk.pending]: () => {},
+    [addCommentsThunk.fulfilled]: (state, action) => {
+      state.comments = [...state.comments, action.payload];
+    },
+    [addCommentsThunk.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
+    [addCommentsThunk.pending]: () => {},
     [deleteCommentThunk.fulfilled]: (state, action) => {
       const new_commentlist = state.comments.filter(
         (comment) => comment.id !== action.payload

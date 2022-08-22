@@ -12,10 +12,20 @@ import { getPostThunk, editPostThunk } from "../../redux/modules/postSlice";
 import {
   getCommentsThunk,
   deleteCommentThunk,
+  addCommentsThunk,
 } from "../../redux/modules/commentsSlice";
 import "./Detail.scss";
+import { onAddCommentHandler } from "../../redux/modules/postsSlice";
 
 const Detail = ({ ListData, onHide }) => {
+  const dispatch = useDispatch();
+  const initialState = {
+    postId: "",
+    content: "",
+  };
+
+  const [newComment, setNewComment] = useState(initialState);
+
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
   });
@@ -39,11 +49,26 @@ const Detail = ({ ListData, onHide }) => {
     setSmallInput(!smallInput);
   };
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPostThunk(ListData.postId));
     dispatch(getCommentsThunk(ListData.postId));
   }, []);
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setNewComment({ ...newComment, [name]: value, postId: ListData.postId });
+  };
+
+  const onEditSubmitHandler = async (e) => {
+    if (newComment.content === "") {
+      e.preventDefault();
+      alert("내용을 입력해주세요");
+    } else {
+      await dispatch(addCommentsThunk(newComment));
+      dispatch(onAddCommentHandler(newComment))
+      setNewComment(initialState);
+    }
+  };
 
   const detailPost = useSelector((state) => state.post.post);
   const detailComments = useSelector((state) => state.comments.comments);
@@ -52,10 +77,7 @@ const Detail = ({ ListData, onHide }) => {
     <>
       <div className="DetailModal">
         <div className="DetailModalXbutton">
-          <FaTimes
-            className="DetailFaXbutton"
-            onClick={onHide}
-          />
+          <FaTimes className="DetailFaXbutton" onClick={onHide} />
         </div>
         {windowSize.width >= 1000 ? (
           <div className="DetailContainer">
@@ -69,7 +91,7 @@ const Detail = ({ ListData, onHide }) => {
                   src={detailPost.authorImgUrl}
                 />
                 <div className="DetailRightTitleNickName">
-                {detailPost.author}
+                  {detailPost.author}
                 </div>
               </div>
               <div className="DetailLine" />
@@ -90,30 +112,35 @@ const Detail = ({ ListData, onHide }) => {
                 {detailComments.length === 0
                   ? ""
                   : detailComments.map((comment) => {
-                    return(
-                      <div className="DetainRightContentWholeBox">
-                        <div className="DetailuserImgBox">
-                          <img
-                            className="DetailRightIconBox"
-                            src={comment.authorImgUrl}
-                            alt=""
-                          />
-                        </div>
-                        <div className="DetailRightContentBox">
-                          <a className="DetailOnerNickname">{comment.author}</a>
-                          <span className="DetailOnerBody">
-                            {comment.content}
-                          </span>
-                          <div className="DetailBodyTail">
-                            {comment.createdAt}&nbsp;&nbsp;좋아요&nbsp;
-                            {comment.commentLikeCnt}
+                      return (
+                        <div
+                          className="DetainRightContentWholeBox"
+                          key={comment.commentId}
+                        >
+                          <div className="DetailuserImgBox">
+                            <img
+                              className="DetailRightIconBox"
+                              src={comment.authorImgUrl}
+                              alt=""
+                            />
+                          </div>
+                          <div className="DetailRightContentBox">
+                            <a className="DetailOnerNickname">
+                              {comment.author}
+                            </a>
+                            <span className="DetailOnerBody">
+                              {comment.content}
+                            </span>
+                            <div className="DetailBodyTail">
+                              {comment.createdAt}&nbsp;&nbsp;좋아요&nbsp;
+                              {comment.commentLikeCnt}
+                            </div>
+                          </div>
+                          <div className="DetailCommentLike">
+                            <FaRegHeart />
                           </div>
                         </div>
-                        <div className="DetailCommentLike">
-                          <FaRegHeart />
-                        </div>
-                      </div>
-                      )
+                      );
                     })}
               </div>
 
@@ -141,10 +168,19 @@ const Detail = ({ ListData, onHide }) => {
                       <input
                         className="DetailsmallInput"
                         placeholder="댓글 달기..."
+                        type="text"
+                        name="content"
+                        value={newComment.content}
+                        onChange={onChangeHandler}
                       ></input>
                     </div>
                   </>
-                  <div className="Detailsmallclick">게시</div>
+                  <div
+                    className="Detailsmallclick"
+                    onClick={onEditSubmitHandler}
+                  >
+                    게시
+                  </div>
                 </div>
               ) : (
                 ""
@@ -189,10 +225,16 @@ const Detail = ({ ListData, onHide }) => {
                     <input
                       className="DetailsmallInput"
                       placeholder="댓글 달기..."
+                      type="text"
+                      name="content"
+                      value={newComment.content}
+                      onChange={onChangeHandler}
                     ></input>
                   </div>
                 </>
-                <div className="Detailsmallclick">게시</div>
+                <div className="Detailsmallclick" onClick={onEditSubmitHandler}>
+                  게시
+                </div>
               </div>
             ) : (
               ""
