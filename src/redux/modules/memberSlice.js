@@ -31,41 +31,20 @@ export const loginDB = (payload) => {
   };
 };
 // 회원가입 post /members/signup
-// export const signupDB = (payload) => {
-//   console.log(signupDB);
-//   return async function (dispatch) {
-//     const { data } = await instance
-//       .post("members/signup", payload, {
-//         "Content-Type": "multipart/form-data",
-//       })
-//       .then((response) => {
-//         if (response.data.success === false) {
-//           return window.alert(response.data.error.message);
-//         } else {
-//           return (
-//             window.alert(`${response.data.data.nickname}님 환영합니다.`),
-//             window.location.replace("/")
-//           );
-//         }
-//       })
-//       .catch((response) => {
-//         console.log(response);
-//       });
-//   };
-// };
 export const signupDB = (payload) => {
   return async function (dispatch) {
     const { data } = await instance
-      .post("members/signup", payload.frm, {
+      .post("members/signup", payload, {
         "Content-Type": "multipart/form-data",
       })
 
       .then((response) => {
-        if (data.response.success === false) {
-          return window.alert(data.response.error.message);
+        if (response.data.success === false) {
+          return window.alert("가입에 실패하였습니다");
+          // console.log(response);
         } else {
           return (
-            window.alert(`${data.response.data.nickname}님 환영합니다.`),
+            window.alert(`${response.data.data.nickname}님 환영합니다.`),
             window.location.replace("/")
           );
         }
