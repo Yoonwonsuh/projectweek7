@@ -9,7 +9,10 @@ import {
 } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostThunk, editPostThunk } from "../../redux/modules/postSlice";
-import { getCommentsThunk, deleteCommentThunk } from "../../redux/modules/commentsSlice";
+import {
+  getCommentsThunk,
+  deleteCommentThunk,
+} from "../../redux/modules/commentsSlice";
 import "./Detail.scss";
 
 const Detail = ({ post }) => {
@@ -47,7 +50,9 @@ const Detail = ({ post }) => {
   return (
     <>
       <div className="DetailModal">
-        <div className="DetailModalXbutton"><FaTimes className="DetailFaXbutton"/></div>
+        <div className="DetailModalXbutton">
+          <FaTimes className="DetailFaXbutton" />
+        </div>
         {windowSize.width >= 1000 ? (
           <div className="DetailContainer">
             {/* 여기 아래부터 지우면됨 */}
@@ -212,8 +217,7 @@ const Detail = ({ post }) => {
                       <FaRegGrinAlt className="DetailInputIcon" />
                       <input
                         className="DetailsmallInput"
-                        placeholder="댓글 달기..."
-                      ></input>
+                        placeholder="댓글 달기..."></input>
                     </div>
                   </>
                   <div className="Detailsmallclick">게시</div>
@@ -272,8 +276,7 @@ const Detail = ({ post }) => {
                     <FaRegGrinAlt className="DetailInputIcon" />
                     <input
                       className="DetailsmallInput"
-                      placeholder="댓글 달기..."
-                    ></input>
+                      placeholder="댓글 달기..."></input>
                   </div>
                 </>
                 <div className="Detailsmallclick">게시</div>
