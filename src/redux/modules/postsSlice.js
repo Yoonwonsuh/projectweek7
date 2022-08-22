@@ -20,6 +20,7 @@ export const _postsList = createAsyncThunk(
       } else {
         return thunkAPI.fulfillWithValue(response.data.data);
       }
+
     } catch (e) {
       return (
         window.alert("로그인이 만료되었습니다"),
