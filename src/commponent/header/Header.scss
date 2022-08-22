@@ -1,21 +1,34 @@
-.wrap {
+.header_wrap {
+  width: 100%;
+  border-bottom: 1px solid rgb(202, 199, 199);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.header_container {
+  margin: auto;
+  justify-content: space-between;
   align-items: center;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 0 20px;
   height: 60px;
   width: 100%;
-  border-bottom: 1px solid rgb(202, 199, 199);
+  min-height: auto;
+  min-width: auto;
+
+  max-width: 975px;
 }
 
 // 왼쪽
 .container_left {
-  flex: 0 0 auto;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
   display: flex;
   height: 36px;
-  background-color: yellow;
+  width: 100%;
 }
 .container_left_logo_img {
   width: 103px;
@@ -31,8 +44,84 @@
 // 중앙
 .container_middle {
   display: flex;
+  width: 100%;
   flex-direction: column;
+  justify-content: center;
+  position: relative;
   padding: 0 16px;
+  height: 36px;
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 8px;
   cursor: text;
-  background-color: tan;
+  background-color: #f4f4f4;
+}
+.container_middle_box {
+  font-size: 16px;
+  font-weight: 300px;
+  line-height: 18px;
+  text-align: left;
+  word-spacing: 0px;
+  height: 25px;
+  width: 236px;
+  display: flex;
+  cursor: text;
+}
+.container_middle_wrap {
+  height: 20px;
+  width: 100%;
+  margin-right: 16px;
+  background-color: #f4f4f4;
+  border: none;
+  text-align: left;
+  display: block;
+  outline: none;
+}
+// .container_middle_box_search_imo {
+//   height: 100%;
+//   width: 100%;
+// }
+
+.container_right {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-basis: 127px;
+
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+  flex-wrap: wrap;
+}
+.container_right_wrap {
+  align-items: stretch;
+  box-sizing: border-box;
+  flex-direction: row;
+  flex-shrink: 0;
+  padding-left: 24px;
+  position: relative;
+  display: flex;
+  height: 24px;
+}
+.container_right_home {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.container_right_plus {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.container_right_heart {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.container_right_img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 }

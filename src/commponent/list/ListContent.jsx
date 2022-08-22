@@ -8,7 +8,7 @@ import {
   BsHeart,
   BsEmojiSmile,
 } from 'react-icons/bs';
-const ListContent = () => {
+const ListContent = ({ listData }) => {
   return (
     <div className="ListContentWrap">
       <div className="ListContentHead">
@@ -31,20 +31,20 @@ const ListContent = () => {
 
       <div className="ListContentBody">
         <h3 className="ListContentBodyLike">
-          좋아요 <span>1000</span>개
+          좋아요 <span>&nbsp;{listData.postLikeCnt}</span>개
         </h3>
 
         <div className="ListContentBodyComment">
-          <h3 className="ListContentBodyCommentNickname">배돌이</h3>
+          <h3 className="ListContentBodyCommentNickname">{listData.author}</h3>
           <div className="ListContentBodyCommentWrap">
             <span className="ListContentBodyCommentWrapText">
-              오늘은 무얼하고 놀아야 할까
+              {listData.content}&nbsp;
             </span>
             <button>더 보기</button>
           </div>
         </div>
         <div className="ListContentBodyComment_reply">
-          댓글 <span> 9</span>개 모두 보기
+          댓글&nbsp;<span>{listData.commentCnt}</span>개 모두 보기
         </div>
 
         <div className="ListContentBody_reply_wrap">
