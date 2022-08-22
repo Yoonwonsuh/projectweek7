@@ -1,5 +1,7 @@
-import React from 'react';
-import './List.scss';
+import React, {useState} from "react";
+import Modal from "react-bootstrap/Modal";
+import "./List.scss";
+import Detail from "../detail/Detail";
 import {
   BsChat,
   BsFillBookmarkFill,
@@ -7,8 +9,12 @@ import {
   BsHeartFill,
   BsHeart,
   BsEmojiSmile,
-} from 'react-icons/bs';
-const ListContent = ({ listData }) => {
+} from "react-icons/bs";
+const ListContent = ({ ListData }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div className="ListContentWrap">
       <div className="ListContentHead">
@@ -18,7 +24,13 @@ const ListContent = ({ listData }) => {
             <BsHeart className="ListContentHead_button_outline" />
           </button>
           <button className="ListContentHead_button">
-            <BsChat className="ListContentHead_button_outline" />
+            <BsChat
+              className="ListContentHead_button_outline"
+              onClick={handleShow}
+            />
+            <Modal show={show} onHide={handleClose}>
+              <Detail ListData={ListData} onHide={handleClose} />
+            </Modal>
           </button>
         </div>
         <div className="ListContentHead_right">
@@ -31,20 +43,20 @@ const ListContent = ({ listData }) => {
 
       <div className="ListContentBody">
         <h3 className="ListContentBodyLike">
-          좋아요 <span>&nbsp;{listData.postLikeCnt}</span>개
+          좋아요 <span>&nbsp;{ListData.postLikeCnt}</span>개
         </h3>
 
         <div className="ListContentBodyComment">
-          <h3 className="ListContentBodyCommentNickname">{listData.author}</h3>
+          <h3 className="ListContentBodyCommentNickname">{ListData.author}</h3>
           <div className="ListContentBodyCommentWrap">
             <span className="ListContentBodyCommentWrapText">
-              {listData.content}&nbsp;
+              {ListData.content}&nbsp;
             </span>
             <button>더 보기</button>
           </div>
         </div>
         <div className="ListContentBodyComment_reply">
-          댓글&nbsp;<span>{listData.commentCnt}</span>개 모두 보기
+          댓글&nbsp;<span>{ListData.commentCnt}</span>개 모두 보기
         </div>
 
         <div className="ListContentBody_reply_wrap">
@@ -52,9 +64,10 @@ const ListContent = ({ listData }) => {
             <button className="ListContentBody_reply_btn">
               <BsEmojiSmile className="ListContentBody_reply_btn_smile" />
             </button>
-            <textarea
+            <input
               placeholder="댓글 달기...."
-              className="ListContentBody_reply_input"></textarea>
+              className="ListContentBody_reply_input"
+            ></input>
             <button className="ListContentBody_reply_postBtn">게시</button>
           </div>
         </div>
