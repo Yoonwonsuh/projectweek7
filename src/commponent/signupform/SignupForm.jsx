@@ -4,7 +4,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./SignupForm.scss";
 import logo from "../../img/logo.png";
+import appimg from "../../img/appimg.png";
+import profileimg from "../../img/profileimg.png";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
+import { signupDB } from "../../redux/modules/memberSlice";
 new Blob([JSON.stringify()], { type: "application/json" });
 
 const Signupform = () => {
@@ -17,16 +20,12 @@ const Signupform = () => {
     password: "",
     imgUrl: null,
   };
-  //      memberId : 6 - 12자, 특수문자 사용금지
-  //      nickname : 12자 이하 , 특수문자 사용 금지
-  //      password : 6자 이상, 영어&숫자,&특수문자 포함
-  // 특수문자 1자 이상, 전체 8자 이상일것.
-  //   const isValidPassword = password.length >= 6 && specialLetter >= 1;
 
   const [newMember, setNewMember] = useState(initialState);
   const [memIdCheck, setMemIdCheck] = useState(false);
   const [nickCheck, setNickCheck] = useState(false);
   const [passCheck, setPassChekc] = useState(false);
+  const [files, setFiles] = useState("");
 
   // password 특수문자, 숫자, 영어 검사를 위한 정규식표현.
   const specialLetter = newMember.password.search(
@@ -34,12 +33,13 @@ const Signupform = () => {
   );
   const num = newMember.password.search(/[0-9]/g);
   const eng = newMember.password.search(/[a-z]/g);
-  // memebrId 특수문자 사용 금지
+  // memebrId 영문+숫자
   const idNum = newMember.memberId.search(/[0-9]/g);
   const idEng = newMember.memberId.search(/[a-z]/g);
-  // nickename 특수문자 사용 금지
-  const NicNum = newMember.nickname.search(/[0-9]/g);
+  // nickename 영문/한글/숫지
+  const NickNum = newMember.nickname.search(/[0-9]/g);
   const NickEng = newMember.nickname.search(/[a-z]/g);
+  const NickKor = newMember.nickname.search(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g);
 
   //passworrd 6자 이상 영어&숫자,&특수문자 포함
   useEffect(() => {
@@ -57,23 +57,35 @@ const Signupform = () => {
     }
   }, [newMember.password]);
 
-  //memberId : 6 - 12자, 특수문자 사용금지
+  //memberId : 6 - 12자, 영문+숫자
   useEffect(() => {
     if (newMember.memberId.length < 6 || newMember.memberId.length > 12) {
       setMemIdCheck(false);
     } else if (newMember.memberId.search(/\s/) != -1) {
       //  공백 체크
       setMemIdCheck(false);
-    } else if (num < 0 || eng < 0) {
-      setMemIdCheck(false);
+    } else if (idNum < 0 || idEng < 0) {
+      setPassChekc(false);
     } else if (newMember.memberId === null) {
-      setMemIdCheck(false);
-    } else if (specialLetter.test() == true) {
       setMemIdCheck(false);
     } else {
       setMemIdCheck(true);
     }
   }, [newMember.memberId]);
+
+  //nickname : 12자 이하
+  useEffect(() => {
+    if (newMember.nickname.length < 1 || newMember.nickname.length > 12) {
+      setNickCheck(false);
+    } else if (newMember.nickname.search(/\s/) != -1) {
+      //  공백 체크
+      setNickCheck(false);
+    } else if (newMember.nickname === null) {
+      setNickCheck(false);
+    } else {
+      setNickCheck(true);
+    }
+  }, [newMember.nickname]);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -82,19 +94,15 @@ const Signupform = () => {
 
   // 선택된 파일 읽기
   const onLoadFile = (e) => {
-    setNewMember(URL.createObjectURL(e.target.files[0]));
+    setFiles(URL.createObjectURL(e.target.files[0]));
   };
 
   // 가입 등록
   const onSignupHandler = async (event) => {
     event.preventDefault();
-    if (
-      newMember.memberId === false ||
-      newMember.nickname === false ||
-      newMember.password === false
-    ) {
+    if (memIdCheck === false || nickCheck === false || passCheck === false) {
       event.preventDefault();
-      alert("내용을 모두 채워주세요");
+      alert("회원정보를 모두 입력해주세요");
     } else {
       event.preventDefault();
       let frm = new FormData();
@@ -106,7 +114,7 @@ const Signupform = () => {
       );
       frm.append("image", meberImg.files[0]);
       try {
-        const response = await dispatch(frm);
+        const response = await dispatch(signupDB(frm));
         if (response) {
           setNewMember(initialState);
           alert("정상적으로 등록 되었습니다");
@@ -132,35 +140,90 @@ const Signupform = () => {
           <HorizontalLine text={"또는"} />
           <div className="signupInput">
             <input
+              className="inforBox"
               placeholder="아이디"
               name="memberId"
               onChange={onChangeHandler}
+              value={newMember.memberId}
             />
+            {!memIdCheck ? (
+              newMember.memberId === "" ? (
+                <div className="signupAlert">
+                  6~12자 영문,숫자 조합으로 입력해주세요
+                </div>
+              ) : (
+                <div className="signupAlertRed">아이디 형식을 지켜주세요</div>
+              )
+            ) : (
+              <div className="signupAlertGreen">사용가능한 ID입니다</div>
+            )}
             <input
+              className="inforBox"
               placeholder="닉네임"
               name="nickname"
               onChange={onChangeHandler}
+              value={newMember.nickname}
             />
+            {!nickCheck ? (
+              newMember.nickname === "" ? (
+                <div className="signupAlert">
+                  6자 이상 한글,영문 또는 숫자만 입력해주세요
+                </div>
+              ) : (
+                <div className="signupAlertRed">닉네임 형식을 지켜주세요</div>
+              )
+            ) : (
+              <div className="signupAlertGreen">사용가능한 닉네임입니다</div>
+            )}
+
             <input
+              className="inforBox"
               placeholder="비밀번호"
               type="password"
               name="password"
               onChange={onChangeHandler}
+              value={newMember.password}
             />
-            <input
-              type="file"
-              onChange={onLoadFile}
-              id="img_file"
-              accept="img/*"
-            />
-            <p>
+            {!passCheck ? (
+              newMember.password === "" ? (
+                <div className="signupAlert">
+                  영문,숫자,특수문자 조합 6자 이상
+                </div>
+              ) : (
+                <div className="signupAlertRed">비밀번호 형식을 지켜주세요</div>
+              )
+            ) : (
+              <div className="signupAlertGreen">사용가능한 비밀번호입니다</div>
+            )}
+            <div className="imguploadbox">
+              <img className="signupPreImg" src={files ? files : profileimg} />
+              <label className="signupLabel" htmlFor="img_file">
+                이미지 가져오기
+              </label>
+              <input
+                className="signupFile"
+                type="file"
+                onChange={onLoadFile}
+                id="img_file"
+                accept="img/*"
+              />
+            </div>
+            <p className="signupInfor">
               서비스를 이용하는 사람이 회원님의 연락처 정보를 Instagram에
               업로드했을 수도 있습니다.
+              <a href="https://www.facebook.com/help/instagram/261704639352628">
+                더 알아보기
+              </a>
             </p>
-            <span>더 알아보기</span>
-            <button type="sumbit">가입</button>
+            <button className="signinBtn" type="sumbit">
+              가입
+            </button>
           </div>
         </form>
+        {/* <div className="siginupPage">
+          <div>계정이 잆으신가요?</div>
+          <div onClick={() => navigate("/signup")}> 가입하기</div>
+        </div> */}
       </div>
     </div>
   );
