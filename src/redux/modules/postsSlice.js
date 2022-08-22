@@ -1,29 +1,40 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import instance from './instance';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import instance from "./instance";
 
 const initialState = {
   postsList: [],
 };
 
 export const _postsList = createAsyncThunk(
-  'getPostsList',
+  "getPostsList",
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.get('posts');
-      // return console.log(response.data.data);
-      return thunkAPI.fulfillWithValue(response.data.data);
+      const response = await instance.get("posts");
+      if (response.data.success === false) {
+        return (
+          window.alert("로그인이 만료되었습니다"),
+          localStorage.clear(),
+          window.location.replace("/")
+        );
+      } else {
+        return thunkAPI.fulfillWithValue(response.data.data);
+      }
     } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+      return (
+        window.alert("로그인이 만료되었습니다"),
+        localStorage.clear(),
+        window.location.replace("/")
+      );
     }
   }
 );
 
 export const addPostsList = createAsyncThunk(
-  'addPostsList',
+  "addPostsList",
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.post('posts', payload);
+      const response = await instance.post("posts", payload);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -31,7 +42,7 @@ export const addPostsList = createAsyncThunk(
   }
 );
 export const editPostsList = createAsyncThunk(
-  'editPostsList',
+  "editPostsList",
   async (payload, thunkAPI) => {
     // payload = data
     // postId = author ????
@@ -49,7 +60,7 @@ export const editPostsList = createAsyncThunk(
 );
 
 export const deletePostsList = createAsyncThunk(
-  'deletePostsList',
+  "deletePostsList",
   async (payload, thunkAPI) => {
     // payload = postId
     // header: token;?
@@ -64,9 +75,19 @@ export const deletePostsList = createAsyncThunk(
 );
 
 export const postsListSlice = createSlice({
-  name: 'postsList',
+  name: "postsList",
   initialState,
-  reducers: {},
+  reducers: {
+    onModalHandler: (state, action) => {
+      state.postsList.map((post) => {
+        if (post.postId === action.payload) {
+          return (post.isModalMode = !post.isModalMode);
+        } else {
+          return state.postsList;
+        }
+      });
+    },
+  },
   extraReducers: {
     [_postsList.fulfilled]: (state, action) => {
       state.postsList = action.payload;
@@ -106,6 +127,5 @@ export const postsListSlice = createSlice({
   },
 });
 
-export const {} = postsListSlice.actions;
-
+export const { onModalHandler } = postsListSlice.actions;
 export default postsListSlice.reducer;
