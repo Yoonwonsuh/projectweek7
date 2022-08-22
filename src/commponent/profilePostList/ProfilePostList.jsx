@@ -14,14 +14,14 @@ const ProfilePostList = () => {
     dispatch(getMyProfileThunk(id));
   }, []);
 
-  const ProfilePostList = useSelector((state) => state.profile.myProfile);
+  const ProfilePostList = useSelector((state) => state.profile.myPost);
 
   return (
     <div className="ProfilePostListContainer">
-      {/* 어차피 맵돌릴꺼임 */}
+
       {ProfilePostList.map((profilepost) => {
         return (
-          <div className="ProfilePostListBox">
+          <div className="ProfilePostListBox" key={profilepost.postId}>
             <div className="ProfileDarkness">
               <div className="ProfileListCount">
                 <FaHeart style={{ fontSize: "15px" }} />
