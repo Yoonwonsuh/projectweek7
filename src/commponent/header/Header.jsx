@@ -7,12 +7,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
+import homeempty from '../../img/homeempty.png'
+import DMempty from '../../img/DMempty.png'
+import Plusempty from '../../img/plusempty.png'
+import loveempty from '../../img/loveempty.png'
+
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userNickName = localStorage.getItem("nickname");
-
-  console.log(userNickName);
 
   useEffect(() => {
     dispatch(getMMyProfileThunk(userNickName));
@@ -41,21 +44,24 @@ const Header = () => {
         </div>
         <div className="container_right">
           <div className="container_right_wrap">
-            <div className="container_right_wrap _home">
-              <MdHomeFilled className="container_right_home _home" />
+            <div className="container_right_wrap_mini">
+              <img src={homeempty} className="container_right_home" />
             </div>
-            <div className="container_right_wrap _plus">
-              <BsPlusSquare
-                className="container_right_plus _plus"
+            <div className="container_right_wrap_mini">
+              <img src={DMempty} className="container_right_DM" />
+            </div>
+            <div className="container_right_wrap_mini">
+              <img src={Plusempty}
+                className="container_right_plus"
                 onClick={() => navigate("/Posting")}
               />
             </div>
-            <div className="container_right_wrap _heart">
-              <BsHeart className="container_right_home _heart" />
+            <div className="container_right_wrap_mini">
+              <img src={loveempty} className="container_right_heart" />
             </div>
-            <div className="container_right_wrap _img">
+            <div className="container_right_wrap_mini">
               <img
-                className="container_right_img _img"
+                className="container_right_img"
                 src={myProfile.memberImgUrl}
                 alt=""
               />

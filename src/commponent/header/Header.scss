@@ -86,42 +86,72 @@
   display: flex;
   align-content: center;
   align-items: center;
-  flex-basis: 127px;
-
   flex-direction: row;
   justify-content: flex-end;
   position: relative;
-  flex-wrap: wrap;
 }
 .container_right_wrap {
   align-items: stretch;
   box-sizing: border-box;
-  flex-direction: row;
-  flex-shrink: 0;
-  padding-left: 24px;
-  position: relative;
   display: flex;
-  height: 24px;
+  flex-direction: row;
+  gap: 27px;
+  position: relative;
 }
+
+.container_right_wrap_mini{
+width: 24px;
+height: 24px;
+justify-content: center;
+align-items: center;
+vertical-align: middle;
+}
+
 .container_right_home {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  position: relative;
   cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
-.container_right_plus {
-  width: 24px;
-  height: 24px;
+.container_right_DM{
+  width: 22px;
+  height: 19px;
   cursor: pointer;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.container_right_plus {
+  width: 22px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 .container_right_heart {
   width: 24px;
-  height: 24px;
+  height: 21px;
+  position: relative;
   cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .container_right_img {
-  width: 24px;
-  height: 24px;
+  width: 100%;
+  height: 100%;
+  position: relative;
   border-radius: 50%;
   cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }

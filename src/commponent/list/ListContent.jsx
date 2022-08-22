@@ -7,20 +7,34 @@ import {
   BsBookmark,
   BsHeart,
   BsEmojiSmile,
+  BsCloudSnowFill,
 } from "react-icons/bs";
 import { addCommentsThunk } from "../../redux/modules/commentsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { onAddCommentHandler, _postsList } from "../../redux/modules/postsSlice";
+import {
+  onAddCommentHandler,
+  _postsList,
+} from "../../redux/modules/postsSlice";
 const ListContent = ({ ListData }) => {
+  var scrollY = window.scrollY;
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    window.scrollTo(0, scrollY);
+  };
+  const handleShow = () => {
+    setShow(true);
+    localStorage.setItem("scrolly", scrollY);
+  };
 
   const initialState = {
     postId: "",
     content: "",
   };
+
+  const nowScroll = window.scrollY;
+  console.log(nowScroll);
 
   const [newComment, setNewComment] = useState(initialState);
 
@@ -35,7 +49,7 @@ const ListContent = ({ ListData }) => {
       alert("내용을 입력해주세요");
     } else {
       await dispatch(addCommentsThunk(newComment));
-      dispatch(onAddCommentHandler(newComment))
+      dispatch(onAddCommentHandler(newComment));
       setNewComment(initialState);
     }
   };
@@ -77,7 +91,7 @@ const ListContent = ({ ListData }) => {
             <span className="ListContentBodyCommentWrapText">
               {ListData.content}&nbsp;
             </span>
-            <button>더 보기</button>
+            {/* <button>더 보기</button> */}
           </div>
         </div>
         <div className="ListContentBodyComment_reply">

@@ -49,8 +49,17 @@
 
 // 포스팅 이미지
 .ListImg {
-  height: 470px;
+  display: flex;
+  flex-direction: column;
+  background: black;
   width: 100%;
+  justify-content: center;
+  aspect-ratio: 4/5;
+}
+
+.ListImgurl {
+  max-width: 100%;
+
 }
 
 // 컨텐츠
@@ -191,6 +200,6 @@
   color: rgb(202, 202, 239);
 }
 
-.ListContentBodyComment_reply_onclick{
+.ListContentBodyComment_reply_onclick {
   cursor: pointer;
 }

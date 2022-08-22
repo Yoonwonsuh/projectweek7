@@ -30,6 +30,8 @@ const Detail = ({ ListData, onHide }) => {
     width: window.innerWidth,
   });
 
+  
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -41,7 +43,7 @@ const Detail = ({ ListData, onHide }) => {
     setWindowSize({
       width: window.innerWidth,
     });
-  }, 300);
+  },);
 
   const [smallInput, setSmallInput] = useState(false);
 
