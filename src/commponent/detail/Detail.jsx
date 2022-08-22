@@ -5,9 +5,11 @@ import {
   FaRegComment,
   FaRegPaperPlane,
   FaRegGrinAlt,
+  FaTimes,
 } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostThunk, editPostThunk } from "../../redux/modules/postSlice";
+import { getCommentsThunk, deleteCommentThunk } from "../../redux/modules/commentsSlice";
 import "./Detail.scss";
 
 const Detail = ({ post }) => {
@@ -36,21 +38,35 @@ const Detail = ({ post }) => {
 
   //   const dispatch = useDispatch();
   //   useEffect(() => {
-  //     dispatch(getPostThunk(postid));
+  //     dispatch(getPostThunk(post.postId));  여기 페이로드 안에 포스트 아이디 들어와야함
+  //     dispatch(getCommentsThunk(post.postId));  여기 페이로드 안에 포스트 아이디 들어와야함
   //   }, []);
   //   const detailPost = useSelector((state) => state.post.post);
+  //   const detailComments = useSelector((state) => state.comments.comments);
 
   return (
     <>
       <div className="DetailModal">
+        <div className="DetailModalXbutton"><FaTimes className="DetailFaXbutton"/></div>
         {windowSize.width >= 1000 ? (
           <div className="DetailContainer">
+            {/* 여기 아래부터 지우면됨 */}
             <div className="DetailLeft">
               <img
                 className="DetailImg"
-                src="https://blog.kakaocdn.net/dn/wlV3a/btqDebLH3c2/SkFcvQCDgeESEzmjllP5uk/img.jpg"
+                src="https://blog.kakaocdn.net/dn/yIjGx/btq04K3pAVP/0sh3aFbAlYVMk0ipiJKCMk/img.jpg"
+                alt="detail"
               />
             </div>
+            {/* 여기아래 활성화하고 위에꺼 날리면됨 */}
+            {/* <div className="DetailLeft">
+              <img
+                className="DetailImg"
+                src={detailPost.imgUrl}
+                alt=""
+              />
+            </div> */}
+            {/* 여기까지 */}
 
             <div className="DetailRight">
               <div className="DetailRightTitleContainer">
@@ -62,12 +78,13 @@ const Detail = ({ post }) => {
               </div>
               <div className="DetailLine" />
               <div className="DetailRightContentContainer">
+                {/* 여기 아래서부터 지우면됨 */}
                 <div className="DetainRightContentWholeBox">
-                <div className="DetailuserImgBox">
-                  <img
-                    className="DetailRightIconBox"
-                    src="https://i.pinimg.com/236x/f0/19/c4/f019c40b1e2db2880d85ff31e10e60e9.jpg"
-                  />
+                  <div className="DetailuserImgBox">
+                    <img
+                      className="DetailRightIconBox"
+                      src="https://i.pinimg.com/236x/f0/19/c4/f019c40b1e2db2880d85ff31e10e60e9.jpg"
+                    />
                   </div>
                   <div className="DetailRightContentBox">
                     <a className="DetailOnerNickname">post.nickname</a>
@@ -102,42 +119,74 @@ const Detail = ({ post }) => {
                       <br /> #電気ケトル
                       <br />
                     </span>
-                    <div className="DetailBodyTail">게시시간 좋아요수</div>
+                    <div className="DetailBodyTail">게시시간</div>
                   </div>
-                  <div className="DetailCommentLike"><FaRegHeart /></div>
                 </div>
+                {/* 여기부터 해제하고 위에꺼 날리면됨 */}
+                {/* <div className="DetainRightContentWholeBox">
+                  <div className="DetailuserImgBox">
+                    <img
+                      className="DetailRightIconBox"
+                      src={detailPost.authorImgUrl}
+                    />
+                  </div>
+                  <div className="DetailRightContentBox">
+                    <a className="DetailOnerNickname">{detailPost.author}</a>
+                    <span className="DetailOnerBody">
+                      {detailPost.content}
+                    </span>
+                    <div className="DetailBodyTail">{detailPost.createdAt}</div>
+                  </div>
+                </div> */}
+                {/* 여기까지 해제하면됨 */}
                 {/* 맵함수 돌릴거임 */}
                 <div className="DetainRightContentWholeBox">
                   <div className="DetailuserImgBox">
                     <img
                       className="DetailRightIconBox"
                       src="https://i.pinimg.com/236x/af/2c/39/af2c396e241bea0988de6bf4d67d2c03.jpg"
+                      alt=""
                     />
                   </div>
                   <div className="DetailRightContentBox">
                     <a className="DetailOnerNickname">comment[0].nickname</a>
-                    <span className="DetailOnerBody">너무너무 이쁘네요!ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅇㅁㄻㄴㅇㄹ</span>
+                    <span className="DetailOnerBody">
+                      너무너무 이쁘네요!ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅇㅁㄻㄴㅇㄹ
+                    </span>
                     <div className="DetailBodyTail">게시시간 좋아요수</div>
+                  </div>
+                  <div className="DetailCommentLike">
+                    <FaRegHeart />
+                  </div>
+                </div>
+                {/* 아래꺼 해제하면됨 */}
+                {/* {detailComments.length === 0
+                  ? ""
+                  : detailComments.map((comment) => {
+                      <div className="DetainRightContentWholeBox">
+                        <div className="DetailuserImgBox">
+                          <img
+                            className="DetailRightIconBox"
+                            src={comment.authorImgUrl}
+                            alt=""
+                          />
                         </div>
-                  <div className="DetailCommentLike"><FaRegHeart /></div>
-                </div>
-                {/* 여기까지 */}
-                <div className="DetainRightContentWholeBox">
-                  <div className="DetailuserImgBox">
-                    <img
-                      className="DetailRightIconBox"
-                      src="https://i.pinimg.com/236x/a5/fe/9f/a5fe9fbf9cfa0f5df5a86adb91976c66.jpg"
-                    />
-                  </div>
-                  <div className="DetailRightContentBox">
-                    <a className="DetailOnerNickname">comment[1].nickname</a>
-                    <span className="DetailOnerBody">우리 오늘 컴백했어요!!</span>
-                    <div className="DetailBodyTail">게시시간 좋아요수</div>
-                  </div>
-                  <div className="DetailCommentLike"><FaRegHeart /></div>
-                </div>
-                {/* 또 여기까지 Map돌리면됨 */}
-
+                        <div className="DetailRightContentBox">
+                          <a className="DetailOnerNickname">
+                            {comment.author}
+                          </a>
+                          <span className="DetailOnerBody">
+                            {comment.content}
+                          </span>
+                          <div className="DetailBodyTail">
+                            {comment.createdAt}&nbsp;&nbsp;좋아요&nbsp;{comment.commentLikeCnt}
+                          </div>
+                        </div>
+                        <div className="DetailCommentLike">
+                          <FaRegHeart />
+                        </div>
+                      </div>;
+                    })} */}
               </div>
 
               <div className="DetailLine" />
@@ -153,7 +202,9 @@ const Detail = ({ post }) => {
                 </div>
               </div>
               <div className="DetailSmallLike">좋아요&nbsp;&nbsp;111개</div>
+              {/* <div className="DetailSmallLike">좋아요&nbsp;&nbsp;{detailPost.postLikeCnt}개</div> */}
               <div className="DetailSmallTime">2시간 전</div>
+              {/* <div className="DetailSmallTime">{detailPost.createdAt}</div> */}
               {smallInput ? (
                 <div className="DetaillShowInputbox">
                   <>
@@ -178,14 +229,26 @@ const Detail = ({ post }) => {
               <img
                 className="DetailMemberImg"
                 src="https://i.pinimg.com/236x/f0/19/c4/f019c40b1e2db2880d85ff31e10e60e9.jpg"
+                alt=""
               />
               <div className="DetailRightTitleNickName">post.nickname</div>
+              {/* <img
+                className="DetailMemberImg"
+                src={detailPost.authorImgUrl}
+                alt=""
+              />
+              <div className="DetailRightTitleNickName">{detailPost.author}</div> */}
             </div>
             <div className="DetailsmallImgBox">
               <img
                 className="DetailsmallImg"
-                src="https://blog.kakaocdn.net/dn/wlV3a/btqDebLH3c2/SkFcvQCDgeESEzmjllP5uk/img.jpg"
+                src="https://blog.kakaocdn.net/dn/yIjGx/btq04K3pAVP/0sh3aFbAlYVMk0ipiJKCMk/img.jpg"
               />
+              {/* <img
+                className="DetailsmallImg"
+                src={detailPost.imgUrl}
+                alt=''
+              /> */}
             </div>
             <div className="DetailControlBox">
               <div className="DetailIcon">
@@ -200,6 +263,8 @@ const Detail = ({ post }) => {
             </div>
             <div className="DetailSmallLike">좋아요&nbsp;&nbsp;111개</div>
             <div className="DetailSmallTime">2시간 전</div>
+            {/* <div className="DetailSmallLike">좋아요&nbsp;&nbsp;{detailPost.postLikeCnt}개</div>
+            <div className="DetailSmallTime">{detailPost.createdAt}</div> */}
             {smallInput ? (
               <div className="DetaillShowInputbox">
                 <>
