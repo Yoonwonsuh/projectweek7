@@ -24,12 +24,21 @@
 }
 
 .postModalEditText {
+
+  text-align: center;
   margin-top: 15px;
   cursor: pointer;
+  &:hover {
+    scale: 1.1;
+  }
 }
 
 .postModalDeleteText {
+  text-align: center;
   margin-top: 15px;
   cursor: pointer;
   color: red;
+  &:hover {
+    scale: 1.1;
+  }
 }
