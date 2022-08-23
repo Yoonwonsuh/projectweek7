@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import instance from "./instance";
 
 const initialState = {
@@ -33,8 +32,11 @@ export const _postsList = createAsyncThunk(
 export const addPostsList = createAsyncThunk(
   "addPostsList",
   async (payload, thunkAPI) => {
+    console.log("12321321312321123", payload);
     try {
-      const response = await instance.post("posts", payload);
+      const response = await instance.post("posts", payload, {
+        "Content-Type": "multipart/form-data",
+      });
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -78,7 +80,7 @@ export const postsListSlice = createSlice({
   name: "postsList",
   initialState,
   reducers: {
-    onAddCommentHandler : (state, action) => {
+    onAddCommentHandler: (state, action) => {
       state.postsList.map((post) => {
         if (post.postId == action.payload.postId) {
           return (post.commentCnt = post.commentCnt + 1);
