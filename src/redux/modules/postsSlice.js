@@ -96,6 +96,16 @@ export const postsListSlice = createSlice({
         }
       });
     },
+
+    onLikeBtnHandler: (state, action) => {
+      state.postsList.map((post) => {
+        if (post.postId == action.payload.postId) {
+          return (post.isLike += action.payload.isLike ? 1 : -1);
+        } else {
+          return post;
+        }
+      });
+    },
   },
   extraReducers: {
     [_postsList.fulfilled]: (state, action) => {
@@ -136,6 +146,6 @@ export const postsListSlice = createSlice({
   },
 });
 
-export const { onAddCommentHandler, onModalApearHandler } =
+export const { onAddCommentHandler, onModalApearHandler, onLikeBtnHandler } =
   postsListSlice.actions;
 export default postsListSlice.reducer;
