@@ -24,6 +24,7 @@ const Login = () => {
   const isSmallMode = useMediaQuery({
     query: "(max-width : 1000px)",
   });
+  //
 
   //login버튼 눌렀을때 값 가져오기 & 유효성검사
   const Loginform = () => {
