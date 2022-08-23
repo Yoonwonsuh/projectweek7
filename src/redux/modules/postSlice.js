@@ -5,7 +5,7 @@ export const getPostThunk = createAsyncThunk(
   "GET_POST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.get(`posts/${payload}`); //payload에 postId 입력
+      const { data } = await instance.get(`posts/${payload.postid}/${payload.nickname}`); //payload에 postId 입력
       if (data.success === true) {
         return thunkAPI.fulfillWithValue(data.data);
       } else {

@@ -15,7 +15,6 @@ const MemberProfile = ({ memberId }) => {
   }, [dispatch, memberId]);
 
   const profilemember = useSelector((state)=> state.profile.myProfile)
-  console.log(profilemember)
   const profilepost = useSelector((state)=> state.profile.myPost)
   const nowNickname = localStorage.getItem("nickname");
 

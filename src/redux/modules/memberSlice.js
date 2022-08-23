@@ -18,11 +18,12 @@ export const loginDB = (payload) => {
           return window.alert(response.data.error.message);
         } else {
           return (
+            console.log(response),
             localStorage.setItem("token", response.headers.authorization),
             localStorage.setItem("nickname", response.data.data.nickname),
             alert(`${localStorage.nickname}님 환영합니다.`),
             window.location.replace("/")
-          );
+          )
         }
       })
       .catch((response) => {

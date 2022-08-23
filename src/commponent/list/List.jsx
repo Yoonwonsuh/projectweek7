@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import ListContent from "./ListContent";
 import { _postsList } from "../../redux/modules/postsSlice";
 
-const List = () => {
+const List = ({nickname}) => {
   const dispatch = useDispatch();
   const listData = useSelector((state) => state.posts.postsList);
 
   useEffect(() => {
-    dispatch(_postsList());
+    dispatch(_postsList(nickname));
   }, [dispatch]);
 
   if (!listData) {

@@ -19,6 +19,7 @@ import { onAddCommentHandler } from "../../redux/modules/postsSlice";
 
 const Detail = ({ onHide, postid }) => {
   const dispatch = useDispatch();
+  const nickname = localStorage.getItem("nickname");
   const initialState = {
     postId: "",
     content: "",
@@ -52,8 +53,8 @@ const Detail = ({ onHide, postid }) => {
   };
 
   useEffect(() => {
-    dispatch(getPostThunk(postid));
-    dispatch(getCommentsThunk(postid));
+    dispatch(getPostThunk({postid,nickname}));
+    dispatch(getCommentsThunk({postid,nickname}));
   }, []);
 
   const onChangeHandler = (e) => {

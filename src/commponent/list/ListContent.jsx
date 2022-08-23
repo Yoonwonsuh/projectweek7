@@ -20,12 +20,12 @@ const ListContent = ({ ListData }) => {
  
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const handleClose = async () => {
+  const handleClose =() => {
     const CloseMoDalScrollY = localStorage.getItem("scrolly");
     setShow(false);
     window.scrollTo(0, CloseMoDalScrollY);
   };
-  const handleShow = async () => {
+  const handleShow = () => {
     let scrollY = window.scrollY;
     localStorage.setItem("scrolly", scrollY);
     setShow(true);   
@@ -65,14 +65,14 @@ const ListContent = ({ ListData }) => {
           <button className="ListContentHead_button">
             {ListData.isLike ? (
               <BsHeartFill
-                className="ListContentHead_button_outline"
+                className="ListContentHead_button_outline_heart"
                 onClick={() => {
                   onLikeClick(ListData.postId);
                 }}
               />
             ) : (
               <BsHeart
-                className="ListContentHead_button_outline"
+                className="ListContentHead_button_outline_heart"
                 onClick={() => {
                   onLikeClick(ListData.postId);
                 }}

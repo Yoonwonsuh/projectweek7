@@ -9,10 +9,11 @@ export const _postsList = createAsyncThunk(
   "getPostsList",
   async (payload, thunkAPI) => {
     try {
-      const response = await instance.get("posts");
+      const response = await instance.get(`posts/all/${payload}`);
       if (response.data.success === false) {
         return (
           window.alert("로그인이 만료되었습니다"),
+          console.log(response),
           localStorage.clear(),
           window.location.replace("/")
         );
