@@ -61,11 +61,12 @@ const Detail = ({ onHide, postid }) => {
     setNewComment({ ...newComment, [name]: value, postId: postid });
   };
 
-  const onEditSubmitHandler = async (e) => {
+  const onAddSubmitHandler = async (e) => {
     if (newComment.content === "") {
       e.preventDefault();
       alert("내용을 입력해주세요");
     } else {
+      e.preventDefault();
       await dispatch(addCommentsThunk(newComment));
       dispatch(onAddCommentHandler(newComment))
       setNewComment(initialState);
@@ -179,7 +180,7 @@ const Detail = ({ onHide, postid }) => {
                   </>
                   <div
                     className="Detailsmallclick"
-                    onClick={onEditSubmitHandler}
+                    onClick={onAddSubmitHandler}
                   >
                     게시
                   </div>
@@ -234,7 +235,7 @@ const Detail = ({ onHide, postid }) => {
                     ></input>
                   </div>
                 </>
-                <div className="Detailsmallclick" onClick={onEditSubmitHandler}>
+                <div className="Detailsmallclick" onClick={onAddSubmitHandler}>
                   게시
                 </div>
               </div>
