@@ -41,17 +41,14 @@
 .DetailLeft {
   display: flex;
   background: black;
-  min-width: 10%;
   max-width: 100%;
-  flex-direction: column;
   justify-content: center;
   overflow: hidden;
+  aspect-ratio: 4/5;
 }
 
 .DetailImg {
-  aspect-ratio: 4/5;
-   max-height:100%;
-  
+max-height: 100%;
 }
 
 .DetailRight {

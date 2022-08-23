@@ -22,7 +22,7 @@ const ProfileLikeList = () => {
 
   return (
     <div className="ProfileLikeListContainer">
-      {ProfileLikeList.map((profileLike) => {
+      {ProfileLikeList.slice(0).reverse().map((profileLike) => {
         return (
           <ProfileLike profileLike={profileLike}/>
         );

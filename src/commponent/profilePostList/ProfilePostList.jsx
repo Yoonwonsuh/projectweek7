@@ -23,7 +23,7 @@ const ProfilePostList = () => {
 
   return (
     <div className="ProfilePostListContainer">
-      {ProfilePostList.map((profilepost) => {
+      {ProfilePostList.slice(0).reverse().map((profilepost) => {
         return <ProfilePost profilepost={profilepost} key={profilepost.postId}/>;
       })}
     </div>
