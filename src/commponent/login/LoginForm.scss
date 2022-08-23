@@ -3,31 +3,20 @@
   height: 100vh;
 }
 .loginContainer {
-  // border: 1px solid #dbdbdb
   width: 60%;
   margin: 0px auto;
   display: flex;
   padding-top: 20px;
   height: 100%;
-  // min-height: 500px;
   min-width: 600px;
 }
-
-// .login_screen1 {
-//   height: 581.15px;
-//   left: 0;
-//   position: absolute;
-//   top: 0;
-//   visibility: hidden;
-//   width: 250px;
-//   opacity: 0;
-// }
+.pleasedontmove {
+  position: fixed;
+}
 .loginleftContainer {
-  // border: 1px solid #dbdbdb;
   display: block;
   width: 50%;
   height: 100%;
-  // margin-right: 15px;
   background-image: url(https://www.instagram.com/static/images/homepage/phones/home-phones-2x.png/cbc7174b4f05.png);
   background-size: 575px;
   background-repeat: no-repeat;
@@ -219,13 +208,13 @@
   align-items: center;
 
   p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
     text-align: center;
   }
   img {
     justify-content: center;
     margin: 10px 0 10px 0;
-    width: 250px;
+    width: 300px;
   }
 }
