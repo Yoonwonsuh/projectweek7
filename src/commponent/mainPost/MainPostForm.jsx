@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPostsList, _postsList } from "../../redux/modules/postsSlice";
 import "./MainForm.scss";
+
 const MainPostForm = () => {
-  useEffect(() => {
-    dispatch(_postsList());
-  }, []);
+  const dispatch = useDispatch();
+  const [filed, setFiled] = useState("");
 
   const initialState = {
     content: "",
   };
 
-  const dispatch = useDispatch();
   const [inputForm, setInputForm] = useState(initialState);
-  const [filed, setFiled] = useState("");
+
+  useEffect(() => {
+    dispatch(_postsList());
+  }, []);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -47,29 +49,39 @@ const MainPostForm = () => {
         <h1 className="name">새 게시물 만들기</h1>
       </div>
 
-      <div>
-        <img className="Img" src={filed} alt="" />
-        <label className="Img_label" htmlFor="img_upFile">
-          컴퓨터에서 선택
-        </label>
+      <div className="body">
+        <div className="Left">
+          <div>
+            <img className="Img" src={filed} alt="" />
+          </div>
+          <label className="Img_label" htmlFor="img_upFile">
+            컴퓨터에서 선택
+          </label>
+        </div>
+        <input
+          type="file"
+          accept="image/*"
+          id="img_upFile"
+          onChange={onLoadFile}
+          style={{ display: "none" }}
+        />
+
+        <div className="Right">
+          <div className="Img_header">
+            <img className="profile_img" src="" alt="" />
+            <div className="profile_nick">닉네임</div>
+          </div>
+
+          <input
+            type="text"
+            placeholder="입력해주세요."
+            value={inputForm.content}
+            name="content"
+            onChange={onChangeHandler}
+          />
+          <button>추가하기</button>
+        </div>
       </div>
-      <input
-        type="file"
-        accept="image/*"
-        id="img_upFile"
-        onChange={onLoadFile}
-        style={{ display: "none" }}
-      />
-
-      <input
-        type="text"
-        placeholder="입력해주세요."
-        value={inputForm.content}
-        name="content"
-        onChange={onChangeHandler}
-      />
-
-      <button>추가하기</button>
     </form>
   );
 };
