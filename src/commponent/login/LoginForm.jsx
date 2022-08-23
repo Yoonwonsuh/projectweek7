@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
-import loginimg from "../../img/loginimg.png";
 import login_screen1 from "../../img/login_screen1.png";
 import login_screen2 from "../../img/login_screen2.png";
 import login_screen3 from "../../img/login_screen3.png";
@@ -11,6 +10,7 @@ import { loginDB } from "../../redux/modules/memberSlice";
 import "./LoginForm.scss";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,15 +31,22 @@ const Login = () => {
     } else {
       dispatch(loginDB({ memberId, password }));
     }
+
+    // 미디어쿼리
+    // const isSmallMode = useMediaQuery({
+    //   query: "(max-width :870px)",
+    // });
   };
 
   return (
     <div className="loginBackground">
       <div className="loginContainer">
         <div className="loginleftContainer">
-        <img className="loginleftimg1"src={login_screen1} />
-        <img className="loginleftimg2"src={login_screen2} />   
-        <img className="loginleftimg3"src={login_screen3} />   
+          <div className="pleasedontmove">
+            <img className="loginleftimg1" src={login_screen1} />
+            <img className="loginleftimg2" src={login_screen2} />
+            <img className="loginleftimg3" src={login_screen3} />
+          </div>
         </div>
         <div className="loginrightContainer">
           <div className="loginDiv">
