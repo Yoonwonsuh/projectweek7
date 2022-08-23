@@ -60,11 +60,11 @@ const ListContent = ({ ListData }) => {
         <div className="ListContentHead_left">
           <button className="ListContentHead_button">
             {/* <BsHeartFill className="ListContentHead_button_outline" /> */}
-            <BsHeart className="ListContentHead_button_outline" />
+            <BsHeart className="ListContentHead_button_outline_heart" />
           </button>
           <button className="ListContentHead_button">
             <BsChat
-              className="ListContentHead_button_outline"
+              className="ListContentHead_button_outline_chat"
               onClick={handleShow}
             />
             <Modal show={show} onHide={handleClose}>
@@ -74,7 +74,7 @@ const ListContent = ({ ListData }) => {
         </div>
         <div className="ListContentHead_right">
           <button className="ListContentHead_button">
-            <BsBookmark className="ListContentHead_button_outline" />
+            <BsBookmark className="ListContentHead_button_outline_bm" />
             {/* <BsFillBookmarkFill className="ListContentHead_button_outline" /> */}
           </button>
         </div>
