@@ -6,6 +6,7 @@ import { onModalHandler } from "../../redux/modules/postsSlice";
 import Detail from "../detail/Detail";
 import { useDispatch } from "react-redux";
 import imgRound from "../../img/imgRound.png";
+import PostModal from "../postModal/PostModal";
 
 const ListNav = ({ ListData }) => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const ListNav = ({ ListData }) => {
       </div>
       <button className="ListNav_right_btn">
         <AiOutlineEllipsis className="ListNav_right_btn_toggle" />
+        {!ListData.isModalMode ? <PostModal ListData={ListData} /> : ''}
       </button>
     </div>
   );
