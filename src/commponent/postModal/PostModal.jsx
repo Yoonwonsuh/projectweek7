@@ -1,7 +1,7 @@
 import React from "react";
 import "./PostModal.scss";
 
-const PostModal = ({ListData}) => {
+const PostModal = ({ ListData }) => {
   return (
     <div className="postModalContainer">
       <div className="postModalEditBox">

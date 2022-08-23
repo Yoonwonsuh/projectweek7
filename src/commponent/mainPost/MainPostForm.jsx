@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPostsList, _postsList } from "../../redux/modules/postsSlice";
-import { axios } from "axios";
-
-const PostForm = () => {
+import "./MainForm.scss";
+const MainPostForm = () => {
   useEffect(() => {
     dispatch(_postsList());
   }, []);
+
   const initialState = {
     content: "",
   };
@@ -14,8 +14,6 @@ const PostForm = () => {
   const dispatch = useDispatch();
   const [inputForm, setInputForm] = useState(initialState);
   const [filed, setFiled] = useState("");
-
-  console.log(inputForm);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -26,7 +24,7 @@ const PostForm = () => {
     setFiled(URL.createObjectURL(e.target.files[0]));
   };
 
-  const onSignupHandler = async (e) => {
+  const onSignUpHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
     let uploadImg = document.getElementById("img_upFile");
@@ -41,7 +39,28 @@ const PostForm = () => {
   };
 
   return (
-    <form encType="multipart/form-data" onSubmit={onSignupHandler}>
+    <form
+      className="MainPostForm_Container"
+      encType="multipart/form-data"
+      onSubmit={onSignUpHandler}>
+      <div className="Title">
+        <h1 className="name">새 게시물 만들기</h1>
+      </div>
+
+      <div>
+        <img className="Img" src={filed} alt="" />
+        <label className="Img_label" htmlFor="img_upFile">
+          컴퓨터에서 선택
+        </label>
+      </div>
+      <input
+        type="file"
+        accept="image/*"
+        id="img_upFile"
+        onChange={onLoadFile}
+        style={{ display: "none" }}
+      />
+
       <input
         type="text"
         placeholder="입력해주세요."
@@ -49,17 +68,10 @@ const PostForm = () => {
         name="content"
         onChange={onChangeHandler}
       />
+
       <button>추가하기</button>
-      <h1>이미지 업로드</h1>
-      <img src={filed} alt="" />
-      <input
-        type="file"
-        accept="image/*"
-        id="img_upFile"
-        onChange={onLoadFile}
-      />
     </form>
   );
 };
 
-export default PostForm;
+export default MainPostForm;

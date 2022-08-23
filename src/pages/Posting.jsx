@@ -1,11 +1,11 @@
 import React from "react";
-import PostForm from "../commponent/post/PostForm";
-import { useDispatch } from "react-redux";
+
+import MainPostForm from "../commponent/mainPost/MainPostForm";
 
 const Posting = () => {
   return (
     <div>
-      <PostForm />
+      <MainPostForm />
     </div>
   );
 };
