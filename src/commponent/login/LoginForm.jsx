@@ -20,9 +20,13 @@ const Login = () => {
   //useRef 값이 뱐해도 리렌더링 되지않음
   const id_ref = useRef(null);
   const pw_ref = useRef(null);
+  // 미디어쿼리
+  const isSmallMode = useMediaQuery({
+    query: "(max-width : 1000px)",
+  });
 
   //login버튼 눌렀을때 값 가져오기 & 유효성검사
-  const loginform = () => {
+  const Loginform = () => {
     // console.log(id_ref.current.value, pw_ref.current.value);
     const memberId = id_ref.current.value;
     const password = pw_ref.current.value;
@@ -31,48 +35,73 @@ const Login = () => {
     } else {
       dispatch(loginDB({ memberId, password }));
     }
-
-    // 미디어쿼리
-    // const isSmallMode = useMediaQuery({
-    //   query: "(max-width :870px)",
-    // });
   };
 
   return (
-    <div className="loginBackground">
-      <div className="loginContainer">
-        <div className="loginleftContainer">
-          <div className="pleasedontmove">
-            <img className="loginleftimg1" src={login_screen1} />
-            <img className="loginleftimg2" src={login_screen2} />
-            <img className="loginleftimg3" src={login_screen3} />
-          </div>
-        </div>
-        <div className="loginrightContainer">
-          <div className="loginDiv">
-            <div className="loginsmallDiv">
-              <img src={logo} />
-              <input placeholder="아이디" ref={id_ref} />
-              <br />
-              <input type="password" placeholder="비밀번호" ref={pw_ref} />
-              <br />
-              <button onClick={loginform}>로그인</button>
+    <>
+      {isSmallMode ? (
+        <div className="S-loginBackground">
+          <div className="S-loginrightContainer">
+            <div className="S-loginDiv">
+              <div className="S-loginsmallDiv">
+                <img src={logo} />
+                <input placeholder="아이디" ref={id_ref} />
+                <br />
+                <input type="password" placeholder="비밀번호" ref={pw_ref} />
+                <br />
+                <button onClick={Loginform}>로그인</button>
+              </div>
+              <HorizontalLine text={"또는"} />
+              <img src={kakao_login} className="S-kakao" />
+              <div className="S-checkpw">비밀번호를 잊으셨나요?</div>
             </div>
-            <HorizontalLine text={"또는"} />
-            <img src={kakao_login} className="kakao" />
-            <div className="checkpw">비밀번호를 잊으셨나요?</div>
-          </div>
-          <div className="siginupPage">
-            <div>계정이 잆으신가요?</div>
-            <div onClick={() => navigate("/signup")}> 가입하기</div>
-          </div>
-          <div className="appBox">
-            <p>앱을 다운로드하세요.</p>
-            <img src={appimg} />
+            <div className="S-siginupPage">
+              <div>계정이 잆으신가요?</div>
+              <div onClick={() => navigate("/signup")}> 가입하기</div>
+            </div>
+            <div className="S-appBox">
+              <p>앱을 다운로드하세요.</p>
+              <img src={appimg} />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div className="loginBackground">
+          <div className="loginContainer">
+            <div className="loginleftContainer">
+              <div className="pleasedontmove">
+                <img className="loginleftimg1" src={login_screen1} />
+                <img className="loginleftimg2" src={login_screen2} />
+                <img className="loginleftimg3" src={login_screen3} />
+              </div>
+            </div>
+            <div className="loginrightContainer">
+              <div className="loginDiv">
+                <div className="loginsmallDiv">
+                  <img src={logo} />
+                  <input placeholder="아이디" ref={id_ref} />
+                  <br />
+                  <input type="password" placeholder="비밀번호" ref={pw_ref} />
+                  <br />
+                  <button onClick={Loginform}>로그인</button>
+                </div>
+                <HorizontalLine text={"또는"} />
+                <img src={kakao_login} className="kakao" />
+                <div className="checkpw">비밀번호를 잊으셨나요?</div>
+              </div>
+              <div className="siginupPage">
+                <div>계정이 잆으신가요?</div>
+                <div onClick={() => navigate("/signup")}> 가입하기</div>
+              </div>
+              <div className="appBox">
+                <p>앱을 다운로드하세요.</p>
+                <img src={appimg} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
