@@ -17,25 +17,24 @@ import {
   _postsList,
 } from "../../redux/modules/postsSlice";
 const ListContent = ({ ListData }) => {
-  var scrollY = window.scrollY;
+ 
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const handleClose = () => {
+  const handleClose = async () => {
+    const CloseMoDalScrollY = localStorage.getItem("scrolly");
     setShow(false);
-    window.scrollTo(0, scrollY);
+    window.scrollTo(0, CloseMoDalScrollY);
   };
-  const handleShow = () => {
-    setShow(true);
+  const handleShow = async () => {
+    let scrollY = window.scrollY;
     localStorage.setItem("scrolly", scrollY);
+    setShow(true);   
   };
 
   const initialState = {
     postId: "",
     content: "",
   };
-
-  const nowScroll = window.scrollY;
-  console.log(nowScroll);
 
   const [newComment, setNewComment] = useState(initialState);
 
@@ -82,7 +81,7 @@ const ListContent = ({ ListData }) => {
           </button>
           <button className="ListContentHead_button">
             <BsChat
-              className="ListContentHead_button_outline"
+              className="ListContentHead_button_outline_chat"
               onClick={handleShow}
             />
             <Modal show={show} onHide={handleClose}>
@@ -92,7 +91,7 @@ const ListContent = ({ ListData }) => {
         </div>
         <div className="ListContentHead_right">
           <button className="ListContentHead_button">
-            <BsBookmark className="ListContentHead_button_outline" />
+            <BsBookmark className="ListContentHead_button_outline_bm" />
             {/* <BsFillBookmarkFill className="ListContentHead_button_outline" /> */}
           </button>
         </div>
@@ -124,7 +123,11 @@ const ListContent = ({ ListData }) => {
                 댓글&nbsp;<span>{ListData.commentCnt}</span>개 모두 보기
               </div>
               <Modal show={show} onHide={handleClose}>
-                <Detail ListData={ListData} onHide={handleClose} />
+                <Detail
+                  ListData={ListData}
+                  onHide={handleClose}
+                  postid={ListData.postId}
+                />
               </Modal>
             </>
           )}

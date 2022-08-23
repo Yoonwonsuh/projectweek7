@@ -1,0 +1,43 @@
+.postModalContainer {
+  width: 150px;
+  height: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  background: white;
+  position: relative;
+  border-radius: 10px;
+  left: -114px;
+  display: flex;
+  flex-direction: column;
+}
+
+.postModalEditBox {
+  height: 50%;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+.postModalDeleteBox {
+  height: 50%;
+  cursor: default;
+}
+
+.postModalEditText {
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.postModalDeleteText {
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+  color: red;
+  &:hover {
+    scale: 1.1;
+  }
+}
