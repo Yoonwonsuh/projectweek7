@@ -17,10 +17,14 @@
   display: block;
   width: 50%;
   height: 100%;
-  background-image: url(https://www.instagram.com/static/images/homepage/phones/home-phones-2x.png/cbc7174b4f05.png);
-  background-size: 575px;
   background-repeat: no-repeat;
   background-position: center;
+}
+.loginleftback{
+  position: absolute;
+  margin-left: 1px;
+  margin-top: 62px;
+  width: 570px;
 }
 
 .loginleftimg1 {

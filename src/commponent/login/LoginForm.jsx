@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
+import login_phone from "../../img/login_phone.png"
 import login_screen1 from "../../img/login_screen1.png";
 import login_screen2 from "../../img/login_screen2.png";
 import login_screen3 from "../../img/login_screen3.png";
@@ -70,6 +71,7 @@ const Login = () => {
           <div className="loginContainer">
             <div className="loginleftContainer">
               <div className="pleasedontmove">
+              <img className="loginleftback" src={login_phone} />
                 <img className="loginleftimg1" src={login_screen1} />
                 <img className="loginleftimg2" src={login_screen2} />
                 <img className="loginleftimg3" src={login_screen3} />
