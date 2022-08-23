@@ -5,7 +5,7 @@ export const getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.get(`posts/${payload}/comments`); //payload에 postId 입력
+      const { data } = await instance.get(`posts/${payload.postid}/comments/${payload.nickname}`); //payload에 postId 입력
       if (data.success === true) {
         return thunkAPI.fulfillWithValue(data.data);
       } else {

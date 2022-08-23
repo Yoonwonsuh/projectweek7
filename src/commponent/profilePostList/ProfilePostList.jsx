@@ -19,12 +19,12 @@ const ProfilePostList = () => {
   }, []);
 
   const ProfilePostList = useSelector((state) => state.profile.myPost);
-  console.log(ProfilePostList);
+
 
   return (
     <div className="ProfilePostListContainer">
       {ProfilePostList.map((profilepost) => {
-        return <ProfilePost profilepost={profilepost} />;
+        return <ProfilePost profilepost={profilepost} key={profilepost.postId}/>;
       })}
     </div>
   );

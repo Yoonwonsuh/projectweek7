@@ -20,12 +20,12 @@ import {
 const ListContent = ({ ListData }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const handleClose = async () => {
+  const handleClose =() => {
     const CloseMoDalScrollY = localStorage.getItem("scrolly");
     setShow(false);
     window.scrollTo(0, CloseMoDalScrollY);
   };
-  const handleShow = async () => {
+  const handleShow = () => {
     let scrollY = window.scrollY;
     localStorage.setItem("scrolly", scrollY);
     setShow(true);
