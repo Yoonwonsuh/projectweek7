@@ -64,9 +64,6 @@ export const editPostsList = createAsyncThunk(
 export const deletePostsList = createAsyncThunk(
   "deletePostsList",
   async (payload, thunkAPI) => {
-    // payload = postId
-    // header: token;?
-
     try {
       const response = await instance.delete(`posts/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
@@ -84,6 +81,16 @@ export const postsListSlice = createSlice({
       state.postsList.map((post) => {
         if (post.postId == action.payload.postId) {
           return (post.commentCnt = post.commentCnt + 1);
+        } else {
+          return post;
+        }
+      });
+    },
+
+    onModalApearHandler: (state, action) => {
+      state.postsList.map((post) => {
+        if (post.postId == action.payload.postId) {
+          return (post.isModalMode = !post.isModalMode);
         } else {
           return post;
         }
@@ -120,7 +127,7 @@ export const postsListSlice = createSlice({
     },
     [deletePostsList.fulfilled]: (state, action) => {
       state.postsList = state.postsList.filter(
-        (comment) => comment.author !== action.payload
+        (post) => post.postId != action.payload
       );
     },
     [deletePostsList.rejected]: (state, action) => {
@@ -129,5 +136,6 @@ export const postsListSlice = createSlice({
   },
 });
 
-export const { onAddCommentHandler } = postsListSlice.actions;
+export const { onAddCommentHandler, onModalApearHandler } =
+  postsListSlice.actions;
 export default postsListSlice.reducer;

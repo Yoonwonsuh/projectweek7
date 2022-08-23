@@ -15,21 +15,29 @@
   height: 50%;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  cursor:default;
+  cursor: default;
 }
 
 .postModalDeleteBox {
   height: 50%;
-  cursor:default;
+  cursor: default;
 }
 
-.postModalEditText{
-    margin-top: 15px;
-    cursor: pointer;
+.postModalEditText {
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+  }
 }
 
-.postModalDeleteText{
-    margin-top: 15px;
-    cursor: pointer;
-    color: red;
+.postModalDeleteText {
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+  color: red;
+  &:hover {
+    scale: 1.1;
+  }
 }
