@@ -6,6 +6,7 @@ import {
   BsChat,
   BsBookmark,
   BsHeart,
+  BsHeartFill,
   BsEmojiSmile,
   BsCloudSnowFill,
 } from "react-icons/bs";
@@ -48,10 +49,14 @@ const ListContent = ({ ListData }) => {
       e.preventDefault();
       alert("내용을 입력해주세요");
     } else {
-      await dispatch(addCommentsThunk(newComment));
-      dispatch(onAddCommentHandler(newComment));
+      await dispatch(addCommentsThunk(newComment)); //통신용
+      dispatch(onAddCommentHandler(newComment)); // 리듀서용 새로고침 안해도 업뎃됨
       setNewComment(initialState);
     }
+  };
+
+  const onLikeClick = (postId) => {
+    dispatch();
   };
 
   return (
@@ -59,8 +64,21 @@ const ListContent = ({ ListData }) => {
       <div className="ListContentHead">
         <div className="ListContentHead_left">
           <button className="ListContentHead_button">
-            {/* <BsHeartFill className="ListContentHead_button_outline" /> */}
-            <BsHeart className="ListContentHead_button_outline" />
+            {ListData.isLike ? (
+              <BsHeartFill
+                className="ListContentHead_button_outline"
+                onClick={() => {
+                  onLikeClick(ListData.postId);
+                }}
+              />
+            ) : (
+              <BsHeart
+                className="ListContentHead_button_outline"
+                onClick={() => {
+                  onLikeClick(ListData.postId);
+                }}
+              />
+            )}
           </button>
           <button className="ListContentHead_button">
             <BsChat
