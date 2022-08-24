@@ -13,10 +13,6 @@ const MainPostForm = () => {
 
   const [inputForm, setInputForm] = useState(initialState);
 
-  useEffect(() => {
-    dispatch(_postsList());
-  }, []);
-
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });
