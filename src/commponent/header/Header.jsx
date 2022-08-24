@@ -26,7 +26,6 @@ const Header = () => {
   const myProfile = useSelector((state) => state.myprofile.myrealProfile);
   const listData = useSelector((state) => state.posts.postsList);
 
-  console.log("12312321312312321321", listData);
   return (
     <div className="header_wrap">
       <div className="header_container">

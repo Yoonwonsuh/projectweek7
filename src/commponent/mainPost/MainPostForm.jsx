@@ -5,12 +5,14 @@ import { addPostsList } from "../../redux/modules/postsSlice";
 import { IoMdArrowBack } from "react-icons/io";
 
 import "./MainForm.scss";
+import { useNavigate } from "react-router-dom";
 
 const MainPostForm = ({ setIsModal }) => {
   const dispatch = useDispatch();
   const [filed, setFiled] = useState("");
+  const navigate = useNavigate();
   const img_ref = useRef(null);
-
+  console.log("1111111111111111111111111", filed);
   const userNickName = localStorage.getItem("nickname");
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const MainPostForm = ({ setIsModal }) => {
 
   const [inputForm, setInputForm] = useState(initialState);
   const [textAreaCount, setTextAreaCount] = useState(0);
-
+  console.log("222222222222", inputForm.content);
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });
@@ -53,8 +55,32 @@ const MainPostForm = ({ setIsModal }) => {
 
     await dispatch(addPostsList(formData));
 
-    window.alert("이미지 업로드 성공");
+    if (filed == "") {
+      return window.alert("작성을 완료해 주세요!");
+    } else {
+      window.alert("새 게시물 만들기 완료");
+      // 포스팅 완료후 새로고침
+      window.location.replace("/");
+    }
   };
+
+  useEffect(() => {
+    onSignUpHandler();
+  }, []);
+
+  // 모달 켜졌을때 뒤에 스크롤 방지
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
 
   return (
     <div className="MainPostForm_Wrap">
@@ -73,9 +99,14 @@ const MainPostForm = ({ setIsModal }) => {
 
         <div className="body">
           <div className="Left">
-            <div className="left_body">
-              <img className="Img" src={filed} alt="" />
-            </div>
+            {!filed == "" ? (
+              <div className="left_img">
+                <img className="Img" src={filed} alt="" />
+              </div>
+            ) : (
+              ""
+            )}
+
             <label className="Img_label" htmlFor="img_upFile">
               <p>컴퓨터에서 선택</p>
             </label>
