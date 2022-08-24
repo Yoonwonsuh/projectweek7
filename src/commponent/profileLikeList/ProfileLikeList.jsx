@@ -16,7 +16,7 @@ const ProfileLikeList = () => {
 
   useEffect(() => {
     dispatch(getMyLikePostThunk(id));
-  }, []);
+  },[]);
 
   const ProfileLikeList = useSelector((state) => state.profile.myLikePost);
 
