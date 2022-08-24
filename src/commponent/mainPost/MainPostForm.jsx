@@ -1,16 +1,9 @@
-<<<<<<< Updated upstream
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
-import { addPostsList } from "../../redux/modules/postsSlice";
-=======
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 import { addPostsList } from "../../redux/modules/postsSlice";
 import { IoMdArrowBack } from "react-icons/io";
 
->>>>>>> Stashed changes
 import "./MainForm.scss";
 
 const MainPostForm = ({ setIsModal }) => {
@@ -46,11 +39,7 @@ const MainPostForm = ({ setIsModal }) => {
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-<<<<<<< Updated upstream
     let uploadImg = document.getElementById("img_upFile");
-=======
-    let uploadImg = img_ref.current;
->>>>>>> Stashed changes
 
     // document.getElementById("img_upFile");  리액트에선 ref 이용
 
@@ -67,28 +56,6 @@ const MainPostForm = ({ setIsModal }) => {
   };
 
   return (
-<<<<<<< Updated upstream
-    <form
-      className="MainPostForm_Container"
-      encType="multipart/form-data"
-      onSubmit={onSignUpHandler}>
-      <div className="Title">
-        <h1 className="name">새 게시물 만들기</h1>
-      </div>
-
-      <div className="body">
-        <div className="Left">
-          <img className="Img" src={filed} alt="" />
-          <label className="Img_label" htmlFor="img_upFile">
-            <p>컴퓨터에서 선택</p>
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            id="img_upFile"
-            onChange={onLoadFile}
-            style={{ display: "none" }}
-=======
     <div className="MainPostForm_Wrap">
       <form
         className="MainPostForm_Container"
@@ -98,7 +65,6 @@ const MainPostForm = ({ setIsModal }) => {
           <IoMdArrowBack
             className="backBtn"
             onClick={() => setIsModal(false)}
->>>>>>> Stashed changes
           />
           <h1 className="name">새 게시물 만들기</h1>
           <button className="addBtn">추가하기</button>
