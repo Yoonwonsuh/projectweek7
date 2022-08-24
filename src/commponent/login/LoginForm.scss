@@ -20,7 +20,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.loginleftback{
+.loginleftback {
   position: absolute;
   margin-left: 1px;
   margin-top: 62px;
@@ -148,23 +148,50 @@
     align-items: center;
     padding-left: 10px;
   }
-  button {
-    border: none;
-    background-color: #b2dffc;
-    font: inherit;
-    color: white;
-    vertical-align: baseline;
-    margin: 0 40px 6px;
-    width: 75%;
-    height: 30px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    &:hover {
-      background-color: #2e95f6;
-    }
-  }
+  // button {
+  //   border: none;
+  //   background-color: #b2dffc;
+  //   font: inherit;
+  //   color: white;
+  //   vertical-align: baseline;
+  //   margin: 0 40px 6px;
+  //   width: 75%;
+  //   height: 30px;
+  //   border-radius: 4px;
+  //   margin-bottom: 20px;
+  //   cursor: pointer;
+  // &:hover {
+  //   background-color: #2e95f6;
+  // }
+  //   }
 }
+.loginBtn {
+  border: none;
+  background-color: #b2dffc;
+  font: inherit;
+  color: white;
+  vertical-align: baseline;
+  margin: 0 40px 6px;
+  width: 75%;
+  height: 30px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.loginBtnActive {
+  border: none;
+  background-color: #2e95f6;
+  font: inherit;
+  color: white;
+  vertical-align: baseline;
+  margin: 0 40px 6px;
+  width: 75%;
+  height: 30px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
 .loginsmallDiv {
   display: flex;
   flex-direction: column;
@@ -274,22 +301,22 @@
     align-items: center;
     padding-left: 10px;
   }
-  button {
-    border: none;
-    background-color: #b2dffc;
-    font: inherit;
-    color: white;
-    vertical-align: baseline;
-    margin: 0 40px 6px;
-    width: 75%;
-    height: 30px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    &:hover {
-      background-color: #2e95f6;
-    }
-  }
+  // button {
+  //   border: none;
+  //   background-color: #b2dffc;
+  //   font: inherit;
+  //   color: white;
+  //   vertical-align: baseline;
+  //   margin: 0 40px 6px;
+  //   width: 75%;
+  //   height: 30px;
+  //   border-radius: 4px;
+  //   margin-bottom: 20px;
+  //   cursor: pointer;
+  //   &:hover {
+  //     background-color: #2e95f6;
+  //   }
+  // }
 }
 .S-loginsmallDiv {
   display: flex;

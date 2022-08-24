@@ -15,12 +15,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   onAddCommentHandler,
   _postsList,
-  onLikeBtnHandler,
+  likeCntThunk,
 } from "../../redux/modules/postsSlice";
 const ListContent = ({ ListData }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const handleClose =() => {
+  const handleClose = () => {
     const CloseMoDalScrollY = localStorage.getItem("scrolly");
     setShow(false);
     window.scrollTo(0, CloseMoDalScrollY);
@@ -55,11 +55,7 @@ const ListContent = ({ ListData }) => {
   };
 
   const onLikeClick = () => {
-    dispatch(onLikeBtnHandler(ListData.postId, true));
-  };
-
-  const onUnLikeClick = () => {
-    dispatch(onLikeBtnHandler(ListData.postId, false));
+    dispatch(likeCntThunk(ListData.postId));
   };
 
   return (
@@ -70,6 +66,7 @@ const ListContent = ({ ListData }) => {
             {ListData.isLike ? (
               <BsHeartFill
                 className="ListContentHead_button_outline_heart"
+                color="red"
                 onClick={() => {
                   onLikeClick();
                 }}
@@ -78,7 +75,7 @@ const ListContent = ({ ListData }) => {
               <BsHeart
                 className="ListContentHead_button_outline_heart"
                 onClick={() => {
-                  onUnLikeClick();
+                  onLikeClick();
                 }}
               />
             )}
