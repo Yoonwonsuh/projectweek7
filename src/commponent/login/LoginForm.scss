@@ -20,7 +20,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.loginleftback{
+.loginleftback {
   position: absolute;
   margin-left: 1px;
   margin-top: 62px;
@@ -139,32 +139,43 @@
   }
   input {
     width: 75%;
-    height: 36px;
+    height: 38px;
     background-color: #fafafa;
     border: 1px solid #dbdbdb;
     // margin-bottom: px;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 14px;
     align-items: center;
     padding-left: 10px;
   }
-  button {
-    border: none;
-    background-color: #b2dffc;
-    font: inherit;
-    color: white;
-    vertical-align: baseline;
-    margin: 0 40px 6px;
-    width: 75%;
-    height: 30px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    &:hover {
-      background-color: #2e95f6;
-    }
-  }
 }
+.loginBtn {
+  border: none;
+  background-color: #b2dffc;
+  font: inherit;
+  color: white;
+  vertical-align: baseline;
+  margin: 0 40px 6px;
+  width: 75%;
+  height: 35px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.loginBtnActive {
+  border: none;
+  background-color: #2e95f6;
+  font: inherit;
+  color: white;
+  vertical-align: baseline;
+  margin: 0 40px 6px;
+  width: 75%;
+  height: 35px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
 .loginsmallDiv {
   display: flex;
   flex-direction: column;
@@ -176,7 +187,7 @@
   cursor: pointer;
 }
 .checkpw {
-  font-size: 14px;
+  font-size: 16px;
   color: #385285;
   font-weight: 600;
   margin-bottom: 21px;
@@ -196,7 +207,7 @@
   font-size: 14px;
 
   div {
-    font-size: 14px;
+    font-size: 18px;
     margin-right: 20px;
     // margin: auto;
     &:last-child {
@@ -210,16 +221,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 
   p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 18px;
     text-align: center;
+    margin-bottom: 5px;
   }
   img {
     justify-content: center;
     margin: 10px 0 10px 0;
-    width: 300px;
+    width: 400px;
   }
 }
 
@@ -265,30 +278,14 @@
   }
   input {
     width: 75%;
-    height: 36px;
+    height: 38px;
     background-color: #fafafa;
     border: 1px solid #dbdbdb;
     // margin-bottom: px;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 14px;
     align-items: center;
     padding-left: 10px;
-  }
-  button {
-    border: none;
-    background-color: #b2dffc;
-    font: inherit;
-    color: white;
-    vertical-align: baseline;
-    margin: 0 40px 6px;
-    width: 75%;
-    height: 30px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    &:hover {
-      background-color: #2e95f6;
-    }
   }
 }
 .S-loginsmallDiv {
@@ -302,7 +299,7 @@
   cursor: pointer;
 }
 .S-checkpw {
-  font-size: 14px;
+  font-size: 16px;
   color: #385285;
   font-weight: 600;
   margin-bottom: 21px;
@@ -313,7 +310,7 @@
   border: 1px solid #dbdbdb;
   border-radius: 1px;
   margin: 0 0 10px;
-  padding: 20px 0;
+  padding: 22px 0;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -322,7 +319,7 @@
   font-size: 14px;
 
   div {
-    font-size: 14px;
+    font-size: 18px;
     margin-right: 20px;
     // margin: auto;
     &:last-child {
@@ -336,15 +333,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 
   p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 18px;
     text-align: center;
+    margin-bottom: 5px;
   }
   img {
     justify-content: center;
     margin: 10px 0 10px 0;
-    width: 300px;
+    width: 400px;
   }
 }

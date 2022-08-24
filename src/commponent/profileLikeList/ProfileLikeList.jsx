@@ -16,13 +16,13 @@ const ProfileLikeList = () => {
 
   useEffect(() => {
     dispatch(getMyLikePostThunk(id));
-  }, []);
+  },[]);
 
   const ProfileLikeList = useSelector((state) => state.profile.myLikePost);
 
   return (
     <div className="ProfileLikeListContainer">
-      {ProfileLikeList.map((profileLike) => {
+      {ProfileLikeList.slice(0).reverse().map((profileLike) => {
         return (
           <ProfileLike profileLike={profileLike}/>
         );

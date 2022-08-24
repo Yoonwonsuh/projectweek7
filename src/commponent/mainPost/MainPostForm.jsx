@@ -4,11 +4,13 @@ import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 import { addPostsList } from "../../redux/modules/postsSlice";
 import { IoMdArrowBack } from "react-icons/io";
 
+
 import "./MainForm.scss";
 
 const MainPostForm = ({ setIsModal }) => {
   const dispatch = useDispatch();
   const [filed, setFiled] = useState("");
+  const img_ref = useRef(null);
 
   const userNickName = localStorage.getItem("nickname");
 
@@ -39,7 +41,7 @@ const MainPostForm = ({ setIsModal }) => {
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    let uploadImg = document.getElementById("img_upFile");
+    let uploadImg = img_ref.current;
 
     // document.getElementById("img_upFile");  리액트에선 ref 이용
 
