@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPostsList, _postsList } from "../../redux/modules/postsSlice";
 import "./MainForm.scss";
@@ -6,6 +6,7 @@ import "./MainForm.scss";
 const MainPostForm = () => {
   const dispatch = useDispatch();
   const [filed, setFiled] = useState("");
+  const img_ref = useRef(null);
 
   const initialState = {
     content: "",
@@ -25,7 +26,7 @@ const MainPostForm = () => {
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    let uploadImg = document.getElementById("img_upFile");
+    let uploadImg = img_ref.current
 
     formData.append(
       "data",
@@ -55,6 +56,7 @@ const MainPostForm = () => {
           </label>
         </div>
         <input
+          ref={img_ref}
           type="file"
           accept="image/*"
           id="img_upFile"
