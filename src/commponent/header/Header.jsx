@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import logo from "../../img/logo.png";
-import { MdOutlineKeyboardArrowDown, MdHomeFilled } from "react-icons/md";
-import { BsPlusSquare, BsHeart } from "react-icons/bs";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -11,18 +10,23 @@ import homeempty from "../../img/homeempty.png";
 import DMempty from "../../img/DMempty.png";
 import Plusempty from "../../img/plusempty.png";
 import loveempty from "../../img/loveempty.png";
+import { onModalApearHandler } from "../../redux/modules/postsSlice";
+import MainPostForm from "../mainPost/MainPostForm";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userNickName = localStorage.getItem("nickname");
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     dispatch(getMMyProfileThunk(userNickName));
   }, [dispatch]);
 
   const myProfile = useSelector((state) => state.myprofile.myrealProfile);
+  const listData = useSelector((state) => state.posts.postsList);
 
+  console.log("12312321312312321321", listData);
   return (
     <div className="header_wrap">
       <div className="header_container">
@@ -59,8 +63,13 @@ const Header = () => {
               <img
                 src={Plusempty}
                 className="container_right_plus"
-                onClick={() => navigate("/Posting")}
+                onClick={() => setIsModal(!isModal)}
               />
+              {isModal ? (
+                <MainPostForm isModal={isModal} setIsModal={setIsModal} />
+              ) : (
+                ""
+              )}
             </div>
             <div className="container_right_wrap_mini">
               <img src={loveempty} className="container_right_heart" />

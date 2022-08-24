@@ -1,19 +1,62 @@
+.MainPostForm_Wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .MainPostForm_Container {
   // background-color: rgb(233, 206, 206);
-  height: 100%;
   flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  // 포지션의 크기에 상관없이 종속
+  width: 70%;
+  height: 80%;
+  display: flex;
+  background-color: white;
+
   //   메인 헤더
   .Title {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgb(223, 222, 222);
     width: 100%;
-
+    height: 55px;
+    .backBtn {
+      font-size: 25px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    .backBtn:hover {
+      font-size: 28px;
+    }
     .name {
       display: flex;
       font-size: 17px;
       margin: 10px 0;
+      position: absolute;
+      right: 45%;
+    }
+    .addBtn {
+      padding: 3px 5px;
+      border-radius: 5px;
+      color: rgba(73, 73, 248, 0.657);
+      background-color: white;
+      border: 0;
+      outline: 0;
+      margin-right: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .addBtn:hover {
+      font-size: 16px;
     }
   }
   .body {
@@ -28,24 +71,42 @@
       flex-direction: column;
       width: 60%;
       align-items: center;
-      .Img {
-        margin-top: 10vh;
-        height: 300px;
-        width: 50vh;
-        display: flex;
-      }
-      .Img_label {
-        margin-top: 10vh;
-        padding: 3px 5px;
-        border-radius: 5px;
-        background-color: rgba(73, 73, 248, 0.657);
-        color: white;
-        font-size: 15px;
-        width: 110px;
+      justify-content: center;
+      border: 1px solid yellow;
+      .left_body {
         display: flex;
         align-items: center;
         justify-content: center;
-        .p {
+        width: 90%;
+        height: 70%;
+        border: 1px solid red;
+        .Img {
+          display: flex;
+          height: 90%;
+          width: 90%;
+          border-style: none;
+          border: 0px;
+          border-width: 0px;
+          display: inline-block;
+          align-items: center;
+          justify-content: center;
+        }
+        .Img_label {
+          padding: 3px 5px;
+          border-radius: 5px;
+          background-color: rgba(73, 73, 248, 0.657);
+          color: white;
+          font-size: 15px;
+          width: 110px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.9s, color 0.3;
+        }
+        .Img_label:hover {
+          box-shadow: 200px 0 0 0 rgba(0, 0, 0, 0.1) inset,
+            -200px 0 0 0 rgba(0, 0, 0, 0.1) inset;
         }
       }
     }
@@ -54,21 +115,22 @@
       // background-color: aqua;
       flex-direction: column;
       width: 40%;
-      border-left: 1px solid gray;
+      border-left: 1px solid rgb(215, 212, 212);
       .Img_header {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         height: 60px;
-        margin: 0 10px;
+        margin: 10px 10px 5px 10px;
         .profile_img {
-          width: 30px;
-          height: 30px;
+          width: 50px;
+          height: 50px;
           border-radius: 50%;
         }
         .profile_nick {
           margin-left: 5px;
           margin-bottom: 4px;
+          font-size: 20px;
         }
       }
       .body_right {
@@ -77,6 +139,7 @@
         flex-direction: column;
         .write_box {
           align-items: flex-start;
+          justify-content: center;
           border: 1px solid yellow;
           background: none;
           border: none;
@@ -86,6 +149,13 @@
           resize: none;
           width: 100%;
           height: 200px;
+          font-size: 17px;
+          padding: 0px 3px;
+        }
+        .textCounter {
+          display: flex;
+          justify-content: flex-end;
+          color: rgba(176, 176, 176, 0.795);
         }
       }
     }

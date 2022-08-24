@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 import { addPostsList } from "../../redux/modules/postsSlice";
+import { IoMdArrowBack } from "react-icons/io";
+
 
 import "./MainForm.scss";
 
-const MainPostForm = () => {
+const MainPostForm = ({ setIsModal }) => {
   const dispatch = useDispatch();
   const [filed, setFiled] = useState("");
   const img_ref = useRef(null);
@@ -17,17 +19,19 @@ const MainPostForm = () => {
   }, [dispatch]);
 
   const myProfile = useSelector((state) => state.myprofile.myrealProfile);
-  console.log("123123123123213", myProfile);
-
   const initialState = {
     content: "",
   };
 
   const [inputForm, setInputForm] = useState(initialState);
+  const [textAreaCount, setTextAreaCount] = useState(0);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });
+
+    // 글자수 카운트
+    setTextAreaCount(e.target.value.length);
   };
 
   const onLoadFile = (e) => {
@@ -54,51 +58,64 @@ const MainPostForm = () => {
   };
 
   return (
-    <form
-      className="MainPostForm_Container"
-      encType="multipart/form-data"
-      onSubmit={onSignUpHandler}
-    >
-      <div className="Title">
-        <h1 className="name">새 게시물 만들기</h1>
-      </div>
-
-      <div className="body">
-        <div className="Left">
-          <img className="Img" src={filed} alt="" />
-          <label className="Img_label" htmlFor="img_upFile">
-            <p>컴퓨터에서 선택</p>
-          </label>
-          <input
-            ref={img_ref}
-            type="file"
-            accept="image/*"
-            id="img_upFile"
-            onChange={onLoadFile}
-            style={{ display: "none" }}
+    <div className="MainPostForm_Wrap">
+      <form
+        className="MainPostForm_Container"
+        encType="multipart/form-data"
+        onSubmit={onSignUpHandler}>
+        <div className="Title">
+          <IoMdArrowBack
+            className="backBtn"
+            onClick={() => setIsModal(false)}
           />
+          <h1 className="name">새 게시물 만들기</h1>
+          <button className="addBtn">추가하기</button>
         </div>
 
-        <div className="Right">
-          <div className="Img_header">
-            <img className="profile_img" src={myProfile.memberImgUrl} alt="" />
-            <div className="profile_nick">{myProfile.nickname}</div>
-          </div>
-
-          <div className="body_right">
+        <div className="body">
+          <div className="Left">
+            <div className="left_body">
+              <img className="Img" src={filed} alt="" />
+            </div>
+            <label className="Img_label" htmlFor="img_upFile">
+              <p>컴퓨터에서 선택</p>
+            </label>
             <input
-              className="write_box"
-              type="text"
-              placeholder="입력해주세요."
-              value={inputForm.content}
-              name="content"
-              onChange={onChangeHandler}
+              ref={img_ref}
+              type="file"
+              accept="image/*"
+              id="img_upFile"
+              onChange={onLoadFile}
+              style={{ display: "none" }}
             />
-            <button>추가하기</button>
+          </div>
+
+          <div className="Right">
+            <div className="Img_header">
+              <img
+                className="profile_img"
+                src={myProfile.memberImgUrl}
+                alt=""
+              />
+              <div className="profile_nick">{myProfile.nickname}</div>
+            </div>
+
+            <div className="body_right">
+              <textarea
+                className="write_box"
+                type="text"
+                placeholder="문구 입력..."
+                value={inputForm.content}
+                name="content"
+                maxLength="1000"
+                onChange={onChangeHandler}
+              />
+              <p className="textCounter">{textAreaCount}/1000</p>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

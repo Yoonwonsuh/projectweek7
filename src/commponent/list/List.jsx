@@ -11,7 +11,6 @@ import { _postsList } from "../../redux/modules/postsSlice";
 const List = ({ nickname }) => {
   const dispatch = useDispatch();
   const listData = useSelector((state) => state.posts.postsList);
-  console.log("11111111", listData);
   useEffect(() => {
     dispatch(_postsList(nickname));
   }, [dispatch]);
