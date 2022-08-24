@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect,useRef,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 import { addPostsList } from "../../redux/modules/postsSlice";
+
 import "./MainForm.scss";
 
 const MainPostForm = () => {
   const dispatch = useDispatch();
   const [filed, setFiled] = useState("");
+  const img_ref = useRef(null);
 
   const userNickName = localStorage.getItem("nickname");
 
@@ -35,7 +38,7 @@ const MainPostForm = () => {
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    let uploadImg = document.getElementById("img_upFile");
+    let uploadImg = img_ref.current
 
     // document.getElementById("img_upFile");  리액트에선 ref 이용
 
@@ -66,12 +69,14 @@ const MainPostForm = () => {
           <label className="Img_label" htmlFor="img_upFile">
             <p>컴퓨터에서 선택</p>
           </label>
-          <input
-            type="file"
-            accept="image/*"
-            id="img_upFile"
-            onChange={onLoadFile}
-            style={{ display: "none" }}
+        <input
+          ref={img_ref}
+          type="file"
+          accept="image/*"
+          id="img_upFile"
+          onChange={onLoadFile}
+          style={{ display: "none" }}
+        />
           />
         </div>
 
