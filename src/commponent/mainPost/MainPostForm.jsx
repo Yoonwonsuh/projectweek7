@@ -1,5 +1,4 @@
-
-import React, { useEffect,useRef,useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 import { addPostsList } from "../../redux/modules/postsSlice";
@@ -38,7 +37,7 @@ const MainPostForm = () => {
   const onSignUpHandler = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    let uploadImg = img_ref.current
+    let uploadImg = img_ref.current;
 
     // document.getElementById("img_upFile");  리액트에선 ref 이용
 
@@ -58,7 +57,8 @@ const MainPostForm = () => {
     <form
       className="MainPostForm_Container"
       encType="multipart/form-data"
-      onSubmit={onSignUpHandler}>
+      onSubmit={onSignUpHandler}
+    >
       <div className="Title">
         <h1 className="name">새 게시물 만들기</h1>
       </div>
@@ -69,14 +69,13 @@ const MainPostForm = () => {
           <label className="Img_label" htmlFor="img_upFile">
             <p>컴퓨터에서 선택</p>
           </label>
-        <input
-          ref={img_ref}
-          type="file"
-          accept="image/*"
-          id="img_upFile"
-          onChange={onLoadFile}
-          style={{ display: "none" }}
-        />
+          <input
+            ref={img_ref}
+            type="file"
+            accept="image/*"
+            id="img_upFile"
+            onChange={onLoadFile}
+            style={{ display: "none" }}
           />
         </div>
 
