@@ -150,9 +150,7 @@ const Detail = ({ onHide, postid }) => {
                         <div
                           className="DetainRightContentWholeBox"
                           key={comment.commentId}
-                          onClick={() =>
-                            onClicknavigate(`/profile/${comment.author}`)
-                          }
+                          
                         >
                           <div className="DetailuserImgBox">
                             <img
@@ -162,7 +160,10 @@ const Detail = ({ onHide, postid }) => {
                             />
                           </div>
                           <div className="DetailRightContentBox">
-                            <a className="DetailOnerNickname">
+                            <a className="DetailOnerNickname"
+                            onClick={() =>
+                              onClicknavigate(`/profile/${comment.author}`)
+                            }>
                               {comment.author}
                             </a>
                             <span className="DetailOnerBody">
