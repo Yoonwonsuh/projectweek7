@@ -52,16 +52,22 @@ export const deleteCommentThunk = createAsyncThunk(
     }
   }
 );
-// // 댓글 좋아요 /posts/{postId}/comments/{commentId}/like
-// export const CommentLikeCntThunk = createAsyncThunk (
-//   "CommentLikeCntThunk",async{payload,thunkAPI}=>{
-//     try {
-//       const response = await instance.post(`posts/${payload.postId}/comments/${payload.commentId}/like`);
-
-//     }
-//   }
-
-// )
+// 댓글 좋아요 /posts/{postId}/comments/{commentId}/like
+export const CommentLikeCntThunk = createAsyncThunk(
+  "CommentLikeCntThunk",
+  async (payload, thunkAPI) => {
+    console.log("please", payload);
+    try {
+      const response = await instance.post(
+        `posts/${payload.postId}/comments/${payload.commentId}/like`
+      );
+      // return console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 
 const initialState = {
   comments: [],
@@ -97,6 +103,19 @@ export const commentsSlice = createSlice({
       state.error = action.payload;
     },
     [deleteCommentThunk.pending]: () => {},
+
+    [CommentLikeCntThunk.fulfilled]: (state, action) => {
+      state.comments.map((post) => {
+        if (post.commentId == action.payload.commentId) {
+          return (
+            (post.isLike = action.payload.isLike),
+            (post.commentLikeCnt = action.payload.commentLikeCnt)
+          );
+        } else {
+          return post;
+        }
+      });
+    },
   },
 });
 
