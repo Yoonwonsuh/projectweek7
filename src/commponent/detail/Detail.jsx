@@ -6,6 +6,7 @@ import {
   FaRegGrinAlt,
   FaTimes,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostThunk, editPostThunk } from "../../redux/modules/postSlice";
@@ -23,6 +24,7 @@ import { detailLikeThunk } from "../../redux/modules/postSlice";
 
 const Detail = ({ onHide, postid }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const initialState = {
     postId: "",
@@ -84,6 +86,11 @@ const Detail = ({ onHide, postid }) => {
     dispatch(onDetailLikeHandler(detailPost.postId));
   };
 
+  const onClicknavigate = (payload) => {
+    navigate(payload);
+    onHide();
+  };
+
   const onLikeCommentClick = () => {};
 
   return (
@@ -117,7 +124,14 @@ const Detail = ({ onHide, postid }) => {
                     />
                   </div>
                   <div className="DetailRightContentBox">
-                    <a className="DetailOnerNickname">{detailPost.author}</a>
+                    <a
+                      className="DetailOnerNickname"
+                      onClick={() =>
+                        onClicknavigate(`/profile/${detailPost.author}`)
+                      }
+                    >
+                      {detailPost.author}
+                    </a>
                     <span className="DetailOnerBody">{detailPost.content}</span>
                     <div className="DetailBodyTail">{detailPost.createdAt}</div>
                   </div>
@@ -129,6 +143,9 @@ const Detail = ({ onHide, postid }) => {
                         <div
                           className="DetainRightContentWholeBox"
                           key={comment.commentId}
+                          onClick={() =>
+                            onClicknavigate(`/profile/${comment.author}`)
+                          }
                         >
                           <div className="DetailuserImgBox">
                             <img
@@ -150,7 +167,7 @@ const Detail = ({ onHide, postid }) => {
                             </div>
                           </div>
                           <div className="DetailCommentLike">
-                            {detailPost.isLike ? (
+                            {comment.isLike ? (
                               <BsHeartFill
                                 color="red"
                                 onClick={() => {

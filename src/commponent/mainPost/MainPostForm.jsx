@@ -77,7 +77,6 @@ const MainPostForm = () => {
           onChange={onLoadFile}
           style={{ display: "none" }}
         />
-          />
         </div>
 
         <div className="Right">
