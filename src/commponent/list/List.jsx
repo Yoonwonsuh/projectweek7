@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ListContent from "./ListContent";
 import { _postsList } from "../../redux/modules/postsSlice";
 
-const List = ({nickname}) => {
+const List = ({ nickname }) => {
   const dispatch = useDispatch();
   const listData = useSelector((state) => state.posts.postsList);
-
+  console.log("11111111", listData);
   useEffect(() => {
     dispatch(_postsList(nickname));
   }, [dispatch]);
@@ -26,11 +26,11 @@ const List = ({nickname}) => {
         return (
           <div className="ListWarp" key={ListData.postId}>
             {/* 상단바 */}
-            <ListNav ListData={ListData}/>
+            <ListNav ListData={ListData} />
             {/* 이미지 */}
-            <ListImg ListData={ListData}/>
+            <ListImg ListData={ListData} />
             {/* 아래 컨텐츠 박스 */}
-            <ListContent ListData={ListData}/>
+            <ListContent ListData={ListData} />
           </div>
         );
       })}
