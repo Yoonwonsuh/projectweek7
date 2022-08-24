@@ -4,7 +4,6 @@ import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
 import { addPostsList } from "../../redux/modules/postsSlice";
 import { IoMdArrowBack } from "react-icons/io";
 
-
 import "./MainForm.scss";
 
 const MainPostForm = ({ setIsModal }) => {
