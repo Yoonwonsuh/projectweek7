@@ -14,6 +14,7 @@ import {
   getCommentsThunk,
   deleteCommentThunk,
   addCommentsThunk,
+  CommentLikeCntThunk,
 } from "../../redux/modules/commentsSlice";
 import "./Detail.scss";
 import {
@@ -86,12 +87,18 @@ const Detail = ({ onHide, postid }) => {
     dispatch(onDetailLikeHandler(detailPost.postId));
   };
 
+
   const onClicknavigate = (payload) => {
     navigate(payload);
     onHide();
   };
 
-  const onLikeCommentClick = () => {};
+  // comment.postId
+  const onLikeCommentClick = (comment) => {
+    console.log(comment);
+    dispatch(CommentLikeCntThunk(comment));
+  };
+
 
   return (
     <>
@@ -171,13 +178,13 @@ const Detail = ({ onHide, postid }) => {
                               <BsHeartFill
                                 color="red"
                                 onClick={() => {
-                                  onLikeCommentClick();
+                                  onLikeCommentClick(comment);
                                 }}
                               />
                             ) : (
                               <BsHeart
                                 onClick={() => {
-                                  onLikeCommentClick();
+                                  onLikeCommentClick(comment);
                                 }}
                               />
                             )}

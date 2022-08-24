@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./SignupForm.scss";
 import logo from "../../img/logo.png";
-import appimg from "../../img/appimg.png";
+import kakao_login from "../../img/kakao_login.png";
 import profileimg from "../../img/profileimg.png";
 import HorizontalLine from "../HorizontalLine/HorizontalLine";
 import { signupDB } from "../../redux/modules/memberSlice";
@@ -24,7 +24,10 @@ const Signupform = () => {
   const [memIdCheck, setMemIdCheck] = useState(false);
   const [nickCheck, setNickCheck] = useState(false);
   const [passCheck, setPassChekc] = useState(false);
+  // 이미지 파일
   const [files, setFiles] = useState("");
+  //가입 버튼 활성화
+  const [btnState, setBtnState] = useState(false);
 
   // password 특수문자, 숫자, 영어 검사를 위한 정규식표현.
   const specialLetter = newMember.password.search(
@@ -89,6 +92,16 @@ const Signupform = () => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setNewMember({ ...newMember, [name]: value });
+
+    if (
+      newMember.memberId &&
+      newMember.nickname &&
+      newMember.password.length > 4
+    ) {
+      setBtnState(true);
+    } else {
+      setBtnState(false);
+    }
   };
 
   // 선택된 파일 읽기
@@ -134,7 +147,7 @@ const Signupform = () => {
           <div>
             <img src={logo} />
             <p>찬구들의 사진과 동영상을 보려면 가입하세요.</p>
-            <div> 카카오톡으로 로그인 </div>
+            <img src={kakao_login} className="S-kakao" />
           </div>
           <HorizontalLine text={"또는"} />
           <div className="signupInput">
@@ -208,13 +221,17 @@ const Signupform = () => {
               />
             </div>
             <p className="signupInfor">
-              서비스를 이용하는 사람이 회원님의 연락처 정보를 Instagram에
-              업로드했을 수도 있습니다.
+              서비스를 이용하는 사람이 회원님의 연락처 정보를
+              <br /> Instagram에 업로드했을 수도 있습니다.
               <a href="https://www.facebook.com/help/instagram/261704639352628">
                 더 알아보기
               </a>
             </p>
-            <button className="signinBtn" type="sumbit">
+            <button
+              className="signinBtn"
+              type="sumbit"
+              disabled={btnState ? false : true}
+            >
               가입
             </button>
           </div>
