@@ -110,6 +110,7 @@ export const postsListSlice = createSlice({
         }
       });
     },
+
     onDetailLikeHandler: (state, action) => {
       state.postsList.map((post) => {
         if (post.postId == action.payload) {
