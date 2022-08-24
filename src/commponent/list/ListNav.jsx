@@ -3,7 +3,6 @@ import "./List.scss";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { onModalApearHandler } from "../../redux/modules/postsSlice";
-import Detail from "../detail/Detail";
 import { useDispatch } from "react-redux";
 import imgRound from "../../img/imgRound.png";
 import PostModal from "../postModal/PostModal";
@@ -18,8 +17,7 @@ const ListNav = ({ ListData }) => {
     <div className="ListNav_Wrap">
       <div
         className="ListNav_left"
-        onClick={() => navigate(`/profile/${ListData.author}`)}
-      >
+        onClick={() => navigate(`/profile/${ListData.author}`)}>
         <div className="ListNav_left_img_box">
           <img src={imgRound} className="ListNav_left_img_round" />
           <img

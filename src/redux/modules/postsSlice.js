@@ -98,7 +98,11 @@ export const postsListSlice = createSlice({
       });
     },
 
+<<<<<<< Updated upstream
     onLikeBtnHandler: (state, action) => {
+=======
+    onDetailLikeHandler: (state, action) => {
+>>>>>>> Stashed changes
       state.postsList.map((post) => {
         if (post.postId == action.payload.postId) {
           return (post.isLike += action.payload.isLike ? 1 : -1);
