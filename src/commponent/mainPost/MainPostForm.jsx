@@ -11,6 +11,7 @@ const MainPostForm = ({ setIsModal }) => {
   const dispatch = useDispatch();
   const [filed, setFiled] = useState("");
   const navigate = useNavigate();
+
   const img_ref = useRef(null);
   console.log("1111111111111111111111111", filed);
   const userNickName = localStorage.getItem("nickname");
@@ -82,8 +83,19 @@ const MainPostForm = ({ setIsModal }) => {
     };
   }, []);
 
+  // 모달 바깥 눌럿을때 닫힘
+  const outSection = useRef();
+
   return (
-    <div className="MainPostForm_Wrap">
+    <div
+      className="MainPostForm_Wrap"
+      // 모달 바깥 눌럿을때 닫힘
+      ref={outSection}
+      onClick={(e) => {
+        if (outSection.current === e.target) {
+          setIsModal(false);
+        }
+      }}>
       <form
         className="MainPostForm_Container"
         encType="multipart/form-data"
