@@ -5,7 +5,9 @@ export const getPostThunk = createAsyncThunk(
   "GET_POST",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await instance.get(`posts/${payload.postid}/${payload.nickname}`); //payload에 postId 입력
+      const { data } = await instance.get(
+        `posts/${payload.postid}/${payload.nickname}`
+      ); //payload에 postId 입력
       if (data.success === true) {
         return thunkAPI.fulfillWithValue(data.data);
       } else {
@@ -30,6 +32,23 @@ export const editPostThunk = createAsyncThunk(
         }
       );
       if (data.success === true) {
+        return thunkAPI.fulfillWithValue(data.data);
+      } else {
+        return console.log(data);
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+// 디테일 페이지 좋아요
+export const detailLikeThunk = createAsyncThunk(
+  "detailLikeThunk",
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await instance.post(`posts/${payload}/like`);
+      if (data.success === true) {
+        // return console.log(data);
         return thunkAPI.fulfillWithValue(data.data);
       } else {
         return console.log(data);
@@ -68,6 +87,11 @@ export const postSlice = createSlice({
       state.error = action.payload;
     },
     [editPostThunk.pending]: () => {},
+
+    [detailLikeThunk.fulfilled]: (state, action) => {
+      state.post.isLike = action.payload.isLike;
+      state.post.postLikeCnt = action.payload.postLikeCnt;
+    },
   },
 });
 

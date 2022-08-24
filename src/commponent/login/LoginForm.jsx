@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import login_phone from "../../img/login_phone.png"
+import login_phone from "../../img/login_phone.png";
 import login_screen1 from "../../img/login_screen1.png";
 import login_screen2 from "../../img/login_screen2.png";
 import login_screen3 from "../../img/login_screen3.png";
@@ -25,8 +25,15 @@ const Login = () => {
   const isSmallMode = useMediaQuery({
     query: "(max-width : 1000px)",
   });
-  //
-
+  //로그인 버튼 활성화
+  const [btnState, setBtnState] = useState(false);
+  const onBtn = () => {
+    if (id_ref.current.value && pw_ref.current.value.length > 5) {
+      setBtnState(true);
+    } else {
+      setBtnState(false);
+    }
+  };
   //login버튼 눌렀을때 값 가져오기 & 유효성검사
   const Loginform = () => {
     // console.log(id_ref.current.value, pw_ref.current.value);
@@ -47,11 +54,21 @@ const Login = () => {
             <div className="S-loginDiv">
               <div className="S-loginsmallDiv">
                 <img src={logo} />
-                <input placeholder="아이디" ref={id_ref} />
+                <input placeholder="아이디" ref={id_ref} onChange={onBtn} />
                 <br />
-                <input type="password" placeholder="비밀번호" ref={pw_ref} />
+                <input
+                  type="password"
+                  placeholder="비밀번호"
+                  ref={pw_ref}
+                  onChange={onBtn}
+                />
                 <br />
-                <button onClick={Loginform}>로그인</button>
+                <button
+                  onClick={Loginform}
+                  className={`loginBtn ${btnState ? "loginBtnActive" : null}`}
+                >
+                  로그인
+                </button>
               </div>
               <HorizontalLine text={"또는"} />
               <img src={kakao_login} className="S-kakao" />
@@ -72,7 +89,7 @@ const Login = () => {
           <div className="loginContainer">
             <div className="loginleftContainer">
               <div className="pleasedontmove">
-              <img className="loginleftback" src={login_phone} />
+                <img className="loginleftback" src={login_phone} />
                 <img className="loginleftimg1" src={login_screen1} />
                 <img className="loginleftimg2" src={login_screen2} />
                 <img className="loginleftimg3" src={login_screen3} />
@@ -82,11 +99,21 @@ const Login = () => {
               <div className="loginDiv">
                 <div className="loginsmallDiv">
                   <img src={logo} />
-                  <input placeholder="아이디" ref={id_ref} />
+                  <input placeholder="아이디" ref={id_ref} onChange={onBtn} />
                   <br />
-                  <input type="password" placeholder="비밀번호" ref={pw_ref} />
+                  <input
+                    type="password"
+                    placeholder="비밀번호"
+                    ref={pw_ref}
+                    onChange={onBtn}
+                  />
                   <br />
-                  <button onClick={Loginform}>로그인</button>
+                  <button
+                    onClick={Loginform}
+                    className={`loginBtn ${btnState ? "loginBtnActive" : null}`}
+                  >
+                    로그인
+                  </button>
                 </div>
                 <HorizontalLine text={"또는"} />
                 <img src={kakao_login} className="kakao" />

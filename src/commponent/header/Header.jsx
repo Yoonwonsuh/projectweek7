@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
-import homeempty from '../../img/homeempty.png'
-import DMempty from '../../img/DMempty.png'
-import Plusempty from '../../img/plusempty.png'
-import loveempty from '../../img/loveempty.png'
+import homeempty from "../../img/homeempty.png";
+import DMempty from "../../img/DMempty.png";
+import Plusempty from "../../img/plusempty.png";
+import loveempty from "../../img/loveempty.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -27,7 +27,12 @@ const Header = () => {
     <div className="header_wrap">
       <div className="header_container">
         <div className="container_left">
-          <img className="container_left_logo_img" src={logo} alt="" onClick={()=>navigate('/')}/>
+          <img
+            className="container_left_logo_img"
+            src={logo}
+            alt=""
+            onClick={() => navigate("/")}
+          />
           <button className="container_left_btn">
             <MdOutlineKeyboardArrowDown />
           </button>
@@ -51,7 +56,8 @@ const Header = () => {
               <img src={DMempty} className="container_right_DM" />
             </div>
             <div className="container_right_wrap_mini">
-              <img src={Plusempty}
+              <img
+                src={Plusempty}
                 className="container_right_plus"
                 onClick={() => navigate("/Posting")}
               />
