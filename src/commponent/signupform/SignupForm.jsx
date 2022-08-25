@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ new Blob([JSON.stringify()], { type: "application/json" });
 const Signupform = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const memberImg_ref = useRef(null);
 
   const initialState = {
     memberId: "",
@@ -38,10 +39,10 @@ const Signupform = () => {
   // memebrId 영문+숫자
   const idNum = newMember.memberId.search(/[0-9]/g);
   const idEng = newMember.memberId.search(/[a-z]/g);
-  // nickename 영문/한글/숫지
-  const NickNum = newMember.nickname.search(/[0-9]/g);
-  const NickEng = newMember.nickname.search(/[a-z]/g);
-  const NickKor = newMember.nickname.search(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g);
+  // // nickename 영문/한글/숫지
+  // const NickNum = newMember.nickname.search(/[0-9]/g);
+  // const NickEng = newMember.nickname.search(/[a-z]/g);
+  // const NickKor = newMember.nickname.search(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g);
 
   //passworrd 6자 이상 영어&숫자,&특수문자 포함
   useEffect(() => {
@@ -59,7 +60,7 @@ const Signupform = () => {
     }
   }, [newMember.password]);
 
-  //memberId : 6 - 12자, 영문+숫자
+  //memberId : 6 - 12자, 영문+숫자 특수문자 금지
   useEffect(() => {
     if (newMember.memberId.length < 6 || newMember.memberId.length > 12) {
       setMemIdCheck(false);
@@ -67,7 +68,9 @@ const Signupform = () => {
       //  공백 체크
       setMemIdCheck(false);
     } else if (idNum < 0 || idEng < 0) {
-      setPassChekc(false);
+      setMemIdCheck(false);
+    } else if (newMember.memberId.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1) {
+      setMemIdCheck(false);
     } else if (newMember.memberId === null) {
       setMemIdCheck(false);
     } else {
@@ -75,12 +78,14 @@ const Signupform = () => {
     }
   }, [newMember.memberId]);
 
-  //nickname : 12자 이하
+  //nickname : 12자 이하 영,한,숫/ 특문 금지
   useEffect(() => {
     if (newMember.nickname.length < 1 || newMember.nickname.length > 12) {
       setNickCheck(false);
     } else if (newMember.nickname.search(/\s/) != -1) {
       //  공백 체크
+      setNickCheck(false);
+    } else if (newMember.nickname.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) != -1) {
       setNickCheck(false);
     } else if (newMember.nickname === null) {
       setNickCheck(false);
@@ -118,13 +123,14 @@ const Signupform = () => {
     } else {
       event.preventDefault();
       let frm = new FormData();
-      let meberImg = document.getElementById("img_file");
+      // let memberImg = document.getElementById("img_file");
+      let uploadImg = memberImg_ref.current;
 
       frm.append(
         "data",
         new Blob([JSON.stringify(newMember)], { type: "application/json" })
       );
-      frm.append("img", meberImg.files[0]);
+      frm.append("img", uploadImg.files[0]);
       try {
         const response = await dispatch(signupDB(frm));
         if (response) {
@@ -179,7 +185,7 @@ const Signupform = () => {
             {!nickCheck ? (
               newMember.nickname === "" ? (
                 <div className="signupAlert">
-                  6자 이상 한글,영문 또는 숫자만 입력해주세요
+                  6자~12자 한글,영문 또는 숫자만 입력해주세요
                 </div>
               ) : (
                 <div className="signupAlertRed">닉네임 형식을 지켜주세요</div>
@@ -199,7 +205,7 @@ const Signupform = () => {
             {!passCheck ? (
               newMember.password === "" ? (
                 <div className="signupAlert">
-                  영문,숫자,특수문자 조합 6자 이상
+                  6자 이상 영문,숫자,특수문자 조합으로 입력해주세요
                 </div>
               ) : (
                 <div className="signupAlertRed">비밀번호 형식을 지켜주세요</div>
@@ -213,6 +219,7 @@ const Signupform = () => {
                 이미지 가져오기
               </label>
               <input
+                ref={memberImg_ref}
                 className="signupFile"
                 type="file"
                 onChange={onLoadFile}

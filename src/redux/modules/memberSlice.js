@@ -15,7 +15,7 @@ export const loginDB = (payload) => {
       })
       .then((response) => {
         if (response.data.success === false) {
-          return window.alert(response.data.error.message);
+          return window.alert(response.data.error.msg);
         } else {
           return (
             console.log(response),
@@ -23,7 +23,7 @@ export const loginDB = (payload) => {
             localStorage.setItem("nickname", response.data.data.nickname),
             alert(`${localStorage.nickname}님 환영합니다.`),
             window.location.replace("/")
-          )
+          );
         }
       })
       .catch((response) => {
@@ -42,7 +42,7 @@ export const signupDB = (payload) => {
       .then((response) => {
         if (response.data.success === false) {
           // return window.alert("가입에 실패하였습니다");
-          return window.alert(response.data.error.message);
+          return window.alert(response.data.error.msg);
           // console.log(response);
         } else {
           return (

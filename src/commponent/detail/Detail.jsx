@@ -87,7 +87,7 @@ const Detail = ({ onHide, postid }) => {
     dispatch(onDetailLikeHandler(detailPost.postId));
   };
 
-
+  // 디테일모달에서 닉네임을 누르면 닉네임의 프로필페이지로 이동
   const onClicknavigate = (payload) => {
     navigate(payload);
     onHide();
@@ -98,7 +98,6 @@ const Detail = ({ onHide, postid }) => {
     console.log(comment);
     dispatch(CommentLikeCntThunk(comment));
   };
-
 
   return (
     <>
@@ -150,7 +149,6 @@ const Detail = ({ onHide, postid }) => {
                         <div
                           className="DetainRightContentWholeBox"
                           key={comment.commentId}
-                          
                         >
                           <div className="DetailuserImgBox">
                             <img
@@ -160,10 +158,12 @@ const Detail = ({ onHide, postid }) => {
                             />
                           </div>
                           <div className="DetailRightContentBox">
-                            <a className="DetailOnerNickname"
-                            onClick={() =>
-                              onClicknavigate(`/profile/${comment.author}`)
-                            }>
+                            <a
+                              className="DetailOnerNickname"
+                              onClick={() =>
+                                onClicknavigate(`/profile/${comment.author}`)
+                              }
+                            >
                               {comment.author}
                             </a>
                             <span className="DetailOnerBody">
