@@ -13,7 +13,6 @@ const MainPostForm = ({ setIsModal }) => {
   const navigate = useNavigate();
 
   const img_ref = useRef(null);
-  console.log("1111111111111111111111111", filed);
   const userNickName = localStorage.getItem("nickname");
 
   useEffect(() => {
@@ -27,7 +26,6 @@ const MainPostForm = ({ setIsModal }) => {
 
   const [inputForm, setInputForm] = useState(initialState);
   const [textAreaCount, setTextAreaCount] = useState(0);
-  console.log("222222222222", inputForm.content);
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });

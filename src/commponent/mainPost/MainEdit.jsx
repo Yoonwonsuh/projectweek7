@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
-import { addPostsList, editPostsList } from "../../redux/modules/postsSlice";
+import { editPostsList } from "../../redux/modules/postsSlice";
 import { IoMdArrowBack } from "react-icons/io";
 
 import "./MainEdit.scss";
@@ -14,7 +14,7 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
   const [filed, setFiled] = useState("");
   const myProfile = useSelector((state) => state.myprofile.myrealProfile);
   const img_ref = useRef(null);
-  // 글자수
+  // 글자수 카운트
   const [textAreaCount, setTextAreaCount] = useState(0);
 
   const initialState = {
@@ -66,9 +66,9 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
     }
   };
 
-  // useEffect(() => {
-  //   onSignUpHandler();
-  // }, []);
+  useEffect(() => {
+    console.log("useeffect확인");
+  }, [filed]);
 
   // 모달 켜졌을때 뒤에 스크롤 방지
   useEffect(() => {
@@ -91,7 +91,6 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
     <div
       className="MainEditForm_Wrap"
       // 모달 바깥 눌럿을때 닫힘
-
       ref={outSection}
       onClick={(e) => {
         if (outSection.current === e.target) {

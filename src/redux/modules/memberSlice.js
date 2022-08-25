@@ -13,6 +13,7 @@ export const loginDB = (payload) => {
         memberId: payload.memberId,
         password: payload.password,
       })
+
       .then((response) => {
         if (response.data.success === false) {
           return window.alert(response.data.error.message);
@@ -23,7 +24,7 @@ export const loginDB = (payload) => {
             localStorage.setItem("nickname", response.data.data.nickname),
             alert(`${localStorage.nickname}님 환영합니다.`),
             window.location.replace("/")
-          )
+          );
         }
       })
       .catch((response) => {
