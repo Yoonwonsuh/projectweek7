@@ -133,11 +133,12 @@ const Signupform = () => {
       frm.append("img", uploadImg.files[0]);
       try {
         const response = await dispatch(signupDB(frm));
+        // if (response.data.success == true)
         if (response) {
           setNewMember(initialState);
           alert("정상적으로 등록 되었습니다");
           navigate("/");
-        }
+        } // else if alert("")
       } catch (error) {}
     }
   };
