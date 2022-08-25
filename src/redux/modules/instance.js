@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'http://3.35.49.115:8080/',
+  baseURL: process.env.REACT_APP_API_URL,
 });
-const token = localStorage.getItem('token');
-instance.defaults.headers.common['authorization'] = token ? `${token}` : null;
+const token = localStorage.getItem("token");
+instance.defaults.headers.common["authorization"] = token ? `${token}` : null;
 export default instance;
