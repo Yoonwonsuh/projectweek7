@@ -4,7 +4,6 @@ import ListImg from "./ListImg";
 import ListNav from "./ListNav";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import ListContent from "./ListContent";
 import { _postsList } from "../../redux/modules/postsSlice";
 

@@ -51,11 +51,15 @@ export const editPostsList = createAsyncThunk(
     // postId = author ????
 
     try {
-      const response = await instance.put(`posts/${payload.data.author}`, {
-        data: { content: payload.content },
-        img: payload.img,
-      });
-      return thunkAPI.fulfillWithValue(payload);
+      const response = await instance.put(
+        `posts/${payload.postId}`,
+        payload.formData,
+        {
+          "Content-Type": "multipart/form-data",
+        }
+      );
+      return thunkAPI.fulfillWithValue(response.data);
+      // return console.log("3333333333", response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -142,10 +146,11 @@ export const postsListSlice = createSlice({
     },
     [editPostsList.fulfilled]: (state, action) => {
       state.postsList = state.postsList.map((item, index) => {
-        if (item.author === action.payload.author) {
+        if (item.postId === action.payload.postId) {
           return {
             ...item,
             content: action.payload.content,
+            imgUrl: action.payload.imgUrl,
           };
         } else {
           return { ...item };

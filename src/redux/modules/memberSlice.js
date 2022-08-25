@@ -13,9 +13,12 @@ export const loginDB = (payload) => {
         memberId: payload.memberId,
         password: payload.password,
       })
+
       .then((response) => {
         if (response.data.success === false) {
+
           return window.alert(response.data.error.msg);
+
         } else {
           return (
             console.log(response),
@@ -41,9 +44,11 @@ export const signupDB = (payload) => {
 
       .then((response) => {
         if (response.data.success === false) {
+
           // return window.alert("가입에 실패하였습니다");
           return window.alert(response.data.error.msg);
           // console.log(response);
+
         } else {
           return (
             window.alert(`${response.data.data.nickname}님 환영합니다.`),

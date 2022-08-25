@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { debounce } from "lodash";
 import {
   FaRegComment,
@@ -26,6 +26,7 @@ import { detailLikeThunk } from "../../redux/modules/postSlice";
 const Detail = ({ onHide, postid }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const outSection = useRef();
   const nickname = localStorage.getItem("nickname");
   const initialState = {
     postId: "",
@@ -88,6 +89,7 @@ const Detail = ({ onHide, postid }) => {
   };
 
   // 디테일모달에서 닉네임을 누르면 닉네임의 프로필페이지로 이동
+
   const onClicknavigate = (payload) => {
     navigate(payload);
     onHide();
@@ -95,13 +97,20 @@ const Detail = ({ onHide, postid }) => {
 
   // comment.postId
   const onLikeCommentClick = (comment) => {
-    console.log(comment);
     dispatch(CommentLikeCntThunk(comment));
   };
 
   return (
     <>
-      <div className="DetailModal">
+      <div
+        className="DetailModal"
+        ref={outSection}
+        onClick={(e) => {
+          if (outSection.current === e.target) {
+            onHide();
+          }
+        }}
+      >
         <div className="DetailModalXbutton">
           <FaTimes className="DetailFaXbutton" onClick={onHide} />
         </div>
