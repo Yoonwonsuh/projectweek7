@@ -14,7 +14,11 @@
 - BE : 민영기,신윤섭,양승인
 - FE : 서윤원,배성열,김은경
 
-## ⚒️기술스택
+## :movie_camera: 시연 영상
+
+https://youtu.be/4SoPfX6C7w4
+
+## ⚒️기술 스택
 
 * **백엔드**
 <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=SpringBoot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=flat&logo=Spring Security&logoColor=white"/> <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white"/>  <img src="https://img.shields.io/badge/JWT-000000?style=flat&logo=JWT&logoColor=white"/> <img src="https://img.shields.io/badge/Gradle-02303A?style=flat&logo=Gradle&logoColor=white"/> <img src="https://img.shields.io/badge/amazon s3-569A31?flat&logo=Gradle&logo=amazons3&logoColor=green">
