@@ -1,0 +1,349 @@
+.loginBackground {
+  background-color: #fafafa;
+  height: 100vh;
+}
+.loginContainer {
+  width: 60%;
+  margin: 0px auto;
+  display: flex;
+  padding-top: 20px;
+  height: 100%;
+  min-width: 1150px;
+}
+.pleasedontmove {
+  position: relative;
+}
+.loginleftContainer {
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.loginleftback {
+  position: absolute;
+  margin-left: 1px;
+  margin-top: 62px;
+  width: 570px;
+}
+
+.loginleftimg1 {
+  position: absolute;
+  margin-left: 193px;
+  margin-top: 95px;
+  width: 307px;
+  animation-name: loginTrans;
+  animation-duration: 18s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+.loginleftimg2 {
+  position: absolute;
+  margin-left: 193px;
+  margin-top: 95px;
+  width: 307px;
+  animation-name: loginTrans2;
+  animation-duration: 18s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+.loginleftimg3 {
+  position: absolute;
+  margin-left: 193px;
+  margin-top: 95px;
+  width: 307px;
+  animation-name: loginTrans3;
+  animation-duration: 18s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loginTrans {
+  0% {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 1;
+  }
+
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loginTrans2 {
+  0% {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  66% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loginTrans3 {
+  0% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.loginrightContainer {
+  width: 40%;
+  margin-top: 70px;
+  height: 100%;
+}
+.loginDiv {
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  img {
+    max-width: 70%;
+    max-height: 100%;
+    margin-bottom: 12px;
+    padding-top: 15px;
+  }
+  input {
+    width: 75%;
+    height: 38px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    // margin-bottom: px;
+    border-radius: 3px;
+    font-size: 14px;
+    align-items: center;
+    padding-left: 10px;
+  }
+}
+.loginBtn {
+  border: none;
+  background-color: #b2dffc;
+  font: inherit;
+  color: white;
+  vertical-align: baseline;
+  margin: 0 40px 6px;
+  width: 75%;
+  height: 35px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.loginBtnActive {
+  border: none;
+  background-color: #2e95f6;
+  font: inherit;
+  color: white;
+  vertical-align: baseline;
+  margin: 0 40px 6px;
+  width: 75%;
+  height: 35px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.loginsmallDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kakao {
+  font-size: 14px;
+  cursor: pointer;
+}
+.checkpw {
+  font-size: 16px;
+  color: #385285;
+  font-weight: 600;
+  margin-bottom: 21px;
+  margin-top: 13px;
+  cursor: pointer;
+}
+.siginupPage {
+  border: 1px solid #dbdbdb;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 20px 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  background-color: white;
+  font-size: 14px;
+
+  div {
+    font-size: 18px;
+    margin-right: 20px;
+    // margin: auto;
+    &:last-child {
+      color: #2e97f6;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
+.appBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  p {
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  img {
+    justify-content: center;
+    margin: 10px 0 10px 0;
+    width: 400px;
+  }
+}
+
+// small media query
+.S-loginBackground {
+  background-color: #fafafa;
+  height: 100vh;
+}
+.S-loginrightContainer {
+  width: 50%;
+  margin-top: 70px;
+  height: 100%;
+  min-width: 450px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.S-loginDiv {
+  border: 1px red solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+.S-loginDiv {
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  img {
+    max-width: 70%;
+    max-height: 100%;
+    margin-bottom: 12px;
+    padding-top: 15px;
+  }
+  input {
+    width: 75%;
+    height: 38px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    // margin-bottom: px;
+    border-radius: 3px;
+    font-size: 14px;
+    align-items: center;
+    padding-left: 10px;
+  }
+}
+.S-loginsmallDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.S-kakao {
+  font-size: 14px;
+  cursor: pointer;
+}
+.S-checkpw {
+  font-size: 16px;
+  color: #385285;
+  font-weight: 600;
+  margin-bottom: 21px;
+  margin-top: 13px;
+  cursor: pointer;
+}
+.S-siginupPage {
+  border: 1px solid #dbdbdb;
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 22px 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  background-color: white;
+  font-size: 14px;
+
+  div {
+    font-size: 18px;
+    margin-right: 20px;
+    // margin: auto;
+    &:last-child {
+      color: #2e97f6;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
+.S-appBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  p {
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  img {
+    justify-content: center;
+    margin: 10px 0 10px 0;
+    width: 400px;
+  }
+}

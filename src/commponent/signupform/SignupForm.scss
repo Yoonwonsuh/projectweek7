@@ -1,0 +1,146 @@
+.signupBackground {
+  background-color: #fafafa;
+  height: 100vh;
+}
+.siginupContainer {
+  max-width: 450px;
+  margin: 0px auto;
+  display: flex;
+  background-color: white;
+  padding-top: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+.signupBox {
+  border: 1px solid #dbdbdb;
+  padding-top: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    // 로고~카톡 박스
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    // 카카오톡으로 로그인하기
+    &:last-child {
+      font-size: 14px;
+      // cursor: pointer;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    //로고
+    img {
+      width: 50%;
+      margin-bottom: 5px;
+    }
+    //친구들의~
+    p {
+      color: #919191;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 20px;
+      margin: 0 40px 30px;
+      text-align: center;
+    }
+  }
+  .signupInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .inforBox {
+    width: 75%;
+    height: 38px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding-left: 10px;
+    font-size: 14px;
+  }
+  .signupAlert {
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-top: -6px;
+  }
+  .signupAlertRed {
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-top: -6px;
+    color: red;
+  }
+  .signupAlertGreen {
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-top: -6px;
+    color: green;
+  }
+  .imguploadbox {
+    width: 75%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .signupPreImg {
+    width: 80px;
+    height: 80px;
+    border-radius: 70%;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  .signupLabel {
+    background-color: #b2dffc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: inherit;
+    color: white;
+    vertical-align: middle;
+    width: 75%;
+    height: 35px;
+    border-radius: 4px;
+    font-size: 14px;
+    padding-top: 7px;
+    cursor: pointer;
+    &:hover {
+      background-color: #2e95f6;
+    }
+  }
+  .signupFile {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+  }
+  .signupInfor {
+    font-size: 14px;
+    margin-bottom: 19px;
+  }
+  .signinBtn {
+    border: none;
+    background-color: #0095f6;
+    font: inherit;
+    color: white;
+    vertical-align: baseline;
+    width: 57%;
+    height: 35px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .signinBtn:disabled {
+    background-color: #b2dffc;
+  }
+}

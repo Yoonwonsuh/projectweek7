@@ -1,0 +1,250 @@
+// 메인
+.ListWarp {
+  border: 1px solid #dcdcdc;
+  min-height: 724px;
+  width: 470px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+// 메인 헤더
+.ListNav_Wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  width: 100%;
+}
+.ListNav_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ListNav_left_img_box {
+  display: flex;
+  margin-left: 10px;
+  flex-direction: row;
+  width: 38px;
+  height: 38px;
+}
+
+.ListNav_left_img_round {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  animation-name: imground;
+  animation-duration: 2s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+@keyframes imground {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ListNav_left_img {
+  position: relative;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-top: 3px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+.ListNav_left_txt {
+  font-size: 14px;
+  margin-left: 10px;
+  max-width: 366px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ListNav_right_btn {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  margin: 0 4px 0 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.ListNav_right_btn_toggle {
+  width: 24px;
+  height: 24px;
+}
+
+// 포스팅 이미지
+.ListImg {
+  display: flex;
+  flex-direction: column;
+  background: black;
+  width: 100%;
+  justify-content: center;
+  aspect-ratio: 4/5;
+}
+
+.ListImgurl {
+  max-width: 100%;
+}
+
+// 컨텐츠
+.ListContentWrap {
+  height: 100%;
+}
+
+.ListContentHead {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+.ListContentHead_left {
+  margin-left: 0px;
+}
+
+.ListContentHead_button {
+  width: 40px;
+  height: 40px;
+  padding: 8px 0 8px 0;
+  margin: 0 0 0 3px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.ListContentHead_button_outline_heart {
+  margin-top: 6px;
+  width: 20px;
+  height: 20px;
+}
+
+.ListContentHead_button_outline_chat {
+  margin-top: 3px;
+  width: 21px;
+  height: 21px;
+}
+
+.ListContentHead_button_outline_bm {
+  margin-top: 6px;
+  width: 21px;
+  height: 21px;
+}
+
+.ListContentBody {
+  width: 100%;
+  min-height: 150px;
+  padding: 0px 12px;
+}
+
+.ListContentBodyLike {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18px;
+  align-items: center;
+  justify-content: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.ListContentBodyComment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  height: 18px;
+  margin: 6px 0px;
+}
+
+.ListContentBodyCommentNickname {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.ListContentBodyCommentWrap {
+  flex: 1;
+  align-items: center;
+  display: flex;
+  justify-content: start;
+}
+
+.ListContentBodyCommentWrapText {
+  font-size: 14px;
+}
+.ListContentBodyComment_reply {
+  font-size: 14px;
+  color: rgb(147, 145, 145);
+}
+// 컨텐츠 댓글
+.ListContentBody_reply_wrap {
+  width: 100%;
+  height: 49px;
+  margin: 14px 0 0;
+  padding: 4px 10px 4px 0px;
+}
+.ListContentBody_reply_cotainer {
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 100%;
+  border: 0;
+  flex-grow: 1;
+  vertical-align: baseline;
+}
+.ListContentBody_reply_btn {
+  width: 36px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px 8px 0px;
+}
+.ListContentBody_reply_btn_smile {
+  width: 24px;
+  height: 24px;
+}
+.ListContentBody_reply_input {
+  background: none;
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  font-size: inherit;
+  max-height: 80px;
+  height: 18px;
+  outline: none;
+  padding: 0;
+  resize: none;
+  width: 0;
+  align-items: center;
+}
+.ListContentBody_reply_postBtn {
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  width: auto;
+  color: rgb(202, 202, 239);
+}
+
+.ListContentBodyComment_reply_onclick {
+  cursor: pointer;
+}

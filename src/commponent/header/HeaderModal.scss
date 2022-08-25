@@ -1,0 +1,47 @@
+.HeaderModalContainer {
+    width: 150px;
+    height: 100px;
+    // border: 1px solid rgba(0, 0, 0, 0.4);
+    border: 1px solid black;
+    z-index: 4;
+    background: white;
+    position: absolute;
+    border-radius: 10px;
+    right: -30%;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .HeaderModalEditBox {
+    height: 50%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: default;
+  }
+  
+  .HeaderModalDeleteBox {
+    height: 50%;
+    cursor: default;
+  }
+  
+  .HeaderModalEditText {
+  
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+  
+  .HeaderModalDeleteText {
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    color: red;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+  

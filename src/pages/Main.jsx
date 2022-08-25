@@ -1,11 +1,25 @@
 import React from "react";
+import List from "../commponent/list/List";
+import Header from "../commponent/header/Header";
+import Login from "../commponent/login/LoginForm";
+import "./Main.scss";
 
 const Main = () => {
-  return <div>메인페이지입니다.<br />
-    가나다라마바사<br />
-    abcdefg<br />
-    ABCDEFG<br />
-  </div>;
+  const nickname = localStorage.getItem("nickname");
+  return (
+    <>
+      {nickname ? (
+        <>
+          <Header />
+          <div className="MainWrap">
+            <List nickname={nickname}/>
+          </div>
+        </>
+      ) : (
+        <Login />
+      )}
+    </>
+  );
 };
 
 export default Main;

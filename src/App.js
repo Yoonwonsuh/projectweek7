@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp";
 import Posting from "./pages/Posting";
 import Profile from "./pages/Profile";
 import DirectMessage from "./pages/DirectMessage";
+import Detail from "./commponent/detail/Detail";
 import "./App.scss";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/posting" element={<Posting />} />
       <Route path="/Profile/:id" element={<Profile />} />
       <Route path="/Direct" element={<DirectMessage />} />
+      <Route path="/detail" element={<Detail />} />
     </Routes>
   );
 }
