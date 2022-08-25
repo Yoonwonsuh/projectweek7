@@ -1,33 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMMyProfileThunk } from "../../redux/modules/myProfileSlice";
-import { addPostsList } from "../../redux/modules/postsSlice";
+import { addPostsList, editPostsList } from "../../redux/modules/postsSlice";
 import { IoMdArrowBack } from "react-icons/io";
 
-import "./MainPostForm.scss";
-import { useNavigate } from "react-router-dom";
+import "./MainEdit.scss";
 
-const MainPostForm = ({ setIsModal }) => {
+const MainDelete = ({ isModal, setIsModal, postId }) => {
   const dispatch = useDispatch();
-  const [filed, setFiled] = useState("");
-  const navigate = useNavigate();
-
-  const img_ref = useRef(null);
-  console.log("1111111111111111111111111", filed);
   const userNickName = localStorage.getItem("nickname");
 
-  useEffect(() => {
-    dispatch(getMMyProfileThunk(userNickName));
-  }, [dispatch]);
-
+  // 이미지 파일
+  const [filed, setFiled] = useState("");
   const myProfile = useSelector((state) => state.myprofile.myrealProfile);
+  const img_ref = useRef(null);
+  // 글자수
+  const [textAreaCount, setTextAreaCount] = useState(0);
+
   const initialState = {
     content: "",
   };
 
+  // 텍스트 인풋
   const [inputForm, setInputForm] = useState(initialState);
-  const [textAreaCount, setTextAreaCount] = useState(0);
-  console.log("222222222222", inputForm.content);
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });
@@ -36,11 +32,15 @@ const MainPostForm = ({ setIsModal }) => {
     setTextAreaCount(e.target.value.length);
   };
 
+  useEffect(() => {
+    dispatch(getMMyProfileThunk(userNickName));
+  }, [dispatch]);
+
   const onLoadFile = (e) => {
     setFiled(URL.createObjectURL(e.target.files[0]));
   };
 
-  // 서버통신 부분
+  //  서버 통신부분
   const onSignUpHandler = async (e) => {
     if (filed == "" || inputForm.content == "") {
       e.preventDefault();
@@ -59,11 +59,10 @@ const MainPostForm = ({ setIsModal }) => {
 
       formData.append("img", uploadImg.files[0]);
 
-      await dispatch(addPostsList(formData));
-      window.alert("새 게시물 만들기 완료");
+      await dispatch(editPostsList({ postId, formData }));
+      window.alert("게시물 수정 완료");
       // 포스팅 완료후 새로고침
-      navigate("/");
-      setIsModal(false);
+      window.location.replace("/");
     }
   };
 
@@ -74,11 +73,10 @@ const MainPostForm = ({ setIsModal }) => {
   // 모달 켜졌을때 뒤에 스크롤 방지
   useEffect(() => {
     document.body.style.cssText = `
-      position: fixed;
+      position: fixed; 
       top: -${window.scrollY}px;
       overflow-y: scroll;
       width: 100%;`;
-
     return () => {
       const scrollY = document.body.style.top;
       document.body.style.cssText = "";
@@ -91,8 +89,9 @@ const MainPostForm = ({ setIsModal }) => {
 
   return (
     <div
-      className="MainPostForm_Wrap"
+      className="MainEditForm_Wrap"
       // 모달 바깥 눌럿을때 닫힘
+
       ref={outSection}
       onClick={(e) => {
         if (outSection.current === e.target) {
@@ -100,15 +99,15 @@ const MainPostForm = ({ setIsModal }) => {
         }
       }}>
       <form
-        className="MainPostForm_Container"
+        className="MaiEditForm_Container"
         encType="multipart/form-data"
         onSubmit={onSignUpHandler}>
         <div className="Title">
           <IoMdArrowBack
             className="backBtn"
-            onClick={() => setIsModal(false)}
+            // onClick={() => setIsModal(false)}
           />
-          <h1 className="name">새 게시물 만들기</h1>
+          <h1 className="name">게시물 수정하기</h1>
           <button className="addBtn">추가하기</button>
         </div>
 
@@ -164,4 +163,4 @@ const MainPostForm = ({ setIsModal }) => {
   );
 };
 
-export default MainPostForm;
+export default MainDelete;
