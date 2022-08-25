@@ -88,6 +88,8 @@ const Detail = ({ onHide, postid }) => {
     dispatch(onDetailLikeHandler(detailPost.postId));
   };
 
+  // 디테일모달에서 닉네임을 누르면 닉네임의 프로필페이지로 이동
+
   const onClicknavigate = (payload) => {
     navigate(payload);
     onHide();
