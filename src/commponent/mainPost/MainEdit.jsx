@@ -66,9 +66,9 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
     }
   };
 
-  useEffect(() => {
-    console.log("useeffect확인");
-  }, [filed]);
+  // useEffect(() => {
+  //   console.log("useeffect확인");
+  // }, [filed]);
 
   // 모달 켜졌을때 뒤에 스크롤 방지
   useEffect(() => {
@@ -104,7 +104,7 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
         <div className="Title">
           <IoMdArrowBack
             className="backBtn"
-            // onClick={() => setIsModal(false)}
+            onClick={() => setIsModal(false)}
           />
           <h1 className="name">게시물 수정하기</h1>
           <button className="addBtn">추가하기</button>
