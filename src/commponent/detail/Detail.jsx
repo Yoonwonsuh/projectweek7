@@ -228,7 +228,7 @@ const Detail = ({ onHide, postid }) => {
                 </div>
               </div>
               <div className="DetailSmallLike">
-                좋아요&nbsp;&nbsp;{detailPost.postLikeCnt}개
+                좋아요 &nbsp;&nbsp;{detailPost.postLikeCnt}개
               </div>
               <div className="DetailSmallTime">{detailPost.createdAt}</div>
               {smallInput ? (
