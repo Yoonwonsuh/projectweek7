@@ -93,6 +93,8 @@ const Detail = ({ onHide, postid }) => {
     onHide();
   };
 
+  
+
   // comment.postId
   const onLikeCommentClick = (comment) => {
     dispatch(CommentLikeCntThunk(comment));
