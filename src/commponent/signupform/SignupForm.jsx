@@ -133,7 +133,7 @@ const Signupform = () => {
       frm.append("img", uploadImg.files[0]);
       try {
         const response = await dispatch(signupDB(frm));
-        if (response) {
+        if (response.data.sucess == true) {
           setNewMember(initialState);
           alert("정상적으로 등록 되었습니다");
           navigate("/");
@@ -148,8 +148,7 @@ const Signupform = () => {
         <form
           className="signupBox"
           onSubmit={onSignupHandler}
-          encType="multipart/form-data"
-        >
+          encType="multipart/form-data">
           <div>
             <img src={logo} />
             <p>찬구들의 사진과 동영상을 보려면 가입하세요.</p>
@@ -237,8 +236,7 @@ const Signupform = () => {
             <button
               className="signinBtn"
               type="sumbit"
-              disabled={btnState ? false : true}
-            >
+              disabled={btnState ? false : true}>
               가입
             </button>
           </div>

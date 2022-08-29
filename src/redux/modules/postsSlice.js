@@ -47,9 +47,6 @@ export const addPostsList = createAsyncThunk(
 export const editPostsList = createAsyncThunk(
   "editPostsList",
   async (payload, thunkAPI) => {
-    // payload = data
-    // postId = author ????
-
     try {
       const response = await instance.put(
         `posts/${payload.postId}`,
