@@ -36,6 +36,7 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
     dispatch(getMMyProfileThunk(userNickName));
   }, [dispatch]);
 
+  // 로컬 이미지 미리보기
   const onLoadFile = (e) => {
     setFiled(URL.createObjectURL(e.target.files[0]));
   };
@@ -59,6 +60,7 @@ const MainDelete = ({ isModal, setIsModal, postId }) => {
 
       formData.append("img", uploadImg.files[0]);
 
+      // payload 를 이렇게 두개로 보낼 수 있다
       await dispatch(editPostsList({ postId, formData }));
       window.alert("게시물 수정 완료");
       // 포스팅 완료후 새로고침

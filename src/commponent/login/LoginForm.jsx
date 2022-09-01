@@ -21,10 +21,12 @@ const Login = () => {
   //useRef 값이 뱐해도 리렌더링 되지않음
   const id_ref = useRef(null);
   const pw_ref = useRef(null);
+
   // 미디어쿼리
   const isSmallMode = useMediaQuery({
     query: "(max-width : 1000px)",
   });
+
   //로그인 버튼 활성화
   const [btnState, setBtnState] = useState(false);
   const onBtn = () => {
@@ -34,6 +36,7 @@ const Login = () => {
       setBtnState(false);
     }
   };
+
   //login버튼 눌렀을때 값 가져오기 & 유효성검사
   const Loginform = () => {
     // console.log(id_ref.current.value, pw_ref.current.value);
@@ -65,8 +68,7 @@ const Login = () => {
                 <br />
                 <button
                   onClick={Loginform}
-                  className={`loginBtn ${btnState ? "loginBtnActive" : null}`}
-                >
+                  className={`loginBtn ${btnState ? "loginBtnActive" : null}`}>
                   로그인
                 </button>
               </div>
@@ -110,8 +112,9 @@ const Login = () => {
                   <br />
                   <button
                     onClick={Loginform}
-                    className={`loginBtn ${btnState ? "loginBtnActive" : null}`}
-                  >
+                    className={`loginBtn ${
+                      btnState ? "loginBtnActive" : null
+                    }`}>
                     로그인
                   </button>
                 </div>

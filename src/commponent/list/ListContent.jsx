@@ -20,6 +20,8 @@ import {
 const ListContent = ({ ListData }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+
+  // 모달창 닫았을때 그 스크롤 유지
   const handleClose = () => {
     const CloseMoDalScrollY = localStorage.getItem("scrolly");
     setShow(false);
@@ -119,8 +121,7 @@ const ListContent = ({ ListData }) => {
             <>
               <div
                 className="ListContentBodyComment_reply_onclick"
-                onClick={handleShow}
-              >
+                onClick={handleShow}>
                 댓글&nbsp;<span>{ListData.commentCnt}</span>개 모두 보기
               </div>
               <Modal show={show} onHide={handleClose}>
@@ -145,12 +146,10 @@ const ListContent = ({ ListData }) => {
               type="text"
               name="content"
               value={newComment.content}
-              onChange={onChangeHandler}
-            ></input>
+              onChange={onChangeHandler}></input>
             <button
               className="ListContentBody_reply_postBtn"
-              onClick={onEditSubmitHandler}
-            >
+              onClick={onEditSubmitHandler}>
               게시
             </button>
           </div>

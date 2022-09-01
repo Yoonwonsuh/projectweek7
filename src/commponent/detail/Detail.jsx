@@ -109,11 +109,11 @@ const Detail = ({ onHide, postid }) => {
           if (outSection.current === e.target) {
             onHide();
           }
-        }}
-      >
+        }}>
         <div className="DetailModalXbutton">
           <FaTimes className="DetailFaXbutton" onClick={onHide} />
         </div>
+        {/* 반응형 */}
         {windowSize.width >= 1000 ? (
           <div className="DetailContainer">
             <div className="DetailLeft">
@@ -143,8 +143,7 @@ const Detail = ({ onHide, postid }) => {
                       className="DetailOnerNickname"
                       onClick={() =>
                         onClicknavigate(`/profile/${detailPost.author}`)
-                      }
-                    >
+                      }>
                       {detailPost.author}
                     </a>
                     <span className="DetailOnerBody">{detailPost.content}</span>
@@ -157,8 +156,7 @@ const Detail = ({ onHide, postid }) => {
                       return (
                         <div
                           className="DetainRightContentWholeBox"
-                          key={comment.commentId}
-                        >
+                          key={comment.commentId}>
                           <div className="DetailuserImgBox">
                             <img
                               className="DetailRightIconBox"
@@ -171,8 +169,7 @@ const Detail = ({ onHide, postid }) => {
                               className="DetailOnerNickname"
                               onClick={() =>
                                 onClicknavigate(`/profile/${comment.author}`)
-                              }
-                            >
+                              }>
                               {comment.author}
                             </a>
                             <span className="DetailOnerBody">
@@ -244,14 +241,12 @@ const Detail = ({ onHide, postid }) => {
                         type="text"
                         name="content"
                         value={newComment.content}
-                        onChange={onChangeHandler}
-                      ></input>
+                        onChange={onChangeHandler}></input>
                     </div>
                   </>
                   <div
                     className="Detailsmallclick"
-                    onClick={onAddSubmitHandler}
-                  >
+                    onClick={onAddSubmitHandler}>
                     게시
                   </div>
                 </div>
@@ -314,8 +309,7 @@ const Detail = ({ onHide, postid }) => {
                       type="text"
                       name="content"
                       value={newComment.content}
-                      onChange={onChangeHandler}
-                    ></input>
+                      onChange={onChangeHandler}></input>
                   </div>
                 </>
                 <div className="Detailsmallclick" onClick={onAddSubmitHandler}>
