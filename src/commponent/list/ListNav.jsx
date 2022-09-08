@@ -31,12 +31,11 @@ const ListNav = ({ ListData }) => {
       <div className="ListNav_right_btn">
         {nowNickName === ListData.author ? (
           <>
-            {" "}
             <AiOutlineEllipsis
               className="ListNav_right_btn_toggle"
               onClick={() => dispatch(onModalApearHandler(ListData))}
             />
-            {ListData.isModalMode ? <PostModal ListData={ListData} /> : ""}{" "}
+            {ListData.isModalMode ? <PostModal ListData={ListData} /> : ""}
           </>
         ) : (
           ""
